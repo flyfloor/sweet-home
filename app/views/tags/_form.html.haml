@@ -1,0 +1,6 @@
+=form_for :tag do |f|
+	%p
+		=f.label '标签', for:'name'
+		=f.text_field :name
+	%p
+		=f.submit '加标签'

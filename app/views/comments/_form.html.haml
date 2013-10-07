@@ -1,0 +1,9 @@
+=form_for([@blog, @blog.comments.build]) do |f|
+	%p
+		=f.label '用户', for:'commenter'
+		=f.text_field :commenter
+	%p
+		=f.label '内容', for:'content'
+		=f.text_area :content
+	%p
+		=f.submit '留言'

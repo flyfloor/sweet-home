@@ -1,0 +1,53 @@
+-provide(:title, '创建文章')
+%link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
+.edit-content
+  %section.blog
+    %h1 创建文章
+    %form#form_blog{method:'post', action:"#{blogs_path}", style:'display: block;'} 
+      .row.blog-title
+        %label.field{for:'blog_title'} 题目:
+        %div
+          %input.blog-title.subcheck#blog_title{type:'text', name:'blog[title]'} 
+      .add_link
+        .add_img
+        .add_link
+          %input#add_link_dia_btn{type:'button', value:'链接'}
+      .row.blog-content
+        %label.field{for:'blog_content'} 正文:
+        %div
+          %textarea.blog-content#blog_content{name:'blog[content]'} 
+      .images{style:'display:block'}
+      .tags-editer
+        =render 'tags/blog_tags'
+      .row.footer
+        %span.bn-flat
+          %input.bn-flat#preview_blog{type:'button', value:'预览'}
+        &nbsp;
+        %input.btn#publish_blog{type:'submit', value:'发表'}
+        %span.bn-flat.cancel-blog
+          =link_to '取消', blogs_path, class:'bn-flat', id:'cancel_edit', name:'cancel_edit'
+    .add-link-dialog.dialog{style:"visibility: hidden; width: 400px; display: block;"}
+      .dialog-content
+        .dialog-hd
+          %h3 添加链接
+          %a.close-dialog.close-dialog-X{href: '#'} X
+        .link-dialog-content
+          .row
+            %label.field{for: 'link_text'} 显示
+            %input#link_text{type: 'text', value:''}
+          .row
+            %label.field{for: 'link_url'} 地址
+            %input#link_url{type: 'text', value:'http://'}
+          .dialog-ft
+            %input.btn#add_link_btn{type: 'button', value:'确认'} 
+            %span.bn-flat
+              %input.bn-flat.close-dialog{type: 'button', value:'取消'}
+/ :javascript
+/   $(window).bind("beforeunload", function(){
+/     return "确定离开？";
+/   });
+/   $("#publish_blog").click(function(){
+/     $(window).unbind("beforeunload");
+/   });
+
+    

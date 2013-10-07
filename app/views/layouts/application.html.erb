@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%=title(yield(:title))%></title>
+  <%= stylesheet_link_tag    "application", media:'all' %>
+  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "/css/app", media:'all'%>
+  <%= stylesheet_link_tag "/css/font-awesome.min", media: 'all'%>
+  <%= javascript_include_tag "/js/app", media:'all'%>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<section>
+				<div class="info-img">
+					<a href="/blogs">
+						<img src="/imgs/1.jpg">
+					</a>
+				</div>
+				<div class="info-content">
+					<h1>
+						<a href="/blogs" style="color:#975">落在深海</a>
+					</h1>
+				</div>
+			</section>
+			<!-- <nav>
+				<ul>
+					<li>
+						<a href="/blogs" class="nav1" title="文章"></a>
+					</li>
+					<li>
+						<a href="/photos" class="nav2" title="摄影"></a>
+					</li>
+					<li>
+						<a href="/tags" class="nav3" title="标签"></a>
+					</li>
+					<li>
+						<% if signed_in? %>
+							<%= link_to "", signout_path, method: :delete, class: "nav4"%>
+						<% else %>
+							<%= link_to "", signin_path, class: "nav4"%>
+						<% end %>
+					</li>
+				</ul>
+			</nav> -->
+		</div>
+	</header>
+	<wrapper>
+		<%= yield %>
+	</wrapper>
+	<footer>
+		<span>©</span>
+		<a href="http://www.douban.com/people/31660758/" target="_blank">落在深海</a>
+	</footer>		
+</body>
+</html>

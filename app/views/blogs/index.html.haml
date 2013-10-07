@@ -1,0 +1,7 @@
+-if signed_in?
+	%a.create-blog{href:"#{new_blog_path}"} 写点东西
+=render 'blogs/blogs_fragment'
+.box-clear
+	.box1
+	.box2{style:"padding:10px"}=will_paginate(page_links: false, previous_label: "Newer", next_label: "Older")
+		

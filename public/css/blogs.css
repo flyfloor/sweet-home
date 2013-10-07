@@ -1,0 +1,270 @@
+@media screen and (min-width: 1000px){
+	.artical-content {
+		margin: 0 30px 0 195px;
+		padding-top: 30px;
+	}
+	.artical-content artical{
+		-moz-box-sizing: border-box;
+		box-shadow: 0 1px 2px rgba(59,175,54, 0.2);
+	}
+	.screen-top {
+		right: 380px;
+	}
+	
+}
+
+/*--窗口640px以上、999px以下--*/
+@media screen and (min-width: 640px) and (max-width: 999px){
+	.artical-content {
+		margin: 0 20px;
+	}
+	.artical-content artical{
+		margin-top: 10px;
+		-moz-box-sizing: border-box;
+		box-shadow: 0 1px 2px rgba(59,175,54, 0.2);
+	}
+	.screen-top {
+		right: 150px;
+	}
+}
+
+/*--窗口640px以下*/
+@media screen and (max-width: 639px){
+	.screen-top {
+		right: 50px;
+	}
+}
+
+.blog {
+	margin: 0 auto;
+	width: 740px;
+}
+.artical-content {
+	min-height: 600px;
+}
+.artical-content artical {
+	padding: 9.11458%;
+	background-color: #fff;
+}
+
+#blog_title, #blog_content {
+	width: 720px;
+	margin-top: 5px;
+	padding: 3px;
+	border: 1px solid #ccc;
+	line-height: 1.62;
+}
+
+#blog_content {
+	height: 400px;
+}
+
+.row.blog-content label.field,.row.blog-title label.field{
+	font-size: 14px;
+}
+.control-panel {
+	float: right;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+
+	.control-panel li {
+		float: left;
+	}
+
+	.control-panel .lnk-flat {
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+
+
+.image-btn .lnk-flat {
+	border-top-right-radius:0; 
+	border-bottom-right-radius:0; 
+}
+.link-btn .lnk-flat {
+	border-top-left-radius:0; 
+	border-bottom-left-radius:0; 
+}
+
+.lnk-flat,.lnk-confirm,.bn-flat {
+	background:transparent; 
+	border-width: 1px;
+	border-style: solid;
+	border-color: #bbb;
+	display: inline-block;
+	color: #444;
+	border-radius: 3px;
+		-webkit-border-radius:3px;
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+	.btn, .lnk-flat, .lnk-confirm, .bn-flat input {
+		cursor: pointer;
+	}
+
+.bn-flat input {
+	border-width: 0;
+}
+	
+
+.bn-flat input {
+	height: 25px;
+	padding: 0 14px;
+	color: #333;
+}
+
+
+.row.footer {
+	margin-top: 50px;
+	position: relative;
+}
+
+.cancel-blog {
+	position: absolute;
+	right: 0px;
+}
+
+.pic-dialog {
+	position: fixed;
+	z-index: 1000;
+}
+
+.pic-dialog-shadow {
+	position: absolute;
+	left: -8px;
+	top: -8px;
+	width: 100%;
+	height: 100%;
+	padding: 8px;
+	background: #666;
+	opacity: .4;
+}
+
+.pic-dialog-content {
+	position: relative;
+	z-index: 2;
+	background: #fff;
+	border: 1px solid #bbb;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#cancel_edit {
+	height: 25px;
+	margin-top: 3px;
+	margin-bottom: -3px;
+	border: 0;
+	display: block;
+	padding: 0 14px;
+}
+
+.screen-top {
+	background-color: #ddd;
+  border: 1px solid #D5D5D5;
+  border-radius: 3px;
+  bottom: 100px;
+  box-shadow: 0 0 5px #F5F5F5;
+  height: 30px;
+  outline: 0 none;
+  overflow: hidden;
+  position: fixed;
+  text-indent: -9999px;
+  width: 30px;
+}
+.screen-top:hover {
+	background-color: #ded;
+}
+.screen-top del {
+	border-color: transparent transparent #aaa;
+  border-style: dashed dashed solid;
+  border-width: 8px;
+  font-size: 0;
+  height: 0;
+  left: 7px;
+  position: absolute;
+  top: -2px;
+  width: 0;
+}
+.screen-top b {
+	background-color: #aaa;
+  height: 10px;
+  left: 12px;
+  position: absolute;
+  top: 12px;
+  width: 6px;
+}
+
+.tagarea {
+	position: relative;
+	border-bottom: 1px dashed #ccc;
+	padding: 10px 0;
+}
+
+.tag-tokens {
+	background-color: #fff;
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	height: 25px;
+	padding: 2px 0 0;
+}
+.tag-token:hover {
+	cursor: pointer;
+}
+
+.tag-token {
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  margin: 2px 4px;
+  border-radius: 2px;
+}
+
+.tag-tokens .tag-token{
+	background-color: #EEFFEE;
+  box-shadow: 0 1px 1px rgba(200, 230, 200, 0.8);
+  color: #777;
+  font-size: 12px;
+  height: 18px;
+  padding: 1px 10px;
+}
+
+.exist-tags .tag-token {
+	background-color: #AACCAA;
+  color: #FFFFFF;
+  font-size: 12px;
+  margin-right: 5px;
+  padding: 2px 10px;
+}
+
+.exist-tags .tag-token:hover {
+	background-color: #777;
+}
+
+.create-tags {
+	float: left;
+	margin-top:2px; 
+}
+
+input.new-tag{
+	min-width: 60px;
+	border: none;
+	font-size: 13px;
+}
+
+.tag-disabled {
+	cursor: default;
+	background-color: #ccc !important;
+}
+
+.hiddenspan {
+	position: absolute;
+	visibility: hidden;
+	font-size: 12px;
+}
+.cvt-content {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	/*margin-top: -20px;*/
+}
