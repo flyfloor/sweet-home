@@ -11,47 +11,36 @@
 </head>
 <body>
 	<header>
-		<div class="container">
-			<section>
-				<div class="info-img">
-					<a href="/blogs">
-						<img src="/imgs/1.jpg">
-					</a>
-				</div>
-				<div class="info-content">
-					<h1>
-						<a href="/blogs" style="color:#975">落在深海</a>
-					</h1>
-				</div>
-			</section>
-			<!-- <nav>
-				<ul>
-					<li>
-						<a href="/blogs" class="nav1" title="文章"></a>
-					</li>
-					<li>
-						<a href="/photos" class="nav2" title="摄影"></a>
-					</li>
-					<li>
-						<a href="/tags" class="nav3" title="标签"></a>
-					</li>
-					<li>
-						<% if signed_in? %>
-							<%= link_to "", signout_path, method: :delete, class: "nav4"%>
-						<% else %>
-							<%= link_to "", signin_path, class: "nav4"%>
-						<% end %>
-					</li>
-				</ul>
-			</nav> -->
-		</div>
+		<section class="author-info">
+				<h3><a href="/blogs" style="color:#fff">落在深海</a></h3>
+		<!-- <nav>
+			<ul>
+				<li>
+					<a href="/blogs" class="nav1" title="文章"></a>
+				</li>
+				<li>
+					<a href="/photos" class="nav2" title="摄影"></a>
+				</li>
+				<li>
+					<a href="/tags" class="nav3" title="标签"></a>
+				</li>
+				<li>
+					<% if signed_in? %>
+						<%= link_to "", signout_path, method: :delete, class: "nav4"%>
+					<% else %>
+						<%= link_to "", signin_path, class: "nav4"%>
+					<% end %>
+				</li>
+			</ul>
+		</nav> -->
+		</section>
 	</header>
 	<wrapper>
 		<%= yield %>
 	</wrapper>
 	<footer>
 		<span>©</span>
-		<a href="http://www.douban.com/people/31660758/" target="_blank">落在深海</a>
+		<a href="http://www.douban.com/people/31660758/" target="_blank" style="font-size:12px;">lacuna fario</a>
 	</footer>		
 </body>
 </html>

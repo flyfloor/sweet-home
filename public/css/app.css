@@ -29,6 +29,13 @@ input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:0}
 textarea{resize:none}
 input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:0}
 
+@font-face {
+	font-family: "Bauhaus Lt BT";
+	src:url("/font/BauhausLtBT.ttf");
+	font-weight: normal;
+	font-style: normal;
+}
+
 header {
 	z-index: 999;
 }
@@ -43,43 +50,54 @@ footer a:after{
 @media screen and (min-width: 1000px){
 	header {
 		position: fixed;
-		width: 300px;
-		height: 100%;
-		right: 0;
+		width: 100%;
+		height: 40px;
+		background-color: #55aa8a;
+		left: 0;
 		top: 0;
-		float: right;
-		background-color: #f5f5f5;
+		float: left;
+		box-shadow: 0 1px 2px rgba(0,0,0,0.4);
 	}
 
 	wrapper {
-		padding: 0 300px 40px 0;
+		padding-top: 100px;
 	}
 
-	section.page-content artical, section.page-content section {
-		padding: 15px 20px 10px 9.11458%;
+	section.author-info, section.page-content, section.artical-content {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding-top: 5px;
 	}
 
-	.box1 {
+	section.page-content artical {
 		position: relative;
-		padding-top: 70px;
-		margin-left: -60px;
-		float: left;
-		width: 130px;
-		text-align: right;
+	}	
+
+	section.page-content artical .bref-content {
+		min-height: 250px;
+		overflow: hidden;
+		background-color: #fff;
+		margin: 10px 150px 30px -10px;
+		padding: 100px  9.11458% 50px;
 	}
 
-		.box1 .blog-info span, .box1 .blog-info a{
-			display: block;
-		}
+	.bref-info {
+		font-family: "Bauhaus Lt BT";
+		position: absolute;
+		width: 100px;
+		height: 100%;
+		float: right;
+		right: 20px;
+		top: 40px;
+	}
 
-	.box2 {
-	  margin-left: 110px;
-	  padding: 70px;
+	.bref-info span {
+		display: block;
 	}
-	.box-clear {
-		padding: 0 20px 10px 9.11458%;
+  .bref-info a{
+		display: inline-block;
 	}
-    
+
 }
 /*--窗口640px以上、999px以下--*/
 @media screen and (min-width: 640px) and (max-width: 999px){
@@ -88,19 +106,10 @@ footer a:after{
 	  background-color: #fff;
 	}
 
-	section.page-content artical, section.page-content section {
+	section.page-content artical, section.artical-content artical {
 		padding: 20px;
-	}
-	
-	.box1 {
-		display: none;
-	}
-
-	.box2 {
-		padding: 50px;
-	}
-	.box-clear {
-		padding: 0 20px;
+		padding-top: 70px;
+		margin-left: -60px;
 	}
 	
 }
@@ -109,13 +118,7 @@ footer a:after{
 	header {
 		background-color: #fff;
 	}
-	.box1 {
-		display: none;
-	}
 
-	.box2 {
-		padding: 20px;
-	}
 }
 
 
@@ -153,7 +156,7 @@ textarea {
 }
 
 
-artical, picture, section, header, footer, nav, wrapper, page {
+artical, picture, section, header, footer, nav, wrapper, page, tags, pagination {
 	display: block;
 }
 
@@ -161,10 +164,6 @@ artical {
 	font-size: 16px;
 	line-height: 32px;
 }
-.artical-content artical a:hover,.artical-content artical a:link, .artical-content artical a:visited {
-	color: #0078B6;
-}
-
 
 
 	header a:hover {
@@ -177,9 +176,7 @@ artical {
 		z-index: 2;
 	}
 	
-	header section {
-		padding: 20px 20px;
-	}
+
 
 
 	header .info-content {
@@ -299,9 +296,6 @@ wrapper {
 	z-index: 999;
 }
 
-section.page-content>artical{
-	padding-top: 5px;
-}
 	section.page-content artical .blog-title {
 		position: relative;
 		margin-right: -20px;
@@ -316,7 +310,6 @@ section.page-content>artical{
 	}
 
 artical .blog-short{
-	text-indent: 20px;
 	line-height: 30px;
 	font-size: 15px;
 }
@@ -327,23 +320,24 @@ artical .blog-short{
 	padding: 3px;
 }
 
-.box1 {
-	line-height: 2;
-	height: 150px;
-}
 
-.box1 .blog-info {
+.blog-info {
 	-webkit-animation: flyto1 1s;
 	-moz-animation: flyto1 1s;
 	animation: flyto1 1s;
 }
-.box1 .blog-info span, .box1 .blog-info a.blog-tag{
+.bref-info, tags a.blog-tag{
 	color: #5aaf5a;
 	font-size: 13px;
 }
 
 .like-count {
 	font-size: 14px;
+}
+
+.create-time {
+	font-family: "Bauhaus Lt BT";
+	font-size: 13px;
 }
 
 .create-time:after {
@@ -353,80 +347,42 @@ artical .blog-short{
 	padding-left: 5px;
 }
 
-.box1 .like-count:after, .artical-content a.like-count:after{
+.like-count:after{
 	content: "\f004";
 	color: #c41712;
 	font: 12px FontAwesome;
 	padding-left: 5px;
 }
 
-.box1 a.blog-tag:after {
+.page-content tags:before {
 	content: "\f02b";
 	color: #a3c3a2;
 	font: 12px FontAwesome;
 	padding-left: 5px;
 }
 
-@-webkit-keyframes flyto1{
-	0%{
-		opacity:0;
-		-webkit-transform:translateX(-2000px)
-	}
-	60%{
-		opacity:1;
-		-webkit-transform:translateX(20px)
-	}
-	80%{
-		-webkit-transform:translateX(-10px)
-	}
-	100%{
-		-webkit-transform:translateX(0)
-	}
-}
-@-moz-keyframes flyto1{
-	0%{
-		opacity:0;
-		-moz-transform:translateX(-2000px)
-	}
-	60%{
-		opacity:1;
-		-moz-transform:translateX(20px)
-	}
-	80%{
-		-moz-transform:translateX(-10px)
-	}
-	100%{
-		-moz-transform:translateX(0)
-	}
-}
-
-.box2 {
-	box-shadow: 0 0 1px rgba(255,255,255,0.3);
-	background-color: #FFFFFF;
-  border-radius: 2px;
-}
-
-artical .box2 {
-	min-height: 200px;
-}
-
-
 footer {
-	width: 768px;
+	width: 1000px;
 	margin: 0 auto;
 }
 
+pagination{
+	position: relative;
+	max-width: 1000px;
+	margin: 0 auto;
+	height: 100px;
+}
 .pagination{
-	background-color: #fff;
-	height: 15px;
+	margin: -10px 150px 50px -10px;
 }
 
 .pagination a {
 	font-size: 16px;
-	font-family: "PT Serif";
+	font-family: "Bauhaus Lt BT";
 	display: inline-block;
-	padding: 0 10px;
+	padding: 2px 6px;
 }
+
 
 .pagination a.next_page {
 	float: right;

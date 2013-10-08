@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	//喜欢
-	$(".artical-content a.like-count").click(function(){
+	$(".artical-content a.like-counts").click(function(){
 		var articalId = $("artical").attr("id");
 		$.ajax({
 			url:"/blogs/"+articalId+"/like",

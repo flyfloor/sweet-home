@@ -1,25 +1,26 @@
 %link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
 -provide(:title, @blog.title)
-.artical-content
+%section.artical-content
 	%artical{id:"#{@blog.id}"}
 		%h1=@blog.title
-		%span=@blog.updated_at.localtime.to_s(:db)
+		%span.create-time=@blog.updated_at.localtime.to_s(:db)
 		%div
 			%pre.cvt-content
 				=@blog.content.gsub(/\r\n/, "<br>")
 		%a.screen-top{href:"#", style:"display: none;", value:'返回顶部'} 
 			%del
 			%b
-	-if @blog.tags
-		=render @blog.tags
+		-unless @blog.tags.blank?
+			%h6 所有标签:
+			%tags 
+				=render @blog.tags
 	-if signed_in?
 		=link_to '编辑', edit_blog_path(@blog)
 	=link_to '全部', blogs_path
-	%h4 所有标签:
-	%h4 所有留言:
+	%h6 所有留言:
 	=render @blog.comments
-	%h2 写留言:
+	%h6 写留言:
 	%a.like-count
-	%span.like-count=@blog.like_count
+	%span.like-counts=@blog.like_count
 	=render "comments/form"
 
