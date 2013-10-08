@@ -44,7 +44,7 @@ footer a:after{
 	color: #3a1d00;
 	font: 12px FontAwesome;
 	padding-left: 10px;
-	vertical-align: super;
+	vertical-align: middle-line;
 }
 
 @media screen and (min-width: 1000px){

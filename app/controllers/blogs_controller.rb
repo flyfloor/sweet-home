@@ -20,16 +20,8 @@ class BlogsController < ApplicationController
 	def create
 		@blog = Blog.new(params[:blog])
 		@blog.like_count = 0
-		@tags = params[:tags].split('#tag#');
 
-		for tag in @tags do
-			@exist_tag = Tag.where("name = ?", tag.to_s);
-			if @exist_tag.blank?
-				@blog.tags.create(name: tag.to_s)
-			else
-				@blog.tags << @exist_tag
-			end
-		end		
+		label_tag(@blog, params[:tags].split('#tag#'))
 
 		respond_to do |format|
 			if @blog.save
@@ -53,14 +45,12 @@ class BlogsController < ApplicationController
 
 	def update
 		@blog = Blog.find(params[:id])
+		@blog.tags = []
+		label_tag(@blog, params[:tags].split('#tag#'))
+
 		respond_to do |format|
-			if @blog.update_attributes(params[:blog])
-				format.html { redirect_to @blog }
-				format.json { render json: @blog }
-			else
-				format.html { render 'edit' }
-				format.json
-			end
+			format.html { redirect_to @blog }
+			format.json { render json: @blog }
 		end
 	end
 
@@ -84,4 +74,15 @@ class BlogsController < ApplicationController
 		end			
 	end
 
+	private
+		def label_tag(blog, tags)
+			for tag in tags do
+				@exist_tag = Tag.where("name = ?", tag.to_s)
+				if @exist_tag.blank?
+					blog.tags << Tag.new(name: tag.to_s)
+				else
+					blog.tags << @exist_tag
+				end
+			end
+		end
 end

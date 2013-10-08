@@ -15,9 +15,8 @@
       .row.blog-content
         =f.label "正文:", class:'field', for:'blog_content' 
         =f.text_area :content, class:'blog-content', id:'blog_content', name:'blog[content]' 
-        %p 加标签:
-        %p 全部标签:   
-        =render Tag.all   
+        .tags-editer
+        =render 'tags/blog_tags' 
       .images{style:'display:block'}
       .row.footer
         .error-msg

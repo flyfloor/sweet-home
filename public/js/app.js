@@ -1,13 +1,13 @@
 $(document).ready(function(){
 
 	//喜欢
-	$(".artical-content a.like-counts").click(function(){
+	$(".artical-content a.like-count").click(function(){
 		var articalId = $("artical").attr("id");
 		$.ajax({
 			url:"/blogs/"+articalId+"/like",
 			type:"POST",
 			success: function(data){
-				$("span.like-count").html(data);
+				$("span.like-counts").html(data);
 			}
 		});
 		return false;
@@ -179,6 +179,13 @@ $(document).ready(function(){
 	
 	//
 
+	$(function(){
+		$(".tag-tokens .tag-token").each(function(){
+			disableTag($(this));
+		});
+		refreshAuthorTags();
+	});
+
 	$(".new-tag").bind("input",function(){
 		$("#hidden_swap_tag").text($(this).val());
 		$(this).css("width",$(this).val().length*16);
@@ -200,7 +207,7 @@ $(document).ready(function(){
 			};
 			return false;
 		}
-		refreshSubTags();
+		refreshAuthorTags();
 	});
 
 	$(".new-tag").on("change", function(event){
@@ -217,7 +224,7 @@ $(document).ready(function(){
 		disableTag($new_tag_token);
 
 		
-		refreshSubTags();
+		refreshAuthorTags();
 	}
 	
 
@@ -226,7 +233,7 @@ $(document).ready(function(){
 		enableTag($(this));
 		$(this).remove();
 
-		refreshSubTags();
+		refreshAuthorTags();
 	});
 
 	$(".exist-tags").children(".tag-token").click(function(){
@@ -235,7 +242,7 @@ $(document).ready(function(){
 			
 			$(this).addClass("tag-disabled");
 			$(this).attr("disabled", "disabled");
-			refreshSubTags();
+			refreshAuthorTags();
 		};
 	});
 
@@ -263,7 +270,7 @@ $(document).ready(function(){
 		}
 	}
 
-	function refreshSubTags(){
+	function refreshAuthorTags(){
 		var author_tags = "";
 		$(".tag-tokens .tag-token").each(function(index){
 			author_tags += $(this).text() + "#tag#";
@@ -271,6 +278,7 @@ $(document).ready(function(){
 
 		$("#author_tags").val(author_tags);
 	}
+
 
 	$(".subcheck").on("keypress", stopSubmit); 
 
