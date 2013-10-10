@@ -1,0 +1,22 @@
+%link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
+%section.page-content
+	-@blogs.each do |blog|
+		%artical{id:"#{blog.id}"}
+			.bref-content
+				.blog-title
+					%h1{style:"posistion:relative"}
+						%a.blog-view{href:"#{blog_path(blog)}", style:'display:inline-block' } #{blog.title} 
+				%a.blog-view{href:"#{blog_path(blog)}"}
+					%div.blog-short.cvt-content=blog.content.to_s.strip[0,1000]+'...'
+				-unless blog.tags.blank?
+					%tags
+						-blog.tags.each do |tag|
+							%a.blog-tag{href:"#{tag_path(tag)}"}=tag.name
+				-if signed_in?
+					.opration
+						=link_to '编辑', edit_blog_path(blog)
+						=link_to '删除', blog_path(blog), method: :delete, class: 'delete-blog', href: 'javascript:void(0)', remote: true
+			.bref-info
+				%h2.create-date #{blog.created_at.localtime.strftime("%b,%d")}
+				%span.create-year=blog.created_at.localtime.strftime("%Y")
+				%span.like-count=blog.like_count
