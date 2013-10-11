@@ -14,13 +14,16 @@
 			%h6 所有标签:
 			%tags 
 				=render @blog.tags
+			%a.like-count
+			%span.like-nums=@blog.like_count
 	-if signed_in?
 		=link_to '编辑', edit_blog_path(@blog)
-	=link_to '全部', blogs_path
+	-if @blog.has_pre?
+		=link_to "上一篇", blog_path(@blog.pre_blog)
+	-if @blog.has_next?
+		=link_to '下一篇', blog_path(@blog.next_blog)
 	%h6 所有留言:
 	=render @blog.comments
 	%h6 写留言:
-	%a.like-count
-	%span.like-counts=@blog.like_count
 	=render "comments/form"
 

@@ -9,7 +9,7 @@ legend{color:#000}
 input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
 input,button,textarea,select{*font-size:100%}
 pre{white-space:pre-wrap;word-wrap:break-word; font-size: 15px}
-a{cursor:pointer}
+a{font-size:13px; cursor:pointer}
 a:link{color:#555;text-decoration:none}
 a:visited{color:#555;text-decoration:none}
 a:hover{color:#000;text-decoration:none}
@@ -73,7 +73,7 @@ footer a:after{
 		position: relative;
 	}	
 
-	section.page-content artical .bref-content {
+	section.page-content artical .bref {
 		min-height: 250px;
 		overflow: hidden;
 		background-color: #fff;
@@ -81,7 +81,7 @@ footer a:after{
 		padding: 100px  9.11458% 50px;
 	}
 
-	.bref-info {
+	.statistical-info {
 		font-family: "Bauhaus Lt BT";
 		position: absolute;
 		width: 100px;
@@ -91,10 +91,10 @@ footer a:after{
 		top: 40px;
 	}
 
-	.bref-info span {
+	.statistical-info span {
 		display: block;
 	}
-  .bref-info a{
+  .statistical-info a{
 		display: inline-block;
 	}
 
@@ -156,7 +156,7 @@ textarea {
 }
 
 
-artical, picture, section, header, footer, nav, wrapper, page, tags, pagination {
+artical, picture, section, header, footer, nav, wrapper, page, pagination {
 	display: block;
 }
 
@@ -309,9 +309,13 @@ wrapper {
 		display: block;
 	}
 
-artical .blog-short{
+artical .cvt-content {
 	line-height: 30px;
 	font-size: 15px;
+}
+
+artical .cvt-content a {
+	color: #55a;
 }
 
 
@@ -326,12 +330,12 @@ artical .blog-short{
 	-moz-animation: flyto1 1s;
 	animation: flyto1 1s;
 }
-.bref-info, tags a.blog-tag{
+.statistical-info, tags a.blog-tag{
 	color: #5aaf5a;
 	font-size: 13px;
 }
 
-.like-count {
+.like-nums {
 	font-size: 14px;
 }
 
@@ -354,7 +358,7 @@ artical .blog-short{
 	padding-left: 5px;
 }
 
-.page-content tags:before {
+.page-content tags:before, .artical-content tags:before {
 	content: "\f02b";
 	color: #a3c3a2;
 	font: 12px FontAwesome;

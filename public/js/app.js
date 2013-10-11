@@ -7,7 +7,7 @@ $(document).ready(function(){
 			url:"/blogs/"+articalId+"/like",
 			type:"POST",
 			success: function(data){
-				$("span.like-counts").html(data);
+				$("span.like-nums").html(data);
 			}
 		});
 		return false;
