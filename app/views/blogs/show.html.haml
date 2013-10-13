@@ -18,9 +18,9 @@
 			%span.like-nums=@blog.like_count
 	.article_nav
 		-if @blog.has_pre?
-			=link_to "上一篇", blog_path(@blog.pre_blog), class: "pre_blog"
+			=link_to "Older", blog_path(@blog.pre_blog), class: "pre_blog"
 		-if @blog.has_next?
-			=link_to '下一篇', blog_path(@blog.next_blog), class: "next_blog"
+			=link_to 'Newer', blog_path(@blog.next_blog), class: "next_blog"
 	-if signed_in?
 		=link_to '编辑', edit_blog_path(@blog)
 	%h6 所有留言:

@@ -13,7 +13,6 @@ class BlogsController < ApplicationController
 		@blog = Blog.new
 		respond_to do |format|
 			format.html
-			format.json { render @blog }
 		end
 	end
 
@@ -49,8 +48,10 @@ class BlogsController < ApplicationController
 		label_tag(@blog, params[:tags].split('#tag#'))
 
 		respond_to do |format|
-			format.html { redirect_to @blog }
-			format.json { render json: @blog }
+			if @blog.update_attributes(params[:blog])
+				format.html { redirect_to @blog }
+				format.json { render json: @blog }
+			end
 		end
 	end
 
