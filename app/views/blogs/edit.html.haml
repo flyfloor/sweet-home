@@ -14,7 +14,8 @@
           %input#add_link_dia_btn{type:'button', value:'链接'}
       .row.blog-content
         =f.label "正文:", class:'field', for:'blog_content' 
-        =f.text_area :content, class:'blog-content', id:'blog_content', name:'blog[content]' 
+        =render 'editor'
+        =f.text_area :content, id:'blog_content', name:'blog[content]', style:'display:none' 
         .tags-editer
         =render 'tags/blog_tags' 
       .images{style:'display:block'}
@@ -26,4 +27,4 @@
         %input.btn#publish_blog{type:'submit', value:'发表'}
         %span.bn-flat.cancel-blog
           =link_to '取消', blog_path(@blog), class:'bn-flat', id:'cancel_edit', name: 'cancel_edit'
-    =render 'editor'
+    =render 'add_link&img'

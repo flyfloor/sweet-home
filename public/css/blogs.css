@@ -51,16 +51,20 @@
 	background-color: #fff;
 }
 
-#blog_title, #blog_content {
+#blog_title, #blog_content, #editor-tools, #editor-content {
 	width: 720px;
-	margin-top: 5px;
 	padding: 3px;
 	border: 1px solid #ccc;
 	line-height: 1.62;
 }
 
-#blog_content {
-	height: 400px;
+
+#editor-tools {
+	border-bottom: 0;
+}
+
+#blog_title {
+	margin-top: 5px;
 }
 
 .row.blog-content label.field,.row.blog-title label.field{

@@ -13,6 +13,16 @@ $(document).ready(function(){
 		return false;
 	});
 
+	//编辑内容显示
+	$(function(){
+		$("#editor-content").html($("#blog_content").html());
+	});
+
+	//编辑器内容change，保存
+	$("#editor-content").bind("input", function(){
+		$("#blog_content").html($(this).html());
+	});
+
 	//首页、末页分页显示
 	$(function(){
 		$(".previous_page, .next_page").bind("whetherDisplay", function(){
@@ -35,19 +45,19 @@ $(document).ready(function(){
 		return false;
 	});
 
-	//转义
-	window.onload = (function(){
-		var content_doms = document.getElementsByClassName("cvt-content");
-		for(var i=0; i<content_doms.length; i++){
-			original_content = content_doms[i].innerHTML;
-			// console.log(original_content);
-			tempData = original_content.replace(/&lt;a/gi,"<a")
-																 .replace(/&gt;/gi, ">")
-																 .replace(/&lt;\/a/gi,"</a")
-																 .replace(/&lt;br/gi, "<br");
-			content_doms[i].innerHTML = tempData;
-		}
-	});
+	// //转义
+	// window.onload = (function(){
+	// 	var content_doms = document.getElementsByClassName("cvt-content");
+	// 	for(var i=0; i<content_doms.length; i++){
+	// 		original_content = content_doms[i].innerHTML;
+	// 		// console.log(original_content);
+	// 		tempData = original_content.replace(/&lt;a/gi,"<a")
+	// 															 .replace(/&gt;/gi, ">")
+	// 															 .replace(/&lt;\/a/gi,"</a")
+	// 															 .replace(/&lt;br/gi, "<br");
+	// 		content_doms[i].innerHTML = tempData;
+	// 	}
+	// });
 
 
 	//滚动到顶部
@@ -170,6 +180,23 @@ $(document).ready(function(){
 			})	  
 		})(jQuery);   
 	}); 
+
+
+$(function() {
+	$('#editor-tools a').click(function(e) {
+		$('#editor-content').focus();
+		switch($(this).data('role')) {
+			case 'h1':
+			case 'h2':
+			case 'p':
+				document.execCommand('formatBlock', false, '<' + $(this).data('role') + '>');
+				break;
+			default:
+				document.execCommand($(this).data('role'), false, null);
+				break;
+		}
+	})
+}); 
 
 	
 	// var $upload_form = $("#upload_pic_form");

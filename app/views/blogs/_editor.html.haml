@@ -1,16 +1,47 @@
-.add-link-dialog.dialog{style:"visibility: hidden; width: 400px; display: block;"}
-  .dialog-content
-    .dialog-hd
-      %h3 添加链接
-      %a.close-dialog.close-dialog-X{href: '#'} X
-    .link-dialog-content
-      .row
-        %label.field{for: 'link_text'} 显示
-        %input#link_text{type: 'text', value:''}
-      .row
-        %label.field{for: 'link_url'} 地址
-        %input#link_url{type: 'text', value:'http://'}
-      .dialog-ft
-        %input.btn#add_link_btn{type: 'button', value:'确认'} 
-        %span.bn-flat
-          %input.bn-flat.close-dialog{type: 'button', value:'取消'}
+#editor-tools
+	%ul
+		%li
+			%a.tool-buttons{href:'#', data:{role:'undo'}}
+				%i.icon-undo
+		%li
+			%a.tool-buttons{href:'#', data:{role:'bold'}}
+				%i.icon-bold
+		%li
+			%a.tool-buttons{href:'#', data:{role:'italic'}}
+				%i.icon-italic
+		%li
+			%a.tool-buttons{href:'#', data:{role:'strikeThrough'}}
+				%i.icon-strikethrough
+		%li
+			%a.tool-buttons{href:'#', data:{role:'underline'}}
+				%i.icon-underline
+		%li
+			%a.tool-buttons{href:'#', data:{role:'insertUnorderedList'}}
+				%i.icon-list-ul
+		%li
+			%a.tool-buttons{href:'#', data:{role:'insertOrderedList'}}
+				%i.icon-list-ol
+		%li
+			%a.tool-buttons{href:'#', data:{role:'indent'}}
+				%i.icon-indent-right
+		%li
+			%a.tool-buttons{href:'#', data:{role:'outdent'}}
+				%i.icon-indent-left
+		%li
+			%a.tool-buttons{href:'#', data:{role:'h1'}} h1
+		%li
+			%a.tool-buttons{href:'#', data:{role:'h2'}} h2
+		%li
+			%a.tool-buttons{href:'#', data:{role:'h3'}} h3
+		%li
+			%a.tool-buttons{href:'#', data:{role:'h4'}} h4
+		%li
+			%a.tool-buttons{href:'#', data:{role:'p'}} p
+		%li
+			%a.tool-buttons{href:'#', data:{role:'subscript'}}
+				%i.icon-subscript
+		%li
+			%a.tool-buttons{href:'#', data:{role:'superscript'}}
+				%i.icon-superscript
+#editor-content{style:"min-height:400px", contenteditable:'true'}
+
