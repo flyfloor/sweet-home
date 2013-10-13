@@ -1,7 +1,7 @@
 %link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
 -provide(:title, @blog.title)
-%section.artical-content
-	%artical{id:"#{@blog.id}"}
+%section.article-content
+	%article{id:"#{@blog.id}"}
 		%h1=@blog.title
 		%span.create-time=@blog.updated_at.localtime.to_s(:db)
 		%div
@@ -16,12 +16,13 @@
 				=render @blog.tags
 			%a.like-count
 			%span.like-nums=@blog.like_count
+	.article_nav
+		-if @blog.has_pre?
+			=link_to "上一篇", blog_path(@blog.pre_blog), class: "pre_blog"
+		-if @blog.has_next?
+			=link_to '下一篇', blog_path(@blog.next_blog), class: "next_blog"
 	-if signed_in?
 		=link_to '编辑', edit_blog_path(@blog)
-	-if @blog.has_pre?
-		=link_to "上一篇", blog_path(@blog.pre_blog)
-	-if @blog.has_next?
-		=link_to '下一篇', blog_path(@blog.next_blog)
 	%h6 所有留言:
 	=render @blog.comments
 	%h6 写留言:

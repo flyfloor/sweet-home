@@ -60,20 +60,22 @@ footer a:after{
 	}
 
 	wrapper {
-		padding-top: 100px;
+		padding-top: 40px;
+		position: relative;
+		line-height: 20px;
 	}
 
-	section.author-info, section.page-content, section.artical-content {
+	section.author-info, section.page-content, section.article-content {
 		max-width: 1000px;
 		margin: 0 auto;
 		padding-top: 5px;
 	}
 
-	section.page-content artical {
+	section.page-content article {
 		position: relative;
 	}	
 
-	section.page-content artical .bref {
+	section.page-content article .bref {
 		min-height: 250px;
 		overflow: hidden;
 		background-color: #fff;
@@ -106,7 +108,7 @@ footer a:after{
 	  background-color: #fff;
 	}
 
-	section.page-content artical, section.artical-content artical {
+	section.page-content article, section.article-content article {
 		padding: 20px;
 		padding-top: 70px;
 		margin-left: -60px;
@@ -156,11 +158,11 @@ textarea {
 }
 
 
-artical, picture, section, header, footer, nav, wrapper, page, pagination {
+article, picture, section, header, footer, nav, wrapper, page, pagination {
 	display: block;
 }
 
-artical {
+article {
 	font-size: 16px;
 	line-height: 32px;
 }
@@ -284,10 +286,7 @@ a.lnk-flat:link, a.lnk-flat:visited {
 	border-color: #999 #999 #666;
 	color: #333;
 }
-wrapper {
-	position: relative;
-	line-height: 20px;
-}
+
 
 .create-blog {
 	position: fixed;
@@ -296,25 +295,25 @@ wrapper {
 	z-index: 999;
 }
 
-	section.page-content artical .blog-title {
+	section.page-content article .blog-title {
 		position: relative;
 		margin-right: -20px;
 	}
-	section.page-content artical a:hover, section.page-content section a:hover {
+	section.page-content article a:hover, section.page-content section a:hover {
 		color: #333;
 	}
 
-	section.page-content artical .blog-view, section.page-content section .tag-view {
+	section.page-content article .blog-view, section.page-content section .tag-view {
 		color: #555;
 		display: block;
 	}
 
-artical .cvt-content {
+article .cvt-content {
 	line-height: 30px;
 	font-size: 15px;
 }
 
-artical .cvt-content a {
+article .cvt-content a {
 	color: #55a;
 }
 
@@ -358,7 +357,7 @@ artical .cvt-content a {
 	padding-left: 5px;
 }
 
-.page-content tags:before, .artical-content tags:before {
+.page-content tags:before, .article-content tags:before {
 	content: "\f02b";
 	color: #a3c3a2;
 	font: 12px FontAwesome;
@@ -376,8 +375,9 @@ pagination{
 	margin: 0 auto;
 	height: 100px;
 }
+
 .pagination{
-	margin: -10px 150px 50px -10px;
+	margin: -20px 150px 50px -10px;
 }
 
 .pagination a {
@@ -388,11 +388,11 @@ pagination{
 }
 
 
-.pagination a.next_page {
+.pagination a.next_page, pagination a.next_blog {
 	float: right;
 }
 
-.pagination a.next_page:after{
+.pagination a.next_page:after,pagination a.next_blog:after{
 	content: '\f054';
 	padding-left: 10px;
 	font-family: FontAwesome;

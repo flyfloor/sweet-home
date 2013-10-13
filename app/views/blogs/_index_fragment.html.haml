@@ -1,7 +1,7 @@
 %link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
 %section.page-content
 	-@blogs.each do |blog|
-		%artical{id:"#{blog.id}"}
+		%article{id:"#{blog.id}"}
 			.bref
 				.bref-title
 					%a.blog-view{href:"#{blog_path(blog)}"} 
