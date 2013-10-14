@@ -1,13 +1,13 @@
 -provide(:title, '登录')
 %link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
-.content
-	%h1 登录
+#signin
+	%h2 登录
 	=form_for :admin, :url => '/signin', method: :post do |f|
-		%p
+		.field
 			=f.label "邮箱:", :for => 'email'
-			=f.text_field :email
-		%p
+			=f.text_field :email,class:"row"
+		.field
 			=f.label "密码:", :for => 'password'
-			=f.text_field :password
-		%p
+			=f.text_field :password,class:"row"
+		.field
 			=f.submit '登录'

@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var path = location.pathname;
 	//导航选中
 	$(".main-nav a").each(function(i){
-		if($(this).attr("href") == path){
+		if(path.contains($(this).attr("href"))){
 			$(this).parent("li").attr("class","active");
 		}
 	});

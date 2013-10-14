@@ -7,8 +7,9 @@ abbr,acronym{border:0;font-variant:normal}
 sup{vertical-align:sup}
 sub{vertical-align:sub}
 legend{color:#000}
-input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
 input,button,textarea,select{*font-size:100%}
+
 pre{white-space:pre-wrap;word-wrap:break-word; font-size: 15px}
 a{font-size:13px; cursor:pointer}
 a:link{color:#555;text-decoration:none}
@@ -20,7 +21,10 @@ body,td,th{font:15px;line-height:1.62; letter-spacing: 0.5px}
 table{border-collapse:collapse;border:0;padding:0;margin:0}
 wbr:after{content:"\00200B"}
 textarea{resize:none}
-input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:0}
+input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:none;}
+input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="time"], input[type="week"], textarea {
+	width: 350px;
+}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .clearfix{zoom:1;display:inline-block;_height:1px}
 *html .clearfix{height:1%}
@@ -28,7 +32,7 @@ input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:0}
 .clearfix{display:block}
 .clearfloat{display:inline-block;*display:inline;*zoom:1}
 textarea{resize:none}
-input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:0}
+input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:none;}
 
 @font-face {
 	font-family: "Bauhaus Lt BT";
@@ -81,7 +85,7 @@ footer a:after{
 		overflow: hidden;
 		background-color: #fff;
 		margin: 10px 150px 30px -10px;
-		padding: 100px  9.11458% 50px;
+		padding: 80px  9.11458% 50px;
 	}
 
 	.statistical-info {
@@ -451,3 +455,18 @@ pagination{
 #editor-content:focus {
 	outline: none;
 }
+
+#signin {
+	background-color: #FEFEFE;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  height: 250px;
+  margin: 100px auto;
+  padding: 30px 50px;
+  width: 350px;
+}
+
+#signin h2 {
+	margin-bottom: 40px;
+}
+
