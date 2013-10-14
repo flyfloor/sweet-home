@@ -1,22 +1,17 @@
 -provide(:title, '创建文章')
 %link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
-.edit-content
-  %section.blog
+.edit-blog
+  %article
     %h1 创建文章
     %form#form_blog{method:'post', action:"#{blogs_path}", style:'display: block;'} 
       .row.blog-title
         %label.field{for:'blog_title'} 题目:
         %div
           %input.blog-title.subcheck#blog_title{type:'text', name:'blog[title]'} 
-      .add_link
-        .add_img
-        .add_link
-          %input#add_link_dia_btn{type:'button', value:'链接'}
       .row.blog-content
         %label.field{for:'blog_content'} 正文:
-        %div
-          %textarea.blog-content#blog_content{name:'blog[content]'} 
-      .images{style:'display:block'}
+        =render 'editor'
+        %textarea#blog_content{name:'blog[content]', style:'display:none'} 
       .tags-editer
         =render 'tags/blog_tags'
       .row.footer

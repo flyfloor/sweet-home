@@ -5,8 +5,7 @@
 		%h1=@blog.title
 		%span.create-time=@blog.updated_at.localtime.to_s(:db)
 		%div
-			/ %pre.cvt-content
-			=@blog.content
+			.escaped-content=@blog.content
 		%a.screen-top{href:"#", style:"display: none;", value:'返回顶部'} 
 			%del
 			%b

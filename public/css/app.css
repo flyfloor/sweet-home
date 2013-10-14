@@ -53,7 +53,7 @@ footer a:after{
 		position: fixed;
 		width: 100%;
 		height: 40px;
-		background-color: #55aa8a;
+		background-color: #354;
 		left: 0;
 		top: 0;
 		float: left;
@@ -66,10 +66,11 @@ footer a:after{
 		line-height: 20px;
 	}
 
-	section.author-info, section.page-content, section.article-content {
+	nav.author-info, section.page-content, section.article-content {
 		max-width: 1000px;
+		position: relative;
 		margin: 0 auto;
-		padding-top: 5px;
+		padding-top: 3px;
 	}
 
 	section.page-content article {
@@ -201,29 +202,25 @@ article {
 	    width: 64px;
 		}
 
-	header nav {
-		position: absolute;
-		right: 70px;
-		top: 70px;
-	}
 
-	.nav1, .nav2, .nav3, .nav4 {
-		display: block;
-		width: 32px;
-		height: 32px;
-		opacity: 0.5;
-	}
-
-	.nav1:hover, .nav2:hover, .nav3:hover, .nav4:hover {
-		opacity: 1;
-		color: #000;
+	header nav a {
+		color: #fff !important;
+		font-size: 16px;
+		display:inline-block;
 	}
 
 
 	header nav ul li {
 		font-size: 14px;
-		padding: 5px 10px;
+		padding: 3px 20px;
 		display: inline-block;
+	}
+
+	header nav i {
+		color: #fff;
+		font-size: 12px;
+		margin-right: 5px;
+		vertical-align: -2px;
 	}
 
 .row {
@@ -309,12 +306,12 @@ a.lnk-flat:link, a.lnk-flat:visited {
 		display: block;
 	}
 
-article .cvt-content {
+article .escaped-content {
 	line-height: 30px;
 	font-size: 15px;
 }
 
-article .cvt-content a {
+article .escaped-content a {
 	color: #55a;
 }
 
@@ -431,7 +428,6 @@ pagination{
 }
 #editor-tools a {
 	font-size: 15px;
-	font-family: "Bauhaus Lt BT";
 	padding: 0 5px;
 	color: #555;
 }

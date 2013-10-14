@@ -11,29 +11,31 @@
 </head>
 <body>
 	<header>
-		<section class="author-info">
-				<a href="/blogs" style="color:#fff;display:inline-block"><h3>落在深海</h3></a>
-		<!-- <nav>
+		<nav class="author-info">
 			<ul>
 				<li>
-					<a href="/blogs" class="nav1" title="文章"></a>
+					<a href="/" style="color:#fff;display:inline-block"><h4>落在深海</h4></a>
 				</li>
 				<li>
-					<a href="/photos" class="nav2" title="摄影"></a>
+					<a href="/blogs" title="文章">文章</a>
 				</li>
 				<li>
-					<a href="/tags" class="nav3" title="标签"></a>
+					<a href="/photos" title="摄影">摄影</a>
 				</li>
 				<li>
+					<a href="/tags" title="分类">分类</a>
+				</li>
+				<li style="position:absolute;right:160px;top:5px">
 					<% if signed_in? %>
-						<%= link_to "", signout_path, method: :delete, class: "nav4"%>
+						<%= link_to "退出", signout_path, method: :delete%>
+						<i class="icon-signout"></i>
 					<% else %>
-						<%= link_to "", signin_path, class: "nav4"%>
+						<%= link_to "登录", signin_path %>
+						<i class="icon-signin"></i>
 					<% end %>
 				</li>
 			</ul>
-		</nav> -->
-		</section>
+		</nav>
 	</header>
 	<wrapper>
 		<%= yield %>

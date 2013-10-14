@@ -1,10 +1,10 @@
 $(document).ready(function(){
 
 	//喜欢
-	$(".artical-content a.like-count").click(function(){
-		var articalId = $("artical").attr("id");
+	$(".article-content a.like-count").click(function(){
+		var articleId = $("article").attr("id");
 		$.ajax({
-			url:"/blogs/"+articalId+"/like",
+			url:"/blogs/"+articleId+"/like",
 			type:"POST",
 			success: function(data){
 				$("span.like-nums").html(data);
@@ -15,7 +15,12 @@ $(document).ready(function(){
 
 	//编辑内容显示
 	$(function(){
-		$("#editor-content").html($("#blog_content").html());
+		var blog_content = document.getElementById('blog_content');
+		if(blog_content != null){
+			var content_data = blog_content.innerHTML.replace(/&lt;/gi,"<")
+														.replace(/&gt;/gi, ">");
+			$("#editor-content").html(content_data);
+		};
 	});
 
 	//编辑器内容change，保存
@@ -34,30 +39,28 @@ $(document).ready(function(){
 	})
 
 	$(".delete-blog").click(function(){
-		var $artical = $(this).parents("artical");
+		var $article = $(this).parents("article");
 		$.ajax({
-			url: "/blogs/" + $artical.attr("id"),
+			url: "/blogs/" + $article.attr("id"),
 			type : "DELETE",
 			beforeSend: function(data){
-				$artical.fadeOut();
+				$article.fadeOut();
 			}
 		});
 		return false;
 	});
 
-	// //转义
-	// window.onload = (function(){
-	// 	var content_doms = document.getElementsByClassName("cvt-content");
-	// 	for(var i=0; i<content_doms.length; i++){
-	// 		original_content = content_doms[i].innerHTML;
-	// 		// console.log(original_content);
-	// 		tempData = original_content.replace(/&lt;a/gi,"<a")
-	// 															 .replace(/&gt;/gi, ">")
-	// 															 .replace(/&lt;\/a/gi,"</a")
-	// 															 .replace(/&lt;br/gi, "<br");
-	// 		content_doms[i].innerHTML = tempData;
-	// 	}
-	// });
+	//转义
+	window.onload = (function(){
+		var content_doms = document.getElementsByClassName("escaped-content");
+		
+		for(var i=0; i<content_doms.length; i++){
+			original_content = content_doms[i].innerHTML;
+			tempData = original_content.replace(/&lt;/gi,"<")
+																 .replace(/&gt;/gi, ">");
+			content_doms[i].innerHTML = tempData;
+		}
+	});
 
 
 	//滚动到顶部
@@ -76,64 +79,64 @@ $(document).ready(function(){
 		return false;
 	});
 
-	//对话框居中
-	$(function(){
-		var $dialog = $(".dialog");
-		elem_in_center($dialog); 
-		$(window).resize(function(){
-			elem_in_center($dialog);
-		});
-	})
+	// //对话框居中
+	// $(function(){
+	// 	var $dialog = $(".dialog");
+	// 	elem_in_center($dialog); 
+	// 	$(window).resize(function(){
+	// 		elem_in_center($dialog);
+	// 	});
+	// })
 
-	//dom居中
-	function elem_in_center($element){
-		var leftOffset, topOffset,
-				screenWidth = $(window).width(),
-				screenHeight = $(window).height();
+	// //dom居中
+	// function elem_in_center($element){
+	// 	var leftOffset, topOffset,
+	// 			screenWidth = $(window).width(),
+	// 			screenHeight = $(window).height();
 
-		leftOffset = (screenWidth - $element.width())/2;
-		topOffset = (screenHeight - $element.height())/2;
-		$element.css({left: leftOffset+"px", top : topOffset+"px"});
-	}
+	// 	leftOffset = (screenWidth - $element.width())/2;
+	// 	topOffset = (screenHeight - $element.height())/2;
+	// 	$element.css({left: leftOffset+"px", top : topOffset+"px"});
+	// }
 
-	$("#add_link_btn").click(function(){
-		var link_data, 
-				link_text_data = $("#link_text").val(),
-				link_url_data = $("#link_url").val(),
-				$blog_content = $("textarea.blog-content");
-				blog_content_data = $blog_content.val();
+	// $("#add_link_btn").click(function(){
+	// 	var link_data, 
+	// 			link_text_data = $("#link_text").val(),
+	// 			link_url_data = $("#link_url").val(),
+	// 			$blog_content = $("textarea.blog-content");
+	// 			blog_content_data = $blog_content.val();
 		
-		if(link_url_data != ""){
-			if(link_text_data != ""){
-				link_data = link_text_data;
-			}else{
-				link_data = link_url_data;
-			}
+	// 	if(link_url_data != ""){
+	// 		if(link_text_data != ""){
+	// 			link_data = link_text_data;
+	// 		}else{
+	// 			link_data = link_url_data;
+	// 		}
 
-			$blog_content.insertContent('<a href="' +link_url_data+ '" target="_blank">' 
-											+link_data+ '</a>');
-		}
-		close_dialog_window($(".add-link-dialog"));
+	// 		$blog_content.insertContent('<a href="' +link_url_data+ '" target="_blank">' 
+	// 										+link_data+ '</a>');
+	// 	}
+	// 	close_dialog_window($(".add-link-dialog"));
 
-	});
+	// });
 
-	$(".close-dialog").click(function(){
-		close_dialog_window($(this).parents(".dialog"));
-	});
+	// $(".close-dialog").click(function(){
+	// 	close_dialog_window($(this).parents(".dialog"));
+	// });
 
-	$("#add_link_dia_btn").click(function(){
-		$("#link_text").val("");
-		$("#link_url").val("http://");
-		open_dialog_window($(".add-link-dialog"));
-	});
+	// $("#add_link_dia_btn").click(function(){
+	// 	$("#link_text").val("");
+	// 	$("#link_url").val("http://");
+	// 	open_dialog_window($(".add-link-dialog"));
+	// });
 
-	function close_dialog_window($dialog){
-		$dialog.css({"visibility":"hidden", "display":"none"});
-	}
+	// function close_dialog_window($dialog){
+	// 	$dialog.css({"visibility":"hidden", "display":"none"});
+	// }
 
-	function open_dialog_window($dialog){
-		$dialog.css({"visibility":"visible", "display":"block"});
-	}
+	// function open_dialog_window($dialog){
+	// 	$dialog.css({"visibility":"visible", "display":"block"});
+	// }
 
 	//添加内容到textarea光标处
 	$(function(){  

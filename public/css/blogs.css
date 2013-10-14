@@ -41,7 +41,7 @@
 	}
 }
 
-.blog {
+.edit-blog article {
 	margin: 0 auto;
 	width: 740px;
 }
@@ -53,9 +53,10 @@
 
 #blog_title, #blog_content, #editor-tools, #editor-content {
 	width: 720px;
-	padding: 3px;
-	border: 1px solid #ccc;
+	padding: 5px;
+	border: 1px solid #cdc;
 	line-height: 1.62;
+	box-shadow: 0 0 1px rgba(0,0,0,0.1);
 }
 
 
@@ -206,7 +207,6 @@
 
 .tagarea {
 	position: relative;
-	border-bottom: 1px dashed #ccc;
 	padding: 10px 0;
 }
 
@@ -252,7 +252,7 @@
 
 .create-tags {
 	float: left;
-	margin-top:2px; 
+	margin-top:-5px; 
 }
 
 input.new-tag{
