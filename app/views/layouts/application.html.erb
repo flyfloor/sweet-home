@@ -12,10 +12,8 @@
 <body>
 	<header>
 		<nav class="author-info">
-			<ul>
-				<li>
-					<a href="/" style="color:#fff;display:inline-block"><h4>落在深海</h4></a>
-				</li>
+			<a href="/" style="display:inline-block;float:left;padding:5px 20px;"><h4>落在深海</h4></a>
+			<ul class="main-nav">
 				<li>
 					<a href="/blogs" title="文章">文章</a>
 				</li>
@@ -25,7 +23,9 @@
 				<li>
 					<a href="/tags" title="分类">分类</a>
 				</li>
-				<li style="position:absolute;right:160px;top:5px">
+			</ul>
+			<ul>
+				<li style="position:absolute;right:160px;top:0">
 					<% if signed_in? %>
 						<%= link_to "退出", signout_path, method: :delete%>
 						<i class="icon-signout"></i>

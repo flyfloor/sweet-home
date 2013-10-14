@@ -70,7 +70,6 @@ footer a:after{
 		max-width: 1000px;
 		position: relative;
 		margin: 0 auto;
-		padding-top: 3px;
 	}
 
 	section.page-content article {
@@ -203,16 +202,16 @@ article {
 		}
 
 
-	header nav a {
-		color: #fff !important;
+	header .author-info a {
+		color: #fff;
 		font-size: 16px;
 		display:inline-block;
+		padding: 8px 20px 6px;
 	}
 
 
 	header nav ul li {
 		font-size: 14px;
-		padding: 3px 20px;
 		display: inline-block;
 	}
 
@@ -222,6 +221,14 @@ article {
 		margin-right: 5px;
 		vertical-align: -2px;
 	}
+
+.active{
+	background-color: #fff;
+}
+.active a {
+	color: #354 !important;
+	box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2) inset;
+}
 
 .row {
 	overflow: hidden;
