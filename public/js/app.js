@@ -1,11 +1,16 @@
 $(document).ready(function(){
-	var path = location.pathname;
+	
 	//导航选中
-	$(".main-nav a").each(function(i){
-		if(path.contains($(this).attr("href"))){
-			$(this).parent("li").attr("class","active");
-		}
-	});
+	var path = document.location.pathname;
+	var pathArray = path.split("/");
+	if(path === "/"){
+		$(".main-nav").children("li:first").attr("class", "active");
+	}else{
+		for (var i = 0; i < pathArray.length; i++) {
+			$(".main-nav").find("a[href*='"+pathArray[i] + "']")
+													.parent("li").attr("class", "active");
+		};
+	}
 
 	//喜欢
 	$(".article-content a.like-count").click(function(){
@@ -25,7 +30,7 @@ $(document).ready(function(){
 		var blog_content = document.getElementById('blog_content');
 		if(blog_content != null){
 			var content_data = blog_content.innerHTML.replace(/&lt;/gi,"<")
-														.replace(/&gt;/gi, ">");
+																								.replace(/&gt;/gi, ">");
 			$("#editor-content").html(content_data);
 		};
 	});

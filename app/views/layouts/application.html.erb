@@ -12,7 +12,7 @@
 <body>
 	<header>
 		<nav class="author-info">
-			<a href="/" style="display:inline-block;float:left;padding:5px 20px;"><h4>落在深海</h4></a>
+			<a href="/" style="display:inline-block;float:left;padding:4px 20px 3px;"><h4>落在深海</h4></a>
 			<ul class="main-nav">
 				<li>
 					<a href="/blogs" title="文章">文章</a>
@@ -24,14 +24,12 @@
 					<a href="/tags" title="分类">分类</a>
 				</li>
 			</ul>
-			<ul>
-				<li style="position:absolute;right:160px;top:0">
+			<ul class="sign-status">
+				<li style="position:absolute;right:160px;top:1px">
 					<% if signed_in? %>
 						<%= link_to "退出", signout_path, method: :delete%>
-						<i class="icon-signout"></i>
 					<% else %>
 						<%= link_to "登录", signin_path %>
-						<i class="icon-signin"></i>
 					<% end %>
 				</li>
 			</ul>
