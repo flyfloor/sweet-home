@@ -315,8 +315,25 @@ a.lnk-flat:link, a.lnk-flat:visited {
 	section.page-content article a:hover, section.page-content section a:hover {
 		color: #333;
 	}
+	
+	section.page-content section {
+		width: 220px;
+		height: 100px;
+	}
 
-	section.page-content article .blog-view, section.page-content section .tag-view {
+	section.page-content section, section.page-content section .tag-view {
+		display: inline-block;
+		padding: 0 30px;
+		background-color: #fff;
+		color: #335544;
+		margin: 5px;
+	}
+
+	section.page-content section a.tag-view {
+		font-size: 22px;
+	}
+
+	section.page-content article .blog-view {
 		color: #555;
 		display: block;
 	}
