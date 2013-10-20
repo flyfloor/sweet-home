@@ -68,6 +68,7 @@ footer a:after{
 		padding-top: 40px;
 		position: relative;
 		line-height: 20px;
+		min-height: 700px;
 	}
 
 	nav.author-info, section.page-content, section.article-content {
@@ -209,8 +210,9 @@ article {
 	header .author-info a {
 		color: #fff;
 		font-size: 16px;
+		line-height: 25px;
 		display:inline-block;
-		padding: 5px 20px 5px;
+		padding: 5px 20px;
 	}
 
 	header .sign-status a{
@@ -308,6 +310,7 @@ a.lnk-flat:link, a.lnk-flat:visited {
 	z-index: 999;
 }
 
+
 	section.page-content article .blog-title {
 		position: relative;
 		margin-right: -20px;
@@ -316,21 +319,40 @@ a.lnk-flat:link, a.lnk-flat:visited {
 		color: #333;
 	}
 	
-	section.page-content section {
-		width: 220px;
-		height: 100px;
-	}
-
-	section.page-content section, section.page-content section .tag-view {
+	section.page-content tag {
 		display: inline-block;
-		padding: 0 30px;
-		background-color: #fff;
+		width: 225px;
+		height: 90px;
 		color: #335544;
-		margin: 5px;
+		margin: 10px 10px;
+		padding: 30px 20px 10px;
+		text-align: center;
+		border: 1px solid #fefefe;
+		background-color: #fff;
 	}
 
-	section.page-content section a.tag-view {
-		font-size: 22px;
+	section.page-content tag:hover {
+	  background:-webkit-gradient(linear, 0 0, 0 100%, from(#fefefe), to(#ffffff));
+	  background:-moz-linear-gradient(#fefefe, #ffffff);
+	  background:-o-linear-gradient(#fefefe, #ffffff);
+	  background:linear-gradient(#fefefe, #ffffff);
+		box-shadow: 0 2px 20px rgba(200, 200, 200, 0.2) inset;
+		border: 1px solid #f0f0f0;
+	}
+
+
+	section.page-content .tag-view {
+		display: block;
+	}
+
+	section.page-content tag a.tag-view {
+		font-size: 20px;
+		padding: 10px 20px;
+		letter-spacing: 3px;
+	}
+
+	section.page-content tag span.tag-view {
+		font-size: 12px;
 	}
 
 	section.page-content article .blog-view {

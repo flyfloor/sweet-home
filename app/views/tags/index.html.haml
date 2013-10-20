@@ -1,7 +1,7 @@
 %link{rel:'stylesheet', href:'/css/blogs.css', media:'all'}
 %section.page-content
 	-@tags.each do |tag|
-		%section
-			%h1
+		%tag
+			.tag-view
 				=link_to tag.name, tag_path(tag), class:'tag-view'
-			%span{class:'tag-view'} #{tag.blogs.count} 篇文章
+				%span{class:'tag-view'} #{tag.blogs.count} 篇文章
