@@ -1,4 +1,4 @@
 %page
-	.tag-name
-		%h4=@tag.name
 	=render 'blogs/index_fragment'
+	.tag-name
+		%span #{@tag.name},共#{@tag.blogs.count}篇

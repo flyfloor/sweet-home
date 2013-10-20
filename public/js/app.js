@@ -200,9 +200,15 @@ $(document).ready(function(){
 $(function() {
 	$('#editor-tools a').click(function(e) {
 		$('#editor-content').focus();
+		if($(this).hasClass("editor-active")){
+			$(this).removeClass("editor-active");
+		}else {
+			$(this).addClass("editor-active");
+		}
 		switch($(this).data('role')) {
 			case 'h1':
 			case 'h2':
+			case 'h3':
 			case 'p':
 				document.execCommand('formatBlock', false, '<' + $(this).data('role') + '>');
 				break;
