@@ -12,6 +12,55 @@ $(document).ready(function(){
 		};
 	}
 
+	//评论
+	$("#form_comment").submit(function(data){
+		var articleId = $(this).parents("comment")
+													.siblings("article")
+													.attr("id");
+		$.ajax({
+			url: "/blogs/" + articleId + "/comments",
+			type: "POST",
+			data: $(this).serialize(),
+			dataType: "json",
+			success: function(data){
+				$('<li class="comment">'+
+						'<p>'+data.commenter+'</p>'+
+						'<p>'+data.content+'</p>'+
+						'<p><a class="delete-comment" href="/blogs/'+articleId+'/comments/'+data.id+'">删除</a></p>'+
+					'</li>').appendTo("ul.comment");
+				$("#comment_commenter,#comment_content").val("");
+			}
+		});
+		return false;
+	});
+
+	//删除文章
+	$(".delete-blog").click(function(){
+		var $article = $(this).parents("article");
+		$.ajax({
+			url: "/blogs/" + $article.attr("id"),
+			type : "DELETE",
+			beforeSend: function(data){
+				$article.fadeOut();
+			}
+		});
+		return false;
+	});
+
+	//删除评论
+	$(document).on("click",".delete-comment", function(){
+		var $comment = $(this).parents("li.comment");
+		$.ajax({
+			url: $(this).attr("href"),
+			type: "DELETE",
+			beforeSend: function(data){
+				$comment.fadeOut();
+			}
+		});
+		return false;
+	});
+
+
 	//喜欢
 	$(".article-content a.like-count").click(function(){
 		var articleId = $("article").attr("id");
@@ -50,17 +99,6 @@ $(document).ready(function(){
 		$(".previous_page, .next_page").trigger("whetherDisplay");
 	})
 
-	$(".delete-blog").click(function(){
-		var $article = $(this).parents("article");
-		$.ajax({
-			url: "/blogs/" + $article.attr("id"),
-			type : "DELETE",
-			beforeSend: function(data){
-				$article.fadeOut();
-			}
-		});
-		return false;
-	});
 
 	//转义
 	window.onload = (function(){
@@ -196,16 +234,12 @@ $(document).ready(function(){
 		})(jQuery);   
 	}); 
 
-
+//编辑器
 $(function() {
 	$('#editor-tools a').click(function(e) {
 		$('#editor-content').focus();
-		if($(this).hasClass("editor-active")){
-			$(this).removeClass("editor-active");
-		}else {
-			$(this).addClass("editor-active");
-		}
-		switch($(this).data('role')) {
+		var data_role = $(this).data('role');
+		switch(data_role) {
 			case 'h1':
 			case 'h2':
 			case 'h3':
@@ -215,6 +249,13 @@ $(function() {
 			default:
 				document.execCommand($(this).data('role'), false, null);
 				break;
+		}
+		if(data_role != 'undo'){
+			if($(this).hasClass("editor-active")){
+				$(this).removeClass("editor-active");
+			}else {
+				$(this).addClass("editor-active");
+			}
 		}
 	})
 }); 

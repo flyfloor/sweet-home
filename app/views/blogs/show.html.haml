@@ -10,20 +10,23 @@
 			%del
 			%b
 		-unless @blog.tags.blank?
-			%h6 所有标签:
+			%h6 标签:
 			%tags 
 				=render @blog.tags
 			%a.like-count
 			%span.like-nums=@blog.like_count
-	.article_nav
+	%nav.article_nav
 		-if @blog.has_pre?
 			=link_to "Older", blog_path(@blog.pre_blog), class: "pre_blog"
 		-if @blog.has_next?
 			=link_to 'Newer', blog_path(@blog.next_blog), class: "next_blog"
 	-if signed_in?
 		=link_to '编辑', edit_blog_path(@blog)
-	%h6 所有留言:
-	=render @blog.comments
-	%h6 写留言:
-	=render "comments/form"
+	%comment
+		%h6 所有留言:
+		%ul.comment
+			-@blog.comments.each do |comment|
+				%li.comment=render comment
+		%h6 写留言:
+		=render "comments/form"
 

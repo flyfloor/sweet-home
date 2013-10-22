@@ -1,9 +1,9 @@
-=form_for([@blog, @blog.comments.build]) do |f|
+%form#form_comment
 	%p
-		=f.label '用户', for:'commenter'
-		=f.text_field :commenter
+		%label{for:'comment_commenter'} 用户:
+		%input#comment_commenter.row{name:'comment[commenter]'}
 	%p
-		=f.label '内容', for:'content'
-		=f.text_area :content
+		%label{for:'comment_content'} 内容:
+		%textarea#comment_content.row{name:'comment[content]'}
 	%p
-		=f.submit '留言'
+		%input.btn{type:'submit', value:'留言'}

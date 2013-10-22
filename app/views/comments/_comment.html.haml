@@ -4,4 +4,4 @@
 	=comment.content
 -if signed_in?
 	%p
-		=link_to '删除评论', [comment.blog, comment], method: :delete, data:{confirm: '确认删除？'}
+		=link_to '删除', [comment.blog, comment], class: "delete-comment"
