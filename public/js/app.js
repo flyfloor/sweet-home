@@ -100,19 +100,6 @@ $(document).ready(function(){
 	})
 
 
-	//转义
-	window.onload = (function(){
-		var content_doms = document.getElementsByClassName("escaped-content");
-		
-		for(var i=0; i<content_doms.length; i++){
-			original_content = content_doms[i].innerHTML;
-			tempData = original_content.replace(/&lt;/gi,"<")
-																 .replace(/&gt;/gi, ">");
-			content_doms[i].innerHTML = tempData;
-		}
-	});
-
-
 	//滚动到顶部
 	$(function(){
 		$(window).scroll(function(){
