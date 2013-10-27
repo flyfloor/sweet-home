@@ -55,6 +55,52 @@ article ol {
 	list-style: decimal inside none;
 }
 
+article blockquote {
+	background-color: #b44;
+	text-indent: 2px;
+	padding: 10px;
+}
+
+article blockquote:before {
+	content: '\f075';
+	color: #3a1d00;
+	font: 16px FontAwesome;
+	vertical-align: top;
+	padding-right: 10px;
+}
+
+article code {
+	display: inline-block;
+	color: #fff;
+	padding: 10px 20px;
+	overflow: scroll;
+	background-color: #000;
+}
+
+article img {
+	max-width: 700px;
+	margin: 10px 0;
+}
+
+article img:hover {
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+article video {
+	width: 400px;
+	height: 50px;
+	margin: 10px 0;
+}
+
+article .escaped-content {
+	line-height: 30px;
+	font-size: 15px;
+}
+
+article .escaped-content a {
+	color: #55a;
+}
+
 @media screen and (min-width: 1000px){
 	header {
 		position: fixed;
@@ -250,13 +296,11 @@ article {
 	box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5) inset;
 }
 
-.editor-active {
-	background-color: #000;
-}
-
 a.editor-active {
+	background-color: #000;
 	color: #fff;
 }
+
 
 .row {
 	overflow: hidden;
@@ -339,7 +383,7 @@ a.lnk-flat:link, a.lnk-flat:visited {
 	
 	section.page-content tag {
 		display: inline-block;
-		width: 225px;
+		width: 235px;
 		height: 90px;
 		color: #335544;
 		margin: 10px 10px 10px -5px;
@@ -378,14 +422,7 @@ a.lnk-flat:link, a.lnk-flat:visited {
 		display: block;
 	}
 
-article .escaped-content {
-	line-height: 30px;
-	font-size: 15px;
-}
 
-article .escaped-content a {
-	color: #55a;
-}
 
 .blog-info {
 	-webkit-animation: flyto1 1s;

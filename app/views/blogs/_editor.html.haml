@@ -16,30 +16,41 @@
 			%a.tool-buttons{href:'#', data:{role:'underline'}}
 				%i.icon-underline
 		%li
-			%a.tool-buttons{href:'#', data:{role:'insertUnorderedList'}}
-				%i.icon-list-ul
+			%ul.group
+				%li
+					%a.tool-buttons{href:'#', data:{role:'insertUnorderedList'}}
+						%i.icon-list-ul
+				%li
+					%a.tool-buttons{href:'#', data:{role:'insertOrderedList'}}
+						%i.icon-list-ol
 		%li
-			%a.tool-buttons{href:'#', data:{role:'insertOrderedList'}}
-				%i.icon-list-ol
+			%ul.group
+				%li
+					%a.tool-buttons{href:'#', data:{role:'indent'}}
+						%i.icon-indent-right
+				%li
+					%a.tool-buttons{href:'#', data:{role:'outdent'}}
+						%i.icon-indent-left
 		%li
-			%a.tool-buttons{href:'#', data:{role:'indent'}}
-				%i.icon-indent-right
+			%ul.group
+				%li
+					%a.tool-buttons{href:'#', data:{role:'h1'}} h1
+				%li
+					%a.tool-buttons{href:'#', data:{role:'h2'}} h2
+				%li
+					%a.tool-buttons{href:'#', data:{role:'h3'}} h3
+				%li
+					%a.tool-buttons{href:'#', data:{role:'p'}} p
 		%li
-			%a.tool-buttons{href:'#', data:{role:'outdent'}}
-				%i.icon-indent-left
+			%ul.group
+				%li
+					%a.tool-buttons{href:'#', data:{role:'subscript'}}
+						%i.icon-subscript
+				%li
+					%a.tool-buttons{href:'#', data:{role:'superscript'}}
+						%i.icon-superscript
 		%li
-			%a.tool-buttons{href:'#', data:{role:'h1'}} h1
-		%li
-			%a.tool-buttons{href:'#', data:{role:'h2'}} h2
-		%li
-			%a.tool-buttons{href:'#', data:{role:'h3'}} h3
-		%li
-			%a.tool-buttons{href:'#', data:{role:'p'}} p
-		%li
-			%a.tool-buttons{href:'#', data:{role:'subscript'}}
-				%i.icon-subscript
-		%li
-			%a.tool-buttons{href:'#', data:{role:'superscript'}}
-				%i.icon-superscript
+			%a.tool-buttons{href:'javascript:void(0)', data:{role:'code'}}
+				%i.icon-code
 #editor-content{style:"min-height:400px", contenteditable:'true'}
 

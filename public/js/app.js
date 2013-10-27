@@ -229,10 +229,11 @@ $(document).ready(function(){
             this.value += myValue;  
             this.focus();  
 	        }  
-				}  
+				}
 			})	  
 		})(jQuery);   
 	}); 
+
 
 //编辑器
 $(function() {
@@ -250,15 +251,23 @@ $(function() {
 				document.execCommand($(this).data('role'), false, null);
 				break;
 		}
-		if(data_role != 'undo'){
+
+		if(data_role === "undo"){
+			$("#editor-tools").find(".editor-active").removeClass("editor-active");
+		}else{
 			if($(this).hasClass("editor-active")){
 				$(this).removeClass("editor-active");
-			}else {
+			}else{
 				$(this).addClass("editor-active");
+				if($(this).parents("ul").hasClass("group")){
+					console.log("true");
+					$(this).parent().siblings("li").children().removeClass("editor-active");
+				}
 			}
 		}
 	})
 }); 
+
 
 	
 	// var $upload_form = $("#upload_pic_form");
