@@ -10,7 +10,7 @@ legend{color:#000}
 input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
 input,button,textarea,select{*font-size:100%}
 
-pre{white-space:pre-wrap;word-wrap:break-word; font-size: 15px}
+pre{white-space:pre;word-wrap:normal; font-size: 15px}
 a{font-size:13px; cursor:pointer}
 a:link{color:#555;text-decoration:none}
 a:visited{color:#555;text-decoration:none}
@@ -74,6 +74,7 @@ article code {
 	color: #fff;
 	padding: 10px 20px;
 	overflow: scroll;
+	width: 680px;
 	background-color: #000;
 }
 
@@ -137,6 +138,7 @@ article .escaped-content a {
 		padding: 80px  9.11458% 50px;
 	}
 
+
 	.statistical-info {
 		font-family: "Bauhaus Lt BT";
 		position: absolute;
@@ -153,8 +155,9 @@ article .escaped-content a {
   .statistical-info a{
 		display: inline-block;
 	}
-
 }
+
+
 /*--窗口640px以上、999px以下--*/
 @media screen and (min-width: 640px) and (max-width: 999px){
 	header {

@@ -1,5 +1,6 @@
 -provide(:title, '创建文章')
 %link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
+%script{src: "/js/editor.js"}
 .edit-blog
   %article
     %h1 创建文章
@@ -10,7 +11,7 @@
           %input.blog-title.subcheck#blog_title{type:'text', name:'blog[title]'} 
       .row.blog-content
         %label.field{for:'blog_content'} 正文:
-        =render 'editor'
+        =render partial:'editor', locals:{blog:nil}
         %textarea#blog_content{name:'blog[content]', style:'display:none'} 
       .tags-editer
         =render 'tags/blog_tags'

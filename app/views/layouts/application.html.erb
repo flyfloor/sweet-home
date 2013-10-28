@@ -37,20 +37,6 @@
 	</header>
 	<wrapper>
 		<%= yield %>
-		<script>
-				//转义
-				window.onload = (function(){
-					var content_doms = document.getElementsByClassName("escaped-content");
-					
-					for(var i=0; i<content_doms.length; i++){
-						original_content = content_doms[i].innerHTML;
-						tempData = original_content.replace(/&lt;/gi,"<")
-																			 .replace(/&gt;/gi, ">");
-						content_doms[i].innerHTML = tempData;
-					}
-				});
-		</script>
-	</wrapper>
 	<footer>
 		<span>©</span>
 		<a href="http://www.douban.com/people/31660758/" target="_blank">lacuna fario</a>

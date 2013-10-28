@@ -5,7 +5,7 @@
 		%h1=@blog.title
 		%span.create-time=@blog.updated_at.localtime.to_s(:db)
 		%div
-			.escaped-content=@blog.content
+			.escaped-content=raw sanitize @blog.content.to_s
 		%a.screen-top{href:"#", style:"display: none;", value:'返回顶部'} 
 			%del
 			%b

@@ -1,5 +1,6 @@
 -provide(:title, '编辑文章')
 %link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
+%script{src: "/js/editor.js"}
 .edit-blog
   %article
     %h1 编辑文章
@@ -10,7 +11,7 @@
           =f.text_field :title, class:'blog-title', id:'blog_title', name:'blog[title]'
       .row.blog-content
         =f.label "正文:", class:'field', for:'blog_content' 
-        =render 'editor'
+        =render partial: 'editor', locals:{blog: @blog}
         =f.text_area :content, id:'blog_content', name:'blog[content]', style:'display:none' 
         .tags-editer
         =render 'tags/blog_tags' 
