@@ -52,5 +52,5 @@
 		%li
 			%a.tool-buttons{href:'javascript:void(0)', data:{role:'code'}}
 				%i.icon-code
-#editor-content{style:"min-height:400px", contenteditable:'true'}=raw sanitize blog.content unless blog.blank?
+#editor-content{style:"min-height:400px", contenteditable:'true'}=sanitize blog.content unless blog.blank?
 

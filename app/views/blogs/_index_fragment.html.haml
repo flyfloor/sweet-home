@@ -7,7 +7,7 @@
 					%a.blog-view{href:"#{blog_path(blog)}"} 
 						%h1 #{blog.title} 
 				%a.bref-content{href:"#{blog_path(blog)}"}
-					%div.escaped-content=raw sanitize blog.content.to_s.strip[0,1000]+'...'
+					%div.escaped-content=sanitize blog.content.to_s.strip[0,1000]+'...'
 				-unless blog.tags.blank?
 					%tags
 						-blog.tags.each do |tag|
