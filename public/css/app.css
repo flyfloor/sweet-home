@@ -37,8 +37,8 @@ input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:none;}
 }
 
 header {
-	opacity: 0.95;
 	z-index: 999;
+	background-color: #1d9d74;
 }
 footer a:after{
 	content: '\f08e';
@@ -56,27 +56,42 @@ article ol {
 	list-style: decimal inside none;
 }
 
+article blockquote, article code {
+	border: 1px solid #e0f1e9;
+	border-radius: 3px;
+	background-color: #f1f9f7;
+	margin: 10px 0;
+}
+
 article blockquote {
-	background-color: #b44;
-	text-indent: 2px;
-	padding: 10px;
+	color: #888;
+	position: relative;
+	padding: 2px 30px;
+
+}
+
+article blockquote:after {
+	font: 10px FontAwesome;
+	content: "\f10e";
+	color: #ccc;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
 }
 
 article blockquote:before {
-	content: '\f075';
-	color: #3a1d00;
-	font: 16px FontAwesome;
-	vertical-align: top;
-	padding-right: 10px;
+	font: 10px FontAwesome;
+	content: "\f10d";
+	color: #ccc;
+	position: absolute;
+	left: 5px;
+	top: 5px;
 }
 
 article code {
-	display: inline-block;
-	color: #fff;
+	color: #555;
 	padding: 10px 20px;
 	overflow: scroll;
-	width: 680px;
-	background-color: #000;
 }
 
 article img {
@@ -84,9 +99,6 @@ article img {
 	margin: 10px 0;
 }
 
-article img:hover {
-	box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-}
 
 article video {
 	width: 400px;
@@ -108,7 +120,6 @@ article .escaped-content a {
 		position: fixed;
 		width: 100%;
 		height: 35px;
-		background-color: #354;
 		left: 0;
 		top: 0;
 		float: left;
@@ -224,7 +235,7 @@ textarea {
 }
 
 
-article, picture, section, header, footer, nav, wrapper, page, pagination, comment {
+article, picture, section, header, footer, nav, wrapper, page, pagination, comment,code, blockquote {
 	display: block;
 }
 
@@ -434,7 +445,7 @@ a.lnk-flat:link, a.lnk-flat:visited {
 	animation: flyto1 1s;
 }
 .statistical-info, tags a.blog-tag{
-	color: #5aaf5a;
+	color: #1d9d74;
 	font-size: 13px;
 }
 
@@ -448,6 +459,7 @@ a.lnk-flat:link, a.lnk-flat:visited {
 }
 
 .create-time:after {
+	vertical-align: middle;
 	content: "\f017";
 	color: #a3c3a2;
 	font: 15px FontAwesome;
@@ -456,7 +468,7 @@ a.lnk-flat:link, a.lnk-flat:visited {
 
 .like-count:after{
 	content: "\f004";
-	color: #c41712;
+	color: #ff6c7c;
 	font: 12px FontAwesome;
 	padding-left: 5px;
 }
