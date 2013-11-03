@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+
 	//导航选中
 	var path = document.location.pathname;
 	var pathArray = path.split("/");
@@ -15,8 +15,8 @@ $(document).ready(function(){
 	//评论
 	$("#form_comment").submit(function(data){
 		var articleId = $(this).parents("comment")
-													.siblings("article")
-													.attr("id");
+													 .siblings("article")
+													 .attr("id");
 		$.ajax({
 			url: "/blogs/" + articleId + "/comments",
 			type: "POST",
@@ -25,7 +25,7 @@ $(document).ready(function(){
 			success: function(data){
 				$('<li class="comment">'+
 						'<p>'+data.commenter+'</p>'+
-						'<p>'+data.content+'</p>'+
+						'<p>'+data.content.replace(/</,"&lt;").replace(/>/,"&gt;")+'</p>'+
 						'<p><a class="delete-comment" href="/blogs/'+articleId+'/comments/'+data.id+'">删除</a></p>'+
 					'</li>').appendTo("ul.comment");
 				$("#comment_commenter,#comment_content").val("");

@@ -12,8 +12,8 @@ input,button,textarea,select{*font-size:100%}
 
 pre{white-space:pre;word-wrap:normal; font-size: 15px}
 a{font-size:13px; cursor:pointer}
-a:link{color:#555;text-decoration:none}
-a:visited{color:#555;text-decoration:none}
+a:link{color:#556;text-decoration:none}
+a:visited{color:#556;text-decoration:none}
 a:hover{color:#000;text-decoration:none}
 a:active{color:#000;text-decoration:none}
 a img{border-width:0;vertical-align:middle}
@@ -21,9 +21,13 @@ body,td,th{font:15px;line-height:1.62; letter-spacing: 0.5px}
 table{border-collapse:collapse;border:0;padding:0;margin:0}
 wbr:after{content:"\00200B"}
 textarea{resize:none}
-input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:none;}
-input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="time"], input[type="week"], textarea {
+/*input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:none;}*/
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
 	width: 350px;
+	padding: 4px;
+	height: 20px;
+	line-height: 19px;
+	border: 1px solid #ccc;
 }
 .clear-fix {width: 400px;}
 textarea{resize:none}
@@ -38,7 +42,7 @@ input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:none;}
 
 header {
 	z-index: 999;
-	background-color: #1d9d74;
+	background-color: #326172;
 }
 footer a:after{
 	content: '\f08e';
@@ -159,6 +163,7 @@ article .escaped-content a {
 		float: right;
 		right: 20px;
 		top: 40px;
+		color: #3070a0;
 	}
 
 	.statistical-info span {
@@ -393,7 +398,7 @@ a.lnk-flat:link, a.lnk-flat:visited {
 		margin-right: -20px;
 	}
 	section.page-content article a:hover, section.page-content section a:hover {
-		color: #333;
+		color: #557;
 	}
 	
 	section.page-content tag {
@@ -433,19 +438,13 @@ a.lnk-flat:link, a.lnk-flat:visited {
 	}
 
 	section.page-content article .blog-view {
-		color: #555;
+		color: #556;
 		display: block;
 	}
 
 
-
-.blog-info {
-	-webkit-animation: flyto1 1s;
-	-moz-animation: flyto1 1s;
-	animation: flyto1 1s;
-}
-.statistical-info, tags a.blog-tag{
-	color: #1d9d74;
+tags a.blog-tag{
+	color: #61c788;
 	font-size: 13px;
 }
 
@@ -589,7 +588,7 @@ pagination{
 }
 
 .tag-name {
-	color: #5aaf5a;
+	color: #326172;
 	text-align: left;
 	vertical-align: middle;
 	font-size: 16px;
