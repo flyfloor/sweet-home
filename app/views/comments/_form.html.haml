@@ -1,9 +1,19 @@
 %form#form_comment
-	%p
-		%label{for:'comment_commenter'} 用户:
-		%input#comment_commenter.row{type:'text', name:'comment[commenter]'}
-	%p
-		%label{for:'comment_content'} 内容:
-		%textarea#comment_content.row{name:'comment[content]'}
+	.comment_commenter
+		%label{for:'comment_commenter'} name:
+		%div
+			%input#comment_commenter.row.col9{type:'text',  name:'comment[commenter]'}
+	.comment_email
+		%label{for:'comment_email'} email:
+		%div
+			%input#comment_email.row.col9{type:'email',  name:'comment[email]', placeholder:"Only used for Gravatar, will not be published"}
+	.comment_website
+		%label{for:'comment_website'} website:
+		%div
+			%input#comment_website.row.col9{type:'text', name:'comment[website]'}
+	.comment_content
+		%label{for:'comment_content'} comment:
+		%div
+			%textarea#comment_content.row.col10{name:'comment[content]'}
 	%p
 		%input.btn{type:'submit', value:'留言'}

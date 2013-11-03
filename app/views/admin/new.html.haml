@@ -5,9 +5,9 @@
 	=form_for :admin, :url => '/signin', method: :post do |f|
 		.field
 			=f.label "邮箱:", :for => 'email'
-			=f.text_field :email,class:"row"
+			=f.text_field :email,class:"row col7"
 		.field
 			=f.label "密码:", :for => 'password'
-			=f.text_field :password,class:"row"
+			=f.text_field :password,class:"row col7"
 		.field
 			=f.submit '登录'

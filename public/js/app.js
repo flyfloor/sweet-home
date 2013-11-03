@@ -23,12 +23,15 @@ $(document).ready(function(){
 			data: $(this).serialize(),
 			dataType: "json",
 			success: function(data){
-				$('<li class="comment">'+
-						'<p>'+data.commenter+'</p>'+
-						'<p>'+data.content.replace(/</,"&lt;").replace(/>/,"&gt;")+'</p>'+
-						'<p><a class="delete-comment" href="/blogs/'+articleId+'/comments/'+data.id+'">删除</a></p>'+
-					'</li>').appendTo("ul.comment");
-				$("#comment_commenter,#comment_content").val("");
+				if(data.status!= "false"){
+					$('<li class="item" style="display:none;">'+
+							'<div class="avator"><img src="'+ data.gravatar+'"/></div>'+
+							'<div class="item-content">'+
+							'<p>'+data.commenter+'</p><p>'+data.created_at+'</p>'+
+							'<p>'+data.content.replace(/</,"&lt;").replace(/>/,"&gt;")+'</p></div>'+
+						'</li>').appendTo("ul.comment").fadeIn(500);
+					$("#comment_commenter,#comment_content,#comment_email,#comment_website").val("");
+				}
 			}
 		});
 		return false;

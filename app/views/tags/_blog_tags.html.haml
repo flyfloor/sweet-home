@@ -1,5 +1,5 @@
 .tagarea
-	.tag-tokens{name:'blog[tags]'}
+	.tag-tokens.col10.row{name:'blog[tags]'}
 		-unless @blog.tags.blank?
 			-@blog.tags.each do |tag|
 				%span.tag-token=tag.name

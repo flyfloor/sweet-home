@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :blog
   belongs_to :picture
-  attr_accessible :commenter, :content
+  validates :commenter, presence: true
+  attr_accessible :commenter, :content, :email, :website
 end

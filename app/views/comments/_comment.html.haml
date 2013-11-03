@@ -1,7 +1,12 @@
-%p
-	=comment.commenter
-%p
-	=comment.content
--if signed_in?
+.avator
+	=image_tag gravatar(comment.email)
+.item-content
 	%p
-		=link_to '删除', [comment.blog, comment], class: "delete-comment"
+		=comment.commenter
+	%p
+		=comment.created_at
+	%p
+		=comment.content
+	-if signed_in?
+		%p
+			=link_to '删除', [comment.blog, comment], class: "delete-comment"

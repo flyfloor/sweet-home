@@ -24,9 +24,9 @@
 		=link_to '编辑', edit_blog_path(@blog)
 	%comment
 		%h6 所有留言:
-		%ul.comment
+		%ul.comments.col10
 			-@blog.comments.each do |comment|
-				%li.comment=render comment
+				%li.item=render comment
 		%h6 写留言:
 		=render "comments/form"
 

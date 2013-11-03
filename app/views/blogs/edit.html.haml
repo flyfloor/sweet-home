@@ -8,7 +8,7 @@
       .row.blog-title
         =f.label "题目:", class:'field', for:'blog_title'
         %div
-          =f.text_field :title, class:'blog-title', id:'blog_title', name:'blog[title]'
+          =f.text_field :title, class:'blog-title col10', id:'blog_title', name:'blog[title]'
       .row.blog-content
         =f.label "正文:", class:'field', for:'blog_content' 
         =render partial: 'editor', locals:{blog: @blog}

@@ -7,7 +7,6 @@ abbr,acronym{border:0;font-variant:normal}
 sup{vertical-align:sup}
 sub{vertical-align:sub}
 legend{color:#000}
-input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
 input,button,textarea,select{*font-size:100%}
 
 pre{white-space:pre;word-wrap:normal; font-size: 15px}
@@ -19,25 +18,60 @@ a:active{color:#000;text-decoration:none}
 a img{border-width:0;vertical-align:middle}
 body,td,th{font:15px;line-height:1.62; letter-spacing: 0.5px}
 table{border-collapse:collapse;border:0;padding:0;margin:0}
-wbr:after{content:"\00200B"}
 textarea{resize:none}
-/*input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:none;}*/
-textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
-	width: 350px;
+textarea, input[type="text"], input[type="password"], input[type="datetime"], 
+input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"],
+ input[type="week"], input[type="number"], input[type="email"], input[type="url"], 
+ input[type="search"], input[type="tel"], input[type="color"] {
 	padding: 4px;
 	height: 20px;
 	line-height: 19px;
 	border: 1px solid #ccc;
 }
 .clear-fix {width: 400px;}
-textarea{resize:none}
-input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:none;}
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, 
+input[type="datetime"]:focus, input[type="datetime-local"]:focus, 
+input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, 
+input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, 
+input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, 
+input[type="color"]:focus{outline:none;}
 
 @font-face {
 	font-family: "Bauhaus Lt BT";
 	src:url("/font/BauhausLtBT.ttf");
 	font-weight: normal;
 	font-style: normal;
+}
+
+.col1{
+	width: 50px;
+}
+.col2{
+	width: 100px;
+}
+.col3{
+	width: 150px;
+}
+.col4{
+	width: 200px;
+}
+.col5{
+	width: 250px;
+}
+.col6{
+	width: 300px;
+}
+.col7{
+	width: 350px;
+}
+.col8{
+	width: 400px;
+}
+.col9{
+	width: 450px;
+}
+.col10{
+	width: 720px;
 }
 
 header {
@@ -595,4 +629,8 @@ pagination{
 	font-family: "Bauhaus Lt BT";
 	width: 1000px;
 	margin: 0 auto;
+}
+
+comment {
+	padding: 60px;
 }

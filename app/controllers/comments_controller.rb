@@ -1,14 +1,17 @@
 class CommentsController < ApplicationController
+	include AdminHelper, CommentsHelper
+	before_filter :sign_in_user, only: [:new, :destroy, :create]
 	def create
 		@blog = Blog.find(params[:blog_id])
 		@comment = @blog.comments.build(params[:comment])
+		@comment.gravatar = gravatar(params[:comment][:email])
 		respond_to do |format|
 			if @comment.save
 				format.html { redirect_to @comment }
 				format.json { render json: @comment }
 			else
 				format.html { render 'new' }
-				format.json
+				format.json { render json:{status:"false"}}
 			end
 		end
 	end
@@ -21,4 +24,5 @@ class CommentsController < ApplicationController
 			format.json	{render json:{delete: "ok"}}	
 		end
 	end
+
 end
