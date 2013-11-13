@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
 	include AdminHelper
 	before_filter :sign_in_user, only: [:new, :edit, :update]
+	before_filter :find_blog, only: [:show, :edit, :update, :destroy, :like]
 	def index
 		@blogs = Blog.paginate(page: params[:page], per_page:5).order("created_at DESC")
 		respond_to do |format|
@@ -34,16 +35,16 @@ class BlogsController < ApplicationController
 	end
 
 	def show
-		@blog = Blog.find(params[:id])
+		# @blog = Blog.find(params[:id])
 		render status:404 unless @blog
 	end
 
 	def edit
-		@blog = Blog.find(params[:id])
+		# @blog = Blog.find(params[:id])
 	end
 
 	def update
-		@blog = Blog.find(params[:id])
+		# @blog = Blog.find(params[:id])
 		@blog.tags = []
 		label_tag(@blog, params[:tags].split('#tag#'))
 
@@ -56,7 +57,7 @@ class BlogsController < ApplicationController
 	end
 
 	def destroy
-		@blog = Blog.find(params[:id])
+		# @blog = Blog.find(params[:id])
 		@blog.destroy	
 		respond_to do |format|
 			format.json	{render json:{delete: "ok"}}	
@@ -66,13 +67,17 @@ class BlogsController < ApplicationController
 
 
 	def like
-		@blog = Blog.find(params[:id])
+		# @blog = Blog.find(params[:id])
 		@blog.like_count += 1
 		if @blog.save
 			respond_to do |format|
 				format.json {render json: @blog.like_count}
 			end
 		end			
+	end
+
+	def find_blog
+		@blog = Blog.find(params[:id])
 	end
 
 	private
