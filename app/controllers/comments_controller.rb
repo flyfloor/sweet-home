@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
 	include AdminHelper, CommentsHelper
-	before_filter :sign_in_user, only: [:new, :destroy, :create]
+	before_filter :sign_in_user, only: :destroy
 	before_filter :find_blog, only: [:create, :destroy]
+
 	def create
-		# @blog = Blog.find(params[:blog_id])
-		@comment = @blog.comments.build(params[:comment])
-		@comment.gravatar = gravatar(params[:comment][:email])
+		@comment = @blog.comments.build params[:comment]
+		@comment.gravatar = gravatar params[:comment][:email]
 		respond_to do |format|
 			if @comment.save
 				format.html { redirect_to @comment }
@@ -18,8 +18,7 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		# @blog = Blog.find(params[:blog_id])
-		@comment = @blog.comments.find(params[:id])
+		@comment = @blog.comments.find params[:id]
 		@comment.destroy
 		respond_to do |format|
 			format.json	{render json:{delete: "ok"}}	

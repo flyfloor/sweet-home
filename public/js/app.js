@@ -24,12 +24,12 @@ $(document).ready(function(){
 			dataType: "json",
 			success: function(data){
 				if(data.status!= "false"){
-					$('<li class="item" style="display:none;">'+
+					$('<li class="item">'+
 							'<div class="avator"><img src="'+ data.gravatar+'"/></div>'+
 							'<div class="item-content">'+
 							'<p>'+data.commenter+'</p><p>'+data.created_at+'</p>'+
 							'<p>'+data.content.replace(/</,"&lt;").replace(/>/,"&gt;")+'</p></div>'+
-						'</li>').appendTo("ul.comment").fadeIn(500);
+						'</li>').appendTo("ul.comments");
 					$("#comment_commenter,#comment_content,#comment_email,#comment_website").val("");
 				}
 			}
@@ -52,7 +52,7 @@ $(document).ready(function(){
 
 	//删除评论
 	$(document).on("click",".delete-comment", function(){
-		var $comment = $(this).parents("li.comment");
+		var $comment = $(this).parents("li.item");
 		$.ajax({
 			url: $(this).attr("href"),
 			type: "DELETE",

@@ -18,7 +18,7 @@ class BlogsController < ApplicationController
 	end
 
 	def create
-		@blog = Blog.new(params[:blog])
+		@blog = Blog.new params[:blog]
 		@blog.like_count = 0
 
 		label_tag(@blog, params[:tags].split('#tag#'))
@@ -35,21 +35,18 @@ class BlogsController < ApplicationController
 	end
 
 	def show
-		# @blog = Blog.find(params[:id])
 		render status:404 unless @blog
 	end
 
 	def edit
-		# @blog = Blog.find(params[:id])
 	end
 
 	def update
-		# @blog = Blog.find(params[:id])
 		@blog.tags = []
 		label_tag(@blog, params[:tags].split('#tag#'))
 
 		respond_to do |format|
-			if @blog.update_attributes(params[:blog])
+			if @blog.update_attributes params[:blog]
 				format.html { redirect_to @blog }
 				format.json { render json: @blog }
 			end
@@ -57,7 +54,6 @@ class BlogsController < ApplicationController
 	end
 
 	def destroy
-		# @blog = Blog.find(params[:id])
 		@blog.destroy	
 		respond_to do |format|
 			format.json	{render json:{delete: "ok"}}	
@@ -67,7 +63,6 @@ class BlogsController < ApplicationController
 
 
 	def like
-		# @blog = Blog.find(params[:id])
 		@blog.like_count += 1
 		if @blog.save
 			respond_to do |format|
@@ -77,7 +72,7 @@ class BlogsController < ApplicationController
 	end
 
 	def find_blog
-		@blog = Blog.find(params[:id])
+		@blog = Blog.find params[:id]
 	end
 
 	private
