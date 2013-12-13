@@ -15,7 +15,7 @@
 /tmp
 
 #Ignore other unneeded files.
-/app/public/blogs/
+public/blogs/*
 doc/
 *.swp
 *~
