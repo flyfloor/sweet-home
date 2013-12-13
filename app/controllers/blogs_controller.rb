@@ -24,7 +24,7 @@ class BlogsController < ApplicationController
 
 	def create
 		@blog = Blog.new params[:blog]
-		label_tag(@blog, params[:tags].split('#tag#'))
+		@blog.label_tag params[:tags].split('#tag#')
 
 		respond_to do |format|
 			if @blog.save
@@ -48,7 +48,7 @@ class BlogsController < ApplicationController
 	def update
 		expire_page action: :show
 		@blog.tags = []
-		label_tag(@blog, params[:tags].split('#tag#'))
+		@blog.label_tag params[:tags].split('#tag#')
 
 		respond_to do |format|
 			if @blog.update_attributes params[:blog]
@@ -79,17 +79,5 @@ class BlogsController < ApplicationController
 	def find_blog
 		@blog = Blog.find params[:id]
 	end
-
-	private
-		def label_tag(blog, tags)
-			for tag in tags do
-				@exist_tag = Tag.where("name = ?", tag.to_s)
-				if @exist_tag.blank?
-					blog.tags << Tag.new(name: tag.to_s)
-				else
-					blog.tags << @exist_tag
-				end
-			end
-		end
 
 end

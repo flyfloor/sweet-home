@@ -29,4 +29,15 @@ class Blog < ActiveRecord::Base
   def html_view
     self.content = Kramdown::Document.new(self.content).to_html
   end
+
+  def label_tag tags
+    tags.each do |tag|
+      @exist_tag = Tag.where("name = ?", tag.to_s)
+      if @exist_tag.blank?
+        self.tags << Tag.new(name: tag.to_s)
+      else
+        self.tags << @exist_tag        
+      end
+    end
+  end
 end
