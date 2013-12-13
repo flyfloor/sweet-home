@@ -2,6 +2,7 @@ class BlogsController < ApplicationController
 	include AdminHelper
 	before_filter :sign_in_user, only: [:new, :edit, :update]
 	before_filter :find_blog, only: [:show, :edit, :update, :destroy, :like]
+	
 	def index
 		@blogs = Blog.paginate(page: params[:page], per_page:5).order("created_at DESC")
 		respond_to do |format|
@@ -19,8 +20,6 @@ class BlogsController < ApplicationController
 
 	def create
 		@blog = Blog.new params[:blog]
-		@blog.like_count = 0
-
 		label_tag(@blog, params[:tags].split('#tag#'))
 
 		respond_to do |format|

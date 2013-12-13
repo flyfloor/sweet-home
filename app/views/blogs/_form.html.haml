@@ -1,0 +1,25 @@
+%link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
+.edit-blog
+  %article
+    %h1 编辑文章
+    =form_for @blog do |f|
+      .row.blog-title
+        =f.label "题目:", class:'field', for:'blog_title'
+        %div
+          =f.text_field :title, class:'blog-title col10', id:'blog_title', name:'blog[title]'
+      .row.blog-content
+        =f.label "正文:", class:'field', for:'blog_content' 
+        .wmd-panel
+          #wmd-button-bar
+          =f.text_area :content, class:'wmd-input blog_content_md', id: 'wmd-input',name: 'blog[content]'
+          #wmd-preview.wmd-panel.wmd-preview
+        :javascript
+          (function(){
+            var converter1 = Markdown.getSanitizingConverter();
+            var editor1 = new Markdown.Editor(converter1);
+            editor1.run();
+          })();
+        .tags-editer
+        =render 'tags/blog_tags' 
+      .row.footer
+        %input.btn#publish_blog{type:'submit', value:'发表'}

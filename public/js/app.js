@@ -1,16 +1,11 @@
 $(document).ready(function(){
 
-	//导航选中
-	var path = document.location.pathname;
-	var pathArray = path.split("/");
-	if(path === "/"){
-		$(".main-nav").children("li:first").attr("class", "active");
-	}else{
-		for (var i = 0; i < pathArray.length; i++) {
-			$(".main-nav").find("a[href*='"+pathArray[i] + "']")
-													.parent("li").attr("class", "active");
-		};
-	}
+	var source = '<li class="item">'+
+							'<img class="comment-avator" src="{{gravatar}}"/>'+
+							'<a class="comment-commenter" href="{{website}}" target="_blank">{{commenter}}</a></br>'+
+							'<p class="comment-content">{{content}}</p>'+
+						'</li>';
+	var template = Handlebars.compile(source);
 
 	//评论
 	$("#form_comment").submit(function(data){
@@ -23,19 +18,27 @@ $(document).ready(function(){
 			data: $(this).serialize(),
 			dataType: "json",
 			success: function(data){
-				if(data.status!= "false"){
-					$('<li class="item">'+
-							'<div class="avator"><img src="'+ data.gravatar+'"/></div>'+
-							'<div class="item-content">'+
-							'<p>'+data.commenter+'</p><p>'+data.created_at+'</p>'+
-							'<p>'+data.content.replace(/</,"&lt;").replace(/>/,"&gt;")+'</p></div>'+
-						'</li>').appendTo("ul.comments");
+				if(data.status!= false){
+					$(template(data)).appendTo("ul.comments");
 					$("#comment_commenter,#comment_content,#comment_email,#comment_website").val("");
 				}
 			}
 		});
 		return false;
 	});
+
+	//导航选中
+	var path = document.location.pathname;
+	var pathArray = path.split("/");
+	if(path === "/"){
+		$(".main-nav").children("li:first").attr("class", "active");
+	}else{
+		for (var i = 0; i < pathArray.length; i++) {
+			$(".main-nav").find("a[href*='"+pathArray[i] + "']")
+													.parent("li").attr("class", "active");
+		};
+	}
+
 
 	//删除文章
 	$(".delete-blog").click(function(){
@@ -75,12 +78,6 @@ $(document).ready(function(){
 			}
 		});
 		return false;
-	});
-
-
-	//编辑器内容change，保存
-	$("#editor-content").bind("input", function(){
-		$("#blog_content").html($(this).html());
 	});
 
 	//首页、末页分页显示
@@ -340,5 +337,6 @@ $(document).ready(function(){
 			return false;
 		}
 	}
+
 
 })

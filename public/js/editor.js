@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	//编辑器
 	$(function() {
-		$('#editor-tools a').click(function(e) {
-			$('#editor-content').focus();
+		$('#editor_tools a').click(function(e) {
+			$('#editor_content').focus();
 			var data_role = $(this).data('role');
 			switch(data_role) {
 				case 'h1':
@@ -16,17 +16,13 @@ $(document).ready(function(){
 					break;
 			}
 
-			if(data_role === "undo"){
-				$("#editor-tools").find(".editor-active").removeClass("editor-active");
+			if($(this).hasClass("editor-active")){
+				$(this).removeClass("editor-active");
 			}else{
-				if($(this).hasClass("editor-active")){
-					$(this).removeClass("editor-active");
-				}else{
-					$(this).addClass("editor-active");
-					if($(this).parents("ul").hasClass("group")){
-						console.log("true");
-						$(this).parent().siblings("li").children().removeClass("editor-active");
-					}
+				$(this).addClass("editor-active");
+				if($(this).parents("ul").hasClass("group")){
+					console.log("true");
+					$(this).parent().siblings("li").children().removeClass("editor-active");
 				}
 			}
 		})

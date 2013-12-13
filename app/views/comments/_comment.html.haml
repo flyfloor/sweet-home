@@ -1,12 +1,9 @@
-.avator
-	=image_tag gravatar(comment.email)
-.item-content
-	%p
-		=comment.commenter
-	%p
-		=comment.created_at
-	%p
-		=comment.content
-	-if signed_in?
-		%p
-			=link_to '删除', [comment.blog, comment], class: "delete-comment"
+=image_tag gravatar(comment.email), class: "item-avator"
+-if comment.website.blank?
+	%span.item-commenter=comment.commenter
+-else
+	%a.item-commenter{href: comment.website, target: "_blank"}=comment.commenter
+%p.item-content
+	=comment.content
+-if signed_in?
+	=link_to 'x', [comment.blog, comment], class: "delete-comment"

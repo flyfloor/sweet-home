@@ -2,18 +2,28 @@
 <html>
 <head>
   <title><%=title(yield(:title))%></title>
-  <%= stylesheet_link_tag    "application", media:'all' %>
+  <%= stylesheet_link_tag "/bootstrap/bootstrap", media:"all" %>
+  <%= stylesheet_link_tag "application", media:"all" %>
   <%= javascript_include_tag "application" %>
-  <%= stylesheet_link_tag "/css/app", media:'all'%>
-  <%= stylesheet_link_tag "/css/font-awesome.min", media: 'all'%>
-  <%= javascript_include_tag "/js/handlebars", media:'all'%>
-  <%= javascript_include_tag "/js/app", media:'all'%>
+  <%= javascript_include_tag "/js/jquery.browser" %>
+  <%= stylesheet_link_tag "/css/app", media:"all"%>
+  <%= javascript_include_tag "/js/app", media:"all"%>
+  <%= stylesheet_link_tag "/css/font-awesome.min", media:"all"%>
+  <%= stylesheet_link_tag "/css/editor", media:"all"%>
+  <%= javascript_include_tag "/js/handlebars", media:"all"%>
+  <%= javascript_include_tag "/bootstrap/bootstrap-transition" %>
+  <%= javascript_include_tag "/bootstrap/bootstrap-modal" %>
+  <%= javascript_include_tag "/bootstrap/bootstrap-tooltip" %>
+  <%= javascript_include_tag "/pagedown/Markdown.Converter" %>
+  <%= javascript_include_tag "/pagedown/Markdown.Sanitizer" %>
+  <%= javascript_include_tag "/pagedown/Markdown.Editor" %>
+  <%= stylesheet_link_tag "/highlighter/prettify", media:"all" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<header>
 		<nav class="author-info">
-			<a href="/" style="display:inline-block;float:left;padding:4px 20px 3px;"><h4>杀手马鹿</h4></a>
+			<a href="/" style="display:inline-block;float:left;padding:8px 20px;"><h4>杀手马鹿</h4></a>
 			<ul class="main-nav">
 				<li>
 					<a href="/blogs" title="文章">文章</a>
@@ -38,9 +48,12 @@
 	</header>
 	<wrapper>
 		<%= yield %>
+	</wrapper>
 	<footer>
 		<span>©</span>
 		<a href="http://www.douban.com/people/31660758/" target="_blank">lacuna fario</a>
-	</footer>		
+	</footer>
+	<script src="/highlighter/prettify.js"></script>
+	<script>prettyPrint();</script>
 </body>
 </html>

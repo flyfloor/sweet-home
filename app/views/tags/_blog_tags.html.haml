@@ -3,8 +3,12 @@
 		-unless @blog.tags.blank?
 			-@blog.tags.each do |tag|
 				%span.tag-token=tag.name
+		:css
+			#new-tag:focus{
+				box-shadow: none;
+			}
 		.create-tags
-			%input.new-tag{type:'text', maxlength: '60', style: 'height:16px;width: 60px; font-weight: bold;', placeholder: '添加标签'}
+			%input#new-tag.new-tag{type:'text', maxlength: '60', style: 'height:16px;width: 60px; font-weight: bold;', placeholder: '添加标签'}
 			%input#author_tags{type: 'hidden', name: 'tags'}
 			%span.hiddenspan#hidden_swap_tag
 	.exist-tags

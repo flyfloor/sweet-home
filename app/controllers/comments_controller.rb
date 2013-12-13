@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
 	end
 
 	def find_blog
-		@blog = Blog.find(params[:blog_id])
+		@blog = Blog.find params[:blog_id]
 	end
 
 end
