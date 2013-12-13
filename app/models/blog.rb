@@ -1,4 +1,5 @@
 class Blog < ActiveRecord::Base
+  require 'kramdown'
 	has_and_belongs_to_many :tags
 	has_many :comments, dependent: :delete_all
 	validates :title, presence: true
@@ -23,5 +24,9 @@ class Blog < ActiveRecord::Base
 
   def default_values
     self.like_count ||= 0
+  end
+
+  def html_view
+    self.content = Kramdown::Document.new(self.content).to_html
   end
 end

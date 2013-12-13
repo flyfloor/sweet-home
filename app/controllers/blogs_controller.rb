@@ -2,9 +2,13 @@ class BlogsController < ApplicationController
 	include AdminHelper
 	before_filter :sign_in_user, only: [:new, :edit, :update]
 	before_filter :find_blog, only: [:show, :edit, :update, :destroy, :like]
-	
+	caches_page :show
+
 	def index
 		@blogs = Blog.paginate(page: params[:page], per_page:5).order("created_at DESC")
+		@blogs.each do |blog|
+			blog.html_view
+		end
 		respond_to do |format|
 			format.html
 			format.json { render json: @blogs }
@@ -34,6 +38,7 @@ class BlogsController < ApplicationController
 	end
 
 	def show
+		@blog.html_view
 		render status:404 unless @blog
 	end
 
@@ -41,6 +46,7 @@ class BlogsController < ApplicationController
 	end
 
 	def update
+		expire_page action: :show
 		@blog.tags = []
 		label_tag(@blog, params[:tags].split('#tag#'))
 
@@ -85,4 +91,5 @@ class BlogsController < ApplicationController
 				end
 			end
 		end
+
 end
