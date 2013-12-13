@@ -1,6 +1,6 @@
 html{color:#111;padding: 0;margin: 0; font-family:"Microsoft Yahei","Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti !important;}
 body{background-color: #F6FCF6 !important;}div:focus{outline: none;}
-body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,blockquote{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:normal;font-weight:normal}ul,ol{margin: 0; padding: 0;}ul{list-style: none;}ol{list-style: none;}caption,th{text-align:left}
+body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,blockquote{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,th,var,optgroup{font-style:normal;font-weight:normal}ul,ol{margin: 0; padding: 0;}ul{list-style: none;}ol{list-style: none;}caption,th{text-align:left}
 h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
 q:before,q:after{content:''}
 i{font-weight: italic}

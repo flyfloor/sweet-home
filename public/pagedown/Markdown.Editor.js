@@ -1331,14 +1331,15 @@
             buttonRow.className = 'btn-toolbar';
             buttonRow = buttonBar.appendChild(buttonRow);
 
-            var makeButton = function (id, title, icon, textOp, group) {
+            var makeButton = function (id, innerHTML, title, textOp, group) {
                 var button = document.createElement("button");
-                button.className = "btn";
-                var buttonImage = document.createElement("i");
-                buttonImage.className = icon;
+                // button.className = "btn";
+                // var buttonImage = document.createElement("i");
+                // buttonImage.className = icon;
                 button.id = id + postfix;
-                button.appendChild(buttonImage);
+                // button.appendChild(buttonImage);
                 button.title = title;
+                button.innerHTML = innerHTML;
                 $(button).tooltip({placement: 'bottom'})
                 if (textOp)
                     button.textOp = textOp;
@@ -1355,42 +1356,38 @@
                 group.className = "btn-group wmd-button-group" + num;
                 group.id = "wmd-button-group" + num + postfix;
                 buttonRow.appendChild(group);
-                return group
+                return group;
             }
 
             group1 = makeGroup(1);
-            buttons.bold = makeButton("wmd-bold-button", "Bold - Ctrl+B", "icon-bold", bindCommand("doBold"), group1);
-            buttons.italic = makeButton("wmd-italic-button", "Italic - Ctrl+I", "icon-italic", bindCommand("doItalic"), group1);
+            buttons.bold = makeButton("wmd-bold-button","加粗", "Ctrl+B", bindCommand("doBold"), group1);
+            buttons.italic = makeButton("wmd-italic-button", "斜体", "Ctrl+I", bindCommand("doItalic"), group1);
             
             group2 = makeGroup(2);
-            buttons.link = makeButton("wmd-link-button", "Link - Ctrl+L", "icon-link", bindCommand(function (chunk, postProcessing) {
+            buttons.link = makeButton("wmd-link-button", "链接", "Ctrl+L", bindCommand(function (chunk, postProcessing) {
                 return this.doLinkOrImage(chunk, postProcessing, false);
             }), group2);
-            buttons.quote = makeButton("wmd-quote-button", "Blockquote - Ctrl+Q", "icon-blockquote", bindCommand("doBlockquote"), group2);
-            buttons.code = makeButton("wmd-code-button", "Code Sample - Ctrl+K", "icon-code", bindCommand("doCode"), group2);
-            buttons.image = makeButton("wmd-image-button", "Image - Ctrl+G", "icon-picture", bindCommand(function (chunk, postProcessing) {
+            buttons.quote = makeButton("wmd-quote-button", "引用", "Ctrl+Q", bindCommand("doBlockquote"), group2);
+            buttons.code = makeButton("wmd-code-button", "代码", "Ctrl+K", bindCommand("doCode"), group2);
+            buttons.image = makeButton("wmd-image-button", "图片", "Ctrl+G", bindCommand(function (chunk, postProcessing) {
                 return this.doLinkOrImage(chunk, postProcessing, true);
             }), group2);
 
             group3 = makeGroup(3);
-            buttons.olist = makeButton("wmd-olist-button", "Numbered List - Ctrl+O", "icon-list", bindCommand(function (chunk, postProcessing) {
+            buttons.olist = makeButton("wmd-olist-button", "有序", "Ctrl+O", bindCommand(function (chunk, postProcessing) {
                 this.doList(chunk, postProcessing, true);
             }), group3);
-            buttons.ulist = makeButton("wmd-ulist-button", "Bulleted List - Ctrl+U", "icon-bullet-list", bindCommand(function (chunk, postProcessing) {
+            buttons.ulist = makeButton("wmd-ulist-button", "无序", "Ctrl+U", bindCommand(function (chunk, postProcessing) {
                 this.doList(chunk, postProcessing, false);
             }), group3);
-            buttons.heading = makeButton("wmd-heading-button", "Heading - Ctrl+H", "icon-header", bindCommand("doHeading"), group3);
-            buttons.hr = makeButton("wmd-hr-button", "Horizontal Rule - Ctrl+R", "icon-hr-line", bindCommand("doHorizontalRule"), group3);
+            buttons.heading = makeButton("wmd-heading-button", "标题", "Ctrl+H", bindCommand("doHeading"), group3);
+            buttons.hr = makeButton("wmd-hr-button", "水平线", "Ctrl+R", bindCommand("doHorizontalRule"), group3);
             
             group4 = makeGroup(4);
-            buttons.undo = makeButton("wmd-undo-button", "Undo - Ctrl+Z", "icon-undo", null, group4);
+            buttons.undo = makeButton("wmd-undo-button", "Undo", "Ctrl+Z", null, group4);
             buttons.undo.execute = function (manager) { if (manager) manager.undo(); };
 
-            var redoTitle = /win/.test(nav.platform.toLowerCase()) ?
-                "Redo - Ctrl+Y" :
-                "Redo - Ctrl+Shift+Z"; // mac and other non-Windows platforms
-
-            buttons.redo = makeButton("wmd-redo-button", redoTitle, "icon-share-alt", null, group4);
+            buttons.redo = makeButton("wmd-redo-button", "Redo", "", null, group4);
             buttons.redo.execute = function (manager) { if (manager) manager.redo(); };
 
             if (helpOptions) {
@@ -1400,7 +1397,7 @@
                 var helpButtonImage = document.createElement("i");
                 helpButtonImage.className = "icon-question-sign";
                 helpButton.appendChild(helpButtonImage);
-                helpButton.className = "btn";
+                // helpButton.className = "btn";
                 helpButton.id = "wmd-help-button" + postfix;
                 helpButton.isHelp = true;
                 helpButton.title = helpOptions.title || defaultHelpHoverTitle;
