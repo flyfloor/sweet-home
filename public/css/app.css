@@ -80,7 +80,7 @@ input[type="color"]:focus{
 
 header {
 	z-index: 999;
-	background-color: #8888D4;
+	background-color: #1c5380;
 	opacity: 0.9;
 }
 footer a:after{
@@ -100,7 +100,6 @@ article ol {
 }
 
 article blockquote, article code {
-	border: none;
 	border-radius: 3px;
 	background-color: #f1f9f7;
 	margin: 10px 0;
@@ -152,6 +151,7 @@ article video {
 article .escaped-content {
 	line-height: 30px;
 	font-size: 15px;
+	padding: 8px 0;
 }
 
 article .escaped-content a {
@@ -256,7 +256,6 @@ body {
 
 h1 {
 	font-size: 30px;
-	padding: 0 0 15px 0;
 	line-height: 40px;
 }
 
@@ -290,7 +289,7 @@ textarea {
 }
 
 
-article, picture, section, header, footer, nav, wrapper, page, pagination, comment,code, blockquote, tags {
+article, picture, section, header, footer, nav, wrapper, page, pagination, comment,code, blockquote {
 	display: block;
 }
 
@@ -634,6 +633,6 @@ pagination{
 }
 .btn:hover {
 	color: #fff;
-	background-color: #888899;
+	background-color: #999999;
 	box-shadow: 0 1px 1px rgba(100,200,200,0.4);
 }

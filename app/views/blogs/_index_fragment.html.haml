@@ -8,6 +8,7 @@
 						%h1 #{blog.title} 
 				%div.escaped-content=sanitize blog.content.to_s.strip[0,1000]
 				=link_to "...", blog_path(blog)
+				%br
 				-unless blog.tags.blank?
 					%tags
 						-blog.tags.each do |tag|

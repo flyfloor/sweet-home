@@ -4,13 +4,13 @@
 	%article{id:"#{@blog.id}"}
 		%h1=@blog.title
 		%span.create-time=@blog.updated_at.localtime.to_s(:db)
+		%br
 		%div
 			.escaped-content=sanitize @blog.content
 		%a.screen-top{href:"#", style:"display: none;", title:'返回顶部'} 
 			%del
 			%b
 		-unless @blog.tags.blank?
-			%h6 标签:
 			%tags 
 				=render @blog.tags
 			%a.like-count
