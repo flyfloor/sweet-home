@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 				format.json { render json: @comment }
 			else
 				format.html { render 'new' }
-				format.json { render json:{status:"false"}}
+				format.json { render json:{status: false}}
 			end
 		end
 	end

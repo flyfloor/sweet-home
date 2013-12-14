@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
 	var source = '<li class="item">'+
-							'<img class="comment-avator" src="{{gravatar}}"/>'+
-							'<a class="comment-commenter" href="{{website}}" target="_blank">{{commenter}}</a></br>'+
-							'<p class="comment-content">{{content}}</p>'+
+							'<img class="item-avator" src="{{gravatar}}"/>'+
+							'<a class="item-commenter" href="{{website}}" target="_blank">{{commenter}}</a></br>'+
+							'<p class="item-content">{{content}}</p>'+
 						'</li>';
 	var template = Handlebars.compile(source);
 
@@ -18,7 +18,7 @@ $(document).ready(function(){
 			data: $(this).serialize(),
 			dataType: "json",
 			success: function(data){
-				if(data.status!= false){
+				if(data.status!== false){
 					$(template(data)).appendTo("ul.comments");
 					$("#comment_commenter,#comment_content,#comment_email,#comment_website").val("");
 				}
@@ -26,6 +26,7 @@ $(document).ready(function(){
 		});
 		return false;
 	});
+
 
 	//导航选中
 	var path = document.location.pathname;
@@ -54,12 +55,18 @@ $(document).ready(function(){
 	});
 
 	//删除评论
+	var $comment_item = $(".comments").find(".item");
+	$comment_item.hover(function(){
+		$(this).find(".delete-comment").stop().fadeIn();
+	},function(){
+		$(this).find(".delete-comment").stop().fadeOut();
+	});
 	$(document).on("click",".delete-comment", function(){
 		var $comment = $(this).parents("li.item");
 		$.ajax({
 			url: $(this).attr("href"),
 			type: "DELETE",
-			beforeSend: function(data){
+			success: function(data){
 				$comment.fadeOut();
 			}
 		});

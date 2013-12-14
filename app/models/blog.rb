@@ -27,7 +27,7 @@ class Blog < ActiveRecord::Base
   end
 
   def html_view
-    self.content = Kramdown::Document.new(self.content).to_html
+    self.content = Kramdown::Document.new(self.content, input: 'markdown').to_html
   end
 
   def label_tag tags
