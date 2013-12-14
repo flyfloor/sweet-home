@@ -100,7 +100,7 @@ article ol {
 }
 
 article blockquote, article code {
-	border: 1px solid #e0f1e9;
+	border: none;
 	border-radius: 3px;
 	background-color: #f1f9f7;
 	margin: 10px 0;
@@ -292,7 +292,7 @@ textarea {
 }
 
 
-article, picture, section, header, footer, nav, wrapper, page, pagination, comment,code, blockquote {
+article, picture, section, header, footer, nav, wrapper, page, pagination, comment,code, blockquote, tags {
 	display: block;
 }
 
