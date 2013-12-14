@@ -80,7 +80,7 @@ input[type="color"]:focus{
 
 header {
 	z-index: 999;
-	background-color: #326172;
+	background-color: #8888D4;
 	opacity: 0.9;
 }
 footer a:after{
@@ -190,9 +190,7 @@ article .escaped-content a {
 		overflow: hidden;
 		background-color: #fff;
 		margin: 10px 150px 30px -4px;
-		padding: 80px  9.11458% 50px;
-		border: 1px solid #DADDE1;
-		box-shadow: 0 1px 2px rgba(20, 255, 100, 0.3)
+		padding: 80px  80px 50px;
 	}
 
 	.article-content article {
@@ -629,3 +627,13 @@ pagination{
 	margin: 0 auto;
 }
 
+.btn {
+	background-color: #888888;
+	border: 1px solid #888888;
+	color: #fff;
+}
+.btn:hover {
+	color: #fff;
+	background-color: #888899;
+	box-shadow: 0 1px 1px rgba(100,200,200,0.4);
+}
