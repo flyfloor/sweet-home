@@ -12,6 +12,8 @@
         .wmd-panel
           #wmd-button-bar
           =f.text_area :content, class:'wmd-input blog_content_md', id: 'wmd-input',name: 'blog[content]'
+          .footer
+            %input.btn#publish_blog{type:'submit', value:'发表'}
           #wmd-preview.wmd-panel.wmd-preview
         :javascript
           (function(){
@@ -19,7 +21,5 @@
             var editor1 = new Markdown.Editor(converter1);
             editor1.run();
           })();
-        .tags-editer
-        =render 'tags/blog_tags' 
-      .footer
-        %input.btn#publish_blog{type:'submit', value:'发表'}
+      .tags-editer
+      =render 'tags/blog_tags' 

@@ -39,6 +39,7 @@ input[type="datetime-local"], input[type="date"], input[type="month"], input[typ
  input[type="week"], input[type="number"], input[type="email"], input[type="url"], 
  input[type="search"], input[type="tel"], input[type="color"] {
 	padding: 4px;
+	margin: 5px 0;
 	height: 20px;
 	line-height: 19px;
 }
@@ -64,6 +65,11 @@ input:-moz-placeholder { font-style: italic; color: #888 }
 	src:url("/font/BauhausLtBT.ttf");
 	font-weight: normal;
 	font-style: normal;
+}
+
+.field {
+	margin-bottom: 5px;
+	margin-left: 5px;
 }
 
 .normal{

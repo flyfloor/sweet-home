@@ -38,9 +38,9 @@
 			<ul class="sign-status">
 				<li style="position:absolute;right:160px;top:1px">
 					<% if signed_in? %>
-						<%= link_to "退出", signout_path, method: :delete%>
+						<%= link_to "Sign out", signout_path, method: :delete%>
 					<% else %>
-						<%= link_to "登录", signin_path %>
+						<%= link_to "Sign in", signin_path %>
 					<% end %>
 				</li>
 			</ul>
