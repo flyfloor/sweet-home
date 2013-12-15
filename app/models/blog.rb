@@ -26,6 +26,10 @@ class Blog < ActiveRecord::Base
     self.like_count ||= 0
   end
 
+  def self.recent_blogs(index = 3)
+    Blog.order("id DESC").limit(index)
+  end
+
   def label_tag tags
     tags.each do |tag|
       @exist_tag = Tag.where("name = ?", tag.to_s)

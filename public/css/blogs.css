@@ -318,16 +318,20 @@ a.delete-comment {
 }
 
 
-.qeditor_border{
-	border: 1px solid #CCCCCC;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  line-height: 1.62;
-  padding: 5px;
+#latest_articles {
+	padding: 10px;
+	position: absolute;
+	right: -100px;
+  top: 40px;
+  width: 220px;
 }
 
-.qeditor_preview {
-	min-height: 400px;
+#latest_articles a {
+	font-size: 14px;
+	display: block;
 }
 
-
+.latest_articles {
+	margin: 10px;
+}
 

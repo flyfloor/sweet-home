@@ -23,7 +23,12 @@
 		%h3 Write Something
 		.write-content
 			=render "comments/form"
-	%nav.article_nav
+	%section#latest_articles
+		%h3 Latest...
+		.latest_articles
+			-Blog.recent_blogs.each do |blog|
+				=link_to blog.title, blog_path(blog)
+	%nav#article_nav
 		-if @blog.has_pre?
 			=link_to "Older", blog_path(@blog.pre_blog), class: "pre_blog"
 		-if @blog.has_next?
