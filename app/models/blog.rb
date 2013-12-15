@@ -26,10 +26,6 @@ class Blog < ActiveRecord::Base
     self.like_count ||= 0
   end
 
-  def html_view
-    self.content = Kramdown::Document.new(self.content, input: 'markdown').to_html
-  end
-
   def label_tag tags
     tags.each do |tag|
       @exist_tag = Tag.where("name = ?", tag.to_s)

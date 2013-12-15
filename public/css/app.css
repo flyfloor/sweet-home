@@ -10,7 +10,21 @@ sub{vertical-align:sub}
 legend{color:#000}
 input,button,textarea,select{*font-size:100%}
 
-pre{white-space:pre;word-wrap:normal; font-size: 15px}
+pre{
+	white-space:pre;
+	word-wrap:normal; 
+	font-size: 15px;
+	background-color: #343;
+	color: #ff9;
+	border: none;
+}
+
+pre code {
+	display: block;
+	overflow: scroll;
+	padding: 10px 20px;
+	background-color: transparent;
+}
 a{font-size:13px; cursor:pointer;transition: background 0.2s linear 0s;}
 a:link{color:#556;text-decoration:none}
 a:visited{color:#556;text-decoration:none}
@@ -39,6 +53,11 @@ input[type="color"]:focus{
 	border-color: rgba(82, 168, 236, 0.8);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
+
+::-webkit-input-placeholder { font-style: italic; color: #888}
+::-moz-placeholder { font-style: italic; color: #888 } 
+:-ms-input-placeholder { font-style: italic; color: #888 } 
+input:-moz-placeholder { font-style: italic; color: #888 }
 
 @font-face {
 	font-family: "Bauhaus Lt BT";
@@ -100,12 +119,6 @@ article ol {
 }
 
 
-article code {
-	color: #555;
-	padding: 10px 20px;
-	overflow: scroll;
-}
-
 article img {
 	max-width: 700px;
 	margin: 10px 0;
@@ -130,7 +143,6 @@ article .escaped-content a {
 
 @media screen and (min-width: 1000px){
 	header {
-		position: fixed;
 		width: 100%;
 		height: 35px;
 		left: 0;
@@ -141,7 +153,6 @@ article .escaped-content a {
 
 	wrapper {
 		padding-top: 40px;
-		position: relative;
 		line-height: 20px;
 	}
 
@@ -259,7 +270,7 @@ textarea {
 }
 
 
-article, picture, section, header, footer, nav, wrapper, page, pagination, comment,code, blockquote {
+article, picture, section, header, footer, nav, wrapper, page, pagination, comment, blockquote {
 	display: block;
 }
 

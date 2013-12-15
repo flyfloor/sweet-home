@@ -6,9 +6,6 @@ class BlogsController < ApplicationController
 
 	def index
 		@blogs = Blog.paginate(page: params[:page], per_page:5).order("created_at DESC")
-		@blogs.each do |blog|
-			blog.html_view
-		end
 		respond_to do |format|
 			format.html
 			format.json { render json: @blogs }
@@ -38,7 +35,6 @@ class BlogsController < ApplicationController
 	end
 
 	def show
-		@blog.html_view
 		render status:404 unless @blog
 	end
 
