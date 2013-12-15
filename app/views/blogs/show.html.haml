@@ -17,7 +17,7 @@
 	%comment
 		%h3 Comments...
 		%br
-		%ul.comments.col10
+		%ul.comments
 			-@blog.comments.each do |comment|
 				%li.item=render comment
 		%h3 Write Something
@@ -26,16 +26,16 @@
 	%aside
 		.author
 			.author-avator
-				%a{href:"http://www.douban.com/people/31660758/"}
+				%a{href:"http://www.douban.com/people/31660758/", target:"_blank"}
 					%img{src:"/imgs/lacuna.jpg"}
 			.author-info
 				%h5 杀手马鹿
 			%p.motto things The things you own, end up oweing you.
 		%section
 			%h3 Latest...
-			.latest_articles
+			%ul.latest_articles
 				-Blog.recent_blogs.each do |blog|
-					=link_to blog.title, blog_path(blog)
+					%li=link_to blog.title, blog_path(blog)
 	%nav#article_nav
 		-if @blog.has_pre?
 			=link_to "Older", blog_path(@blog.pre_blog), class: "pre_blog"

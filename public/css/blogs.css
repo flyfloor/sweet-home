@@ -52,11 +52,9 @@
 	background-color: #fff;
 }
 
-.blog_content_md {
-	min-height: 400px;
-}
 
-#blog_title, #wmd-input, .editor-tools, .editor-content {
+#blog_title, .wmd-input,.wmd-preview, .tag-tokens {
+	width: 720px;
 	border: 1px solid #ccc;
 	line-height: 1.62;
 	box-shadow: 0 0 1px rgba(0,0,0,0.1);
@@ -252,7 +250,7 @@
 
 .create-tags {
 	float: left;
-	margin-top:-5px; 
+	margin-top:-2px; 
 }
 
 input.new-tag{
@@ -333,5 +331,4 @@ aside {
 
 .latest_articles a {
 	font-size: 14px;
-	display: block;
 }
