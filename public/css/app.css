@@ -156,7 +156,7 @@ article .escaped-content a {
 		line-height: 20px;
 	}
 
-	nav.author-info, section.page-content, section.article-content {
+	nav.main, section.page-content, section.article-content {
 		max-width: 1000px;
 		position: relative;
 		margin: 0 auto;
@@ -270,7 +270,7 @@ textarea {
 }
 
 
-article, picture, section, header, footer, nav, wrapper, page, pagination, comment, blockquote {
+article, picture, section, header, footer, nav, wrapper, page, pagination, comment, blockquote, aside {
 	display: block;
 }
 
@@ -313,12 +313,12 @@ article {
 		}
 
 
-	header .author-info a {
+	header .main a {
 		color: #fff;
 		font-size: 16px;
 		line-height: 25px;
 		display:inline-block;
-		padding: 5px 20px;
+		padding: 5px 15px;
 	}
 
 	header .sign-status a{
@@ -616,4 +616,14 @@ pagination{
 	color: #fff;
 	background-color: #999999;
 	box-shadow: 0 1px 1px rgba(100,200,200,0.4);
+}
+
+.author {
+	background-color: #eee;
+	padding: 15px;
+	margin-bottom: 10px;
+}
+
+.author-avator, .author-info{
+	display: inline-block;
 }

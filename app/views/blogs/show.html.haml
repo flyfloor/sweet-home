@@ -23,11 +23,19 @@
 		%h3 Write Something
 		.write-content
 			=render "comments/form"
-	%section#latest_articles
-		%h3 Latest...
-		.latest_articles
-			-Blog.recent_blogs.each do |blog|
-				=link_to blog.title, blog_path(blog)
+	%aside
+		.author
+			.author-avator
+				%a{href:"http://www.douban.com/people/31660758/"}
+					%img{src:"/imgs/lacuna.jpg"}
+			.author-info
+				%h4 杀手马鹿
+			%p.motto things The things you own, end up oweing you.
+		%section
+			%h3 Latest...
+			.latest_articles
+				-Blog.recent_blogs.each do |blog|
+					=link_to blog.title, blog_path(blog)
 	%nav#article_nav
 		-if @blog.has_pre?
 			=link_to "Older", blog_path(@blog.pre_blog), class: "pre_blog"

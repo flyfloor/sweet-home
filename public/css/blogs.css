@@ -318,20 +318,20 @@ a.delete-comment {
 }
 
 
-#latest_articles {
-	padding: 10px;
+aside {
+	padding: 0 15px 10px;
 	position: absolute;
 	right: -100px;
-  top: 40px;
+  top: 0px;
   width: 220px;
 }
 
-#latest_articles a {
-	font-size: 14px;
-	display: block;
-}
 
 .latest_articles {
 	margin: 10px;
 }
 
+.latest_articles a {
+	font-size: 14px;
+	display: block;
+}
