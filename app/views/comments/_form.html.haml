@@ -2,18 +2,18 @@
 	.comment_commenter
 		%label{for:'comment_commenter'} name:
 		%div
-			%input#comment_commenter.row.normal{type:'text',  name:'comment[commenter]', required:'true'}
+			%input#comment_commenter.normal{type:'text',  name:'comment[commenter]', required:'true'}
 	.comment_email
 		%label{for:'comment_email'} email:
 		%div
-			%input#comment_email.row.normal{type:'email',  name:'comment[email]', placeholder:"Only used for Gravatar, will not be published"}
+			%input#comment_email.normal{type:'email',  name:'comment[email]', placeholder:"Only used for Gravatar, will not be published"}
 	.comment_website
 		%label{for:'comment_website'} website:
 		%div
-			%input#comment_website.row.normal{type:'url', name:'comment[website]'}
+			%input#comment_website.normal{type:'url', name:'comment[website]'}
 	.comment_content
 		%label{for:'comment_content'} comment:
 		%div
-			%textarea#comment_content.row.{name:'comment[content]',required:'true'}
+			%textarea#comment_content{name:'comment[content]',required:'true'}
 	%p
 		%input.btn{type:'submit', value:'留言'}

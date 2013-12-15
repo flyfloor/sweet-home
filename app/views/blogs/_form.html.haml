@@ -3,11 +3,11 @@
   %article
     %h1 编辑文章
     =form_for @blog do |f|
-      .row.blog-title
+      .blog-title
         =f.label "题目:", class:'field', for:'blog_title'
         %div
           =f.text_field :title, class:'blog-title', id:'blog_title', name:'blog[title]'
-      .row.blog-content
+      .blog-content
         =f.label "正文:", class:'field', for:'blog_content' 
         .wmd-panel
           #wmd-button-bar
@@ -21,5 +21,5 @@
           })();
         .tags-editer
         =render 'tags/blog_tags' 
-      .row.footer
+      .footer
         %input.btn#publish_blog{type:'submit', value:'发表'}
