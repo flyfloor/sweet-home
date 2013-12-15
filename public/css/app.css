@@ -465,6 +465,11 @@ tags a.blog-tag{
 	padding-left: 5px;
 }
 
+.like-count:hover{
+	background:none;
+}
+
+
 .like-count:after{
 	content: "\f004";
 	color: #ff6c7c;
@@ -494,7 +499,7 @@ pagination{
 }
 
 .pagination, #article_nav{
-	margin: -20px 150px 50px -10px;
+	margin: -20px 150px 50px -5px;
 }
 
 .pagination a, #article_nav a{
