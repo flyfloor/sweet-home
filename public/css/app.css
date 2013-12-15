@@ -620,10 +620,21 @@ pagination{
 
 .author {
 	background-color: #eee;
-	padding: 15px;
+	padding: 25px;
 	margin-bottom: 10px;
 }
 
 .author-avator, .author-info{
 	display: inline-block;
+}
+
+.author-info {
+	vertical-align: top;
+	padding-top: 6px;
+}
+
+.motto{
+	margin-top: 10px;
+	font-style: italic;
+	color: #999;
 }
