@@ -1,4 +1,4 @@
 -if signed_in?
-	%a.create-blog{href:"#{new_blog_path}"} 写点东西
+	%a.create-blog{href:"#{new_blog_path}"} New one
 =render 'blogs/index_fragment'
 %pagination=will_paginate(page_links: false, previous_label: "Newer", next_label: "Older")

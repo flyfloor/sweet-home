@@ -15,8 +15,8 @@
 							%a.tag{href:"#{tag_path(tag)}"}=tag.name
 				-if signed_in?
 					.opration
-						=link_to '编辑', edit_blog_path(blog)
-						=link_to '删除', blog_path(blog), method: :delete, class: 'delete-blog', href: 'javascript:void(0)', remote: true
+						=link_to 'edit', edit_blog_path(blog)
+						=link_to 'destroy', blog_path(blog), method: :delete, class: 'delete-blog', href: 'javascript:void(0)', remote: true
 			.statistical-info
 				%h2.create-date #{blog.created_at.localtime.strftime("%b,%d")}
 				%span.create-year=blog.created_at.localtime.strftime("%Y")
