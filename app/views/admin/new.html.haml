@@ -5,9 +5,9 @@
 	=form_for :admin, :url => '/signin', method: :post do |f|
 		.field
 			=f.label "Email:", :for => 'email'
-			=f.text_field :email,class:"min-width"
+			=f.text_field :email,class:"minimum"
 		.field
 			=f.label "Password:", :for => 'password'
-			=f.text_field :password, class:"min-width"
+			=f.text_field :password, class:"minimum"
 		.field
 			=f.submit 'Submit', class: 'btn'
