@@ -633,3 +633,10 @@ pagination{
 	font-style: italic;
 	color: #999;
 }
+
+time {
+	/*font-family: "Bauhaus Lt BT";*/
+	font-style: italic;
+	color: #aaa;
+	font-size: 13px;
+}

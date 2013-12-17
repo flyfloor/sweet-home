@@ -297,13 +297,15 @@ input.new-tag{
 	height: 32px;
 	float: left;
 	margin-right: 10px;
-	/*margin-top: 3px;*/
+	margin-top: 3px;
+	border: 1px solid #eff;
 	background-color: #fafafa;
 }
 
 
 .item-content {
-	margin-left: 40px;
+	margin-top: 5px;
+	margin-left: 42px;
 }
 
 a.delete-comment {
@@ -332,3 +334,5 @@ aside {
 .latest_articles a {
 	font-size: 14px;
 }
+
+

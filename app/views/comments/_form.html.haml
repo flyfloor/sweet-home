@@ -1,15 +1,15 @@
 =form_for([@blog, @blog.comments.build]) do |f|
 	.field
 		=f.label "Name", for: "cmt_commenter"
-		=f.text_field :commenter,  class:"normal", name:'comment[commenter]'
+		=f.text_field :commenter,  class: "normal", name: "comment[commenter]", required: true
 	.field
 		=f.label "Email", for: "cmt_email"
-		=f.email_field :email, class:"normal", name:'comment[email]'
+		=f.email_field :email, class: "normal", name: "comment[email]", placeholder: "Just for gravatar, will not be published"
 	.field
 		=f.label "Website", for: "cmt_site"
-		=f.text_field :website, class:"normal", name:'comment[website]'
+		=f.url_field :website, class: "normal", name: "comment[website]"
 	.field
 		=f.label "Comment", for: "cmt_content"
-		=f.text_area :content, class:"normal", name:'comment[content]'
+		=f.text_area :content, class: "normal", name: "comment[content]"
 	.field
-		=f.submit "Submit"
+		=f.submit "Submit", class: "btn"

@@ -3,7 +3,7 @@
 %section.article-content
 	%article{id:"#{@blog.id}"}
 		%h1=@blog.title
-		%span.create-time=updated_time @blog
+		%time=updated_time @blog
 		%br
 		%div
 			.escaped-content=sanitize html_view @blog.content
@@ -13,7 +13,7 @@
 			%a.like-count
 			%span.like-nums=@blog.like_count
 		-if signed_in?
-			=link_to '编辑', edit_blog_path(@blog)
+			=link_to 'edit', edit_blog_path(@blog)
 	%comment
 		%h3 Comments...
 		%br
