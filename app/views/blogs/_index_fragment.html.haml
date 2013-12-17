@@ -5,8 +5,8 @@
 			.bref
 				.bref-title
 					%a.blog-view{href:"#{blog_path(blog)}"} 
-						%h1 #{blog.title} 
-				.escaped-content=sanitize html_view(blog.content.to_s.strip[0,1000])
+						%h1 #{blog.title}
+				.escaped-content=sanitize html_view blog.bref_content
 				%a{href:"#{blog_path(blog)}"} ...
 				%br
 				-unless blog.tags.blank?

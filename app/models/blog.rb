@@ -30,6 +30,14 @@ class Blog < ActiveRecord::Base
     Blog.order("id DESC").limit(index)
   end
 
+  def bref_content(range = 1000)
+    if self.content.length > range
+      self.content.to_s.strip[0,range]
+    else
+      self.content.to_s
+    end
+  end
+
   def label_tag tags
     tags.each do |tag|
       @exist_tag = Tag.where("name = ?", tag.to_s)

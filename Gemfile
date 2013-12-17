@@ -2,6 +2,7 @@ source 'http://ruby.taobao.org/'
 
 gem 'rails', '3.2.13'
 gem 'kramdown'
+gem "pygments.rb"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
