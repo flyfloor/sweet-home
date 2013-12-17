@@ -12,7 +12,7 @@
 				-unless blog.tags.blank?
 					%tags
 						-blog.tags.each do |tag|
-							%a.blog-tag{href:"#{tag_path(tag)}"}=tag.name
+							%a.tag{href:"#{tag_path(tag)}"}=tag.name
 				-if signed_in?
 					.opration
 						=link_to '编辑', edit_blog_path(blog)
