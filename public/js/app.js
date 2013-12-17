@@ -1,31 +1,31 @@
 $(document).ready(function(){
 
-	var source = '<li class="item">'+
-							'<img class="item-avator" src="{{gravatar}}"/>'+
-							'<a class="item-commenter" href="{{website}}" target="_blank">{{commenter}}</a></br>'+
-							'<p class="item-content">{{content}}</p>'+
-						'</li>';
-	var template = Handlebars.compile(source);
+	// var source = '<li class="item">'+
+	// 						'<img class="item-avator" src="{{gravatar}}"/>'+
+	// 						'<a class="item-commenter" href="{{website}}" target="_blank">{{commenter}}</a></br>'+
+	// 						'<p class="item-content">{{content}}</p>'+
+	// 					'</li>';
+	// var template = Handlebars.compile(source);
 
-	//评论
-	$("#form_comment").submit(function(data){
-		var articleId = $(this).parents("comment")
-													 .siblings("article")
-													 .attr("id");
-		$.ajax({
-			url: "/blogs/" + articleId + "/comments",
-			type: "POST",
-			data: $(this).serialize(),
-			dataType: "json",
-			success: function(data){
-				if(data.status!== false){
-					$(template(data)).appendTo("ul.comments");
-					$("#comment_commenter,#comment_content,#comment_email,#comment_website").val("");
-				}
-			}
-		});
-		return false;
-	});
+	// //评论
+	// $("#form_comment").submit(function(data){
+	// 	var articleId = $(this).parents("comment")
+	// 												 .siblings("article")
+	// 												 .attr("id");
+	// 	$.ajax({
+	// 		url: "/blogs/" + articleId + "/comments",
+	// 		type: "POST",
+	// 		data: $(this).serialize(),
+	// 		dataType: "json",
+	// 		success: function(data){
+	// 			if(data.status!== false){
+	// 				$(template(data)).appendTo("ul.comments");
+	// 				$("#comment_commenter,#comment_content,#comment_email,#comment_website").val("");
+	// 			}
+	// 		}
+	// 	});
+	// 	return false;
+	// });
 
 
 	//导航选中

@@ -4,17 +4,8 @@ class CommentsController < ApplicationController
 	before_filter :find_blog, only: [:create, :destroy]
 
 	def create
-		@comment = @blog.comments.build params[:comment]
-		@comment.gravatar = gravatar params[:comment][:email]
-		respond_to do |format|
-			if @comment.save
-				format.html { redirect_to @comment }
-				format.json { render json: @comment }
-			else
-				format.html { render 'new' }
-				format.json { render json:{status: false}}
-			end
-		end
+		@comment = @blog.comments.create params[:comment]
+		redirect_to blog_path(@blog)
 	end
 
 	def destroy

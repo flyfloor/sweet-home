@@ -3,6 +3,7 @@
 	%span.item-commenter=comment.commenter
 -else
 	%a.item-commenter{href: comment.website, target: "_blank"}=comment.commenter
+	%time=updated_time comment
 %p.item-content
 	=comment.content
 -if signed_in?

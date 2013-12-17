@@ -1,14 +1,14 @@
 %link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
 .edit-blog
   %article
-    %h1 编辑文章
+    %h1 Edit
     =form_for @blog do |f|
       .blog-title
-        =f.label "题目:", class:'field', for:'blog_title'
+        =f.label "Title:", class:'field', for:'blog_title'
         %div
           =f.text_field :title, class:'blog-title', id:'blog_title', name:'blog[title]'
       .blog-content
-        =f.label "正文:", class:'field', for:'blog_content' 
+        =f.label "Content:", class:'field', for:'blog_content' 
         .wmd-panel
           #wmd-button-bar
           =f.text_area :content, class:'wmd-input blog_content_md', id: 'wmd-input',name: 'blog[content]'

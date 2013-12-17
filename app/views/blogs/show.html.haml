@@ -3,7 +3,7 @@
 %section.article-content
 	%article{id:"#{@blog.id}"}
 		%h1=@blog.title
-		%span.create-time=@blog.updated_at.localtime.to_s(:db)
+		%span.create-time=updated_time @blog
 		%br
 		%div
 			.escaped-content=sanitize html_view @blog.content

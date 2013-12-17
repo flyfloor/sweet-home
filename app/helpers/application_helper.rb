@@ -13,4 +13,8 @@ module ApplicationHelper
   	text = Kramdown::Document.new(text).to_html.gsub("\n", "\r")
   end
 
+  def updated_time target
+    target.updated_at.localtime.to_s(:db) unless target.blank?
+  end
+
 end
