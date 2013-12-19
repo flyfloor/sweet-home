@@ -3,7 +3,7 @@ module ApplicationHelper
 
   def title page_title
     base_title = "Lacuna's_Blog"
-    if page_title.empty?
+    if page_title.blank?
       base_title
     else
       page_title
@@ -16,10 +16,6 @@ module ApplicationHelper
 
   def updated_time target
     target.updated_at.localtime.to_s(:db) unless target.blank?
-  end
-
-  def gravatar email
-    "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest email.strip.downcase}"
   end
 
 end
