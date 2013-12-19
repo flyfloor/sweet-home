@@ -601,12 +601,15 @@ pagination{
 	margin: 0 auto;
 }
 
-.btn {
+.button {
+	display: inline-block;
+  padding: 4px 12px;
 	background-color: #888887;
 	border: 1px solid #888888;
 	color: #fff;
+	transition: background linear 0.3s;
 }
-.btn:hover {
+.button:hover {
 	color: #fff;
 	background-color: #999999;
 	box-shadow: 0 1px 1px rgba(100,200,200,0.4);

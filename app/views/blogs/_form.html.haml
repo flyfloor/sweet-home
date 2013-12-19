@@ -10,7 +10,7 @@
       #wmd-button-bar
       =f.text_area :content, class:'wmd-input blog_content_md', id: 'wmd-input',name: 'blog[content]'
       .footer
-        %input.btn#publish_blog{type:'submit', value:'Submit'}
+      =f.submit "Submit", class: "button"
       #wmd-preview.wmd-panel.wmd-preview
     :javascript
       (function(){

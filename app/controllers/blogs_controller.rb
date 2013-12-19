@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
 	include AdminHelper
-	before_filter :sign_in_user, only: [:new, :edit, :update]
+	before_filter :sign_in_user, except: [:index, :show, :like]
 	before_filter :find_blog, only: [:show, :edit, :update, :destroy, :like]
 	caches_page :show
 
@@ -38,8 +38,6 @@ class BlogsController < ApplicationController
 		render status:404 unless @blog
 	end
 
-	def edit
-	end
 
 	def update
 		expire_page action: :show
