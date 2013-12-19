@@ -1,5 +1,4 @@
 class Blog < ActiveRecord::Base
-  require 'kramdown'
 	has_and_belongs_to_many :tags
 	has_many :comments, dependent: :delete_all
 	validates :title, presence: true

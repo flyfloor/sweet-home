@@ -14,8 +14,6 @@ pre{
 	white-space:pre;
 	word-wrap:normal; 
 	font-size: 15px;
-	background-color: #343;
-	color: #ff9;
 	border: none;
 }
 
@@ -23,7 +21,6 @@ pre code {
 	display: block;
 	overflow: scroll;
 	padding: 10px 20px;
-	background-color: transparent;
 }
 a{font-size:13px; cursor:pointer;transition: background 0.2s linear 0s;}
 a:link{color:#556;text-decoration:none}

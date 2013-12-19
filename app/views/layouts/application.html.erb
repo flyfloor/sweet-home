@@ -16,7 +16,7 @@
   <%= javascript_include_tag "/pagedown/Markdown.Converter" %>
   <%= javascript_include_tag "/pagedown/Markdown.Sanitizer" %>
   <%= javascript_include_tag "/pagedown/Markdown.Editor" %>
-  <%= stylesheet_link_tag "/highlighter/prettify", media:"all" %>
+  <%= stylesheet_link_tag "/highlight/styles/default" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -54,5 +54,7 @@
 	</wrapper>
 	<footer>
 	</footer>
+	<%= javascript_include_tag "/highlight/highlight.pack" %>
+	<script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

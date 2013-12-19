@@ -6,6 +6,7 @@
 				.bref-title
 					%a.blog-view{href:"#{blog_path(blog)}"} 
 						%h1 #{blog.title}
+				/ =binding.pry
 				.escaped-content=sanitize html_view blog.bref_content
 				%a{href:"#{blog_path(blog)}"} ...
 				%br
@@ -21,7 +22,3 @@
 				%h2.create-date #{blog.created_at.localtime.strftime("%b,%d")}
 				%span.create-year=blog.created_at.localtime.strftime("%Y")
 				%span.like-count=blog.like_count
-
-%script{src:"/highlighter/prettify.js"}
-:javascript
-	prettyPrint();
