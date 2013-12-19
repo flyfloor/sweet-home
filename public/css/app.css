@@ -10,18 +10,6 @@ sub{vertical-align:sub}
 legend{color:#000}
 input,button,textarea,select{*font-size:100%}
 
-pre{
-	white-space:pre;
-	word-wrap:normal; 
-	font-size: 15px;
-	border: none;
-}
-
-pre code {
-	display: block;
-	overflow: scroll;
-	padding: 10px 20px;
-}
 a{font-size:13px; cursor:pointer;transition: background 0.2s linear 0s;}
 a:link{color:#556;text-decoration:none}
 a:visited{color:#556;text-decoration:none}

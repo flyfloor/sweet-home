@@ -3,12 +3,19 @@
 Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
 
 */
+pre{
+  white-space:pre;
+  word-wrap:normal; 
+  border: none;
+}
 
 pre code {
   font-weight: lighter;
   display: block; 
   padding: 0.5em;
   background: #223964;
+  white-space: pre;
+  overflow: scroll;
 }
 
 pre code,
