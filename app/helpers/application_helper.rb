@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def html_view text
-    text = Kramdown::Document.new(text).to_html.gsub("\n", "\r")
+    text = Kramdown::Document.new(text).to_html.gsub("\n", "\r") unless text.blank?
   end
 
   def updated_time target

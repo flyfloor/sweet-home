@@ -5,16 +5,12 @@
 			=f.text_field :commenter,  class: "normal", name: "comment[commenter]", required: true
 		.field
 			=f.label "Email", for: "comment_email"
-			=f.email_field :email, class: "normal", name: "comment[email]", placeholder: "Just for gravatar, will not be published"
+			=f.email_field :email, class: "normal", name: "comment[email]", placeholder: "Only for gravatar, will not be published"
 		.field
 			=f.label "Website", for: "comment_site"
 			=f.url_field :website, class: "normal", name: "comment[website]"
 	.field
 		=f.label "Comment", for: "comment_content"
-		=f.text_area :content, class: "normal", name: "comment[content]", required: true
+		=f.text_area :content, class: "normal", name: "comment[content]", required: true, placeholder: "Markdown supported"
 	.field
 		=f.submit "Submit", class: "button"
-:javascript
-	(function(){
-		var converter2 = new Markdown.Converter();
-	})();

@@ -6,6 +6,6 @@
 	%br
 	%time=updated_time comment
 %p.item-content
-	=comment.content
+	=sanitize html_view comment.content
 -if signed_in?
 	=link_to 'x', [comment.blog, comment], class: "delete-comment"

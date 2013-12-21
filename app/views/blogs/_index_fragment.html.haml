@@ -6,7 +6,6 @@
 				.bref-title
 					%a.blog-view{href:"#{blog_path(blog)}"} 
 						%h1 #{blog.title}
-				/ =binding.pry
 				.escaped-content=sanitize html_view blog.bref_content
 				%a{href:"#{blog_path(blog)}"} ...
 				%br
