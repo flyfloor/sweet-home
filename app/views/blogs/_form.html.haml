@@ -3,9 +3,9 @@
   .blog-title
     =f.label "Title:", class:'field', for:'blog_title'
     %div
-      =f.text_field :title, class:'blog-title', id:'blog_title', name:'blog[title]'
+      =f.text_field :title, class:'blog-title', name:'blog[title]'
   .blog-content
-    =f.label "Content:", class:'field', for:'blog_content' 
+    =f.label "Content:", class:'field', for:'wmd-input' 
     .wmd-panel
       #wmd-button-bar
       =f.text_area :content, class:'wmd-input blog_content_md', id: 'wmd-input',name: 'blog[content]'
