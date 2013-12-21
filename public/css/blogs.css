@@ -55,9 +55,6 @@
 
 #blog_title, .wmd-input,.wmd-preview, .tag-tokens, #comment_content {
 	width: 720px;
-	border: 1px solid #ccc;
-	line-height: 1.62;
-	box-shadow: 0 0 1px rgba(0,0,0,0.1);
 }
 
 
