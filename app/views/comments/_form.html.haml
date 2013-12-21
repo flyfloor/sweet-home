@@ -1,13 +1,14 @@
 =form_for([@blog, @blog.comments.build]) do |f|
-	.field
-		=f.label "Name", for: "comment_commenter"
-		=f.text_field :commenter,  class: "normal", name: "comment[commenter]", required: true
-	.field
-		=f.label "Email", for: "comment_email"
-		=f.email_field :email, class: "normal", name: "comment[email]", placeholder: "Just for gravatar, will not be published"
-	.field
-		=f.label "Website", for: "comment_site"
-		=f.url_field :website, class: "normal", name: "comment[website]"
+	-if !signed_in?
+		.field
+			=f.label "Name", for: "comment_commenter"
+			=f.text_field :commenter,  class: "normal", name: "comment[commenter]", required: true
+		.field
+			=f.label "Email", for: "comment_email"
+			=f.email_field :email, class: "normal", name: "comment[email]", placeholder: "Just for gravatar, will not be published"
+		.field
+			=f.label "Website", for: "comment_site"
+			=f.url_field :website, class: "normal", name: "comment[website]"
 	.field
 		=f.label "Comment", for: "comment_content"
 		=f.text_area :content, class: "normal", name: "comment[content]"

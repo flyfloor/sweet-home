@@ -4,7 +4,15 @@ class CommentsController < ApplicationController
 	before_filter :find_blog, only: [:create, :destroy]
 
 	def create
-		@comment = @blog.comments.create params[:comment]
+		# binding.pry
+		@comment = Comment.new
+		if signed_in?
+			owner_comment @comment
+			@comment[:content] = params[:comment][:content]
+		else
+			@comment = Comment.new(params[:comment])
+		end
+		@blog.comments << @comment
 		redirect_to blog_path(@blog)
 	end
 

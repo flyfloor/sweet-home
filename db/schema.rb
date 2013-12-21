@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131121151235) do
+ActiveRecord::Schema.define(:version => 20131221054816) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "like_count"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "like_count", :default => 1
   end
 
   create_table "blogs_tags", :force => true do |t|
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20131121151235) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "remember_token"
+    t.string   "website"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
