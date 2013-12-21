@@ -5,7 +5,7 @@
 	%a.item-commenter{href: comment.website, target: "_blank"}=comment.commenter
 	%br
 	%time=updated_time comment
-%p.item-content
+.item-content
 	=sanitize html_view comment.content
 -if signed_in?
 	=link_to 'x', [comment.blog, comment], class: "delete-comment"

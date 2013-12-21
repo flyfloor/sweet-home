@@ -1390,6 +1390,9 @@
             buttons.redo = makeButton("wmd-redo-button", "Redo", "", null, group4);
             buttons.redo.execute = function (manager) { if (manager) manager.redo(); };
 
+            group5 = makeGroup(5);
+            buttons.fullscreen = makeButton("wmd-fullscreen-button", "全屏", "", bindCommand("fullscreen"), group5);
+
             if (helpOptions) {
                 group5 = makeGroup(5);
                 group5.className = group5.className + " pull-right";
@@ -2102,6 +2105,13 @@
         chunk.selection = "";
         chunk.skipLines(2, 1, true);
     }
+
+    commandProto.fullscreen = function (chunk, postProcessing) {
+        $("#wmd-input").css(color,"red");
+        $("#fullscreen-editor textarea").css({height:$(window).height()-73,overflowY:"auto"}).addClass("fullscreen-textarea");
+    }
+
+
 
 
 })();

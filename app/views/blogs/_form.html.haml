@@ -11,7 +11,7 @@
       =f.text_area :content, class:'wmd-input blog_content_md', id: 'wmd-input',name: 'blog[content]'
       .footer
       =f.submit "Submit", class: "button"
-      #wmd-preview.wmd-panel.wmd-preview
+    #wmd-preview.wmd-panel.wmd-preview
     :javascript
       (function(){
         var converter1 = Markdown.getSanitizingConverter();
