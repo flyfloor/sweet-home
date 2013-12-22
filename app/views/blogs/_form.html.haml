@@ -10,13 +10,46 @@
       #wmd-button-bar
       =f.text_area :content, class:'wmd-input blog_content_md', id: 'wmd-input',name: 'blog[content]'
       .footer
-      =f.submit "Submit", class: "button"
+        =f.submit "Submit", class: "button"
     #wmd-preview.wmd-panel.wmd-preview
-    :javascript
-      (function(){
+  #myModal.modal.hide.fade
+    .modal-header
+      %input.close{type:"button", data:{dismiss:"modal"}, aria:{hidden:"true"}, value:"x"}
+      %h3#myModalLabel Insert Image
+    .modal-body
+    %input#file{type:"file", name:"pic"}
+    .modal-footer
+      %input.button{type:"button", data:{dismiss:"modal"}, aria:{hidden:"true"}, value:"取消"}
+      :javascript
         var converter1 = Markdown.getSanitizingConverter();
         var editor1 = new Markdown.Editor(converter1);
         editor1.run();
-      })();
+
+        editor1.hooks.set("insertImageDialog", function(callback){
+          $("#myModal").modal("show");
+          $("#file")[0].onchange=function(){
+            $.ajaxFileUpload({
+              url:"/upload", 
+              secureuri:false,
+              fileElementId:'file',
+              async:false,
+              type: "POST",
+              dataType: "json",
+              success: function (data, status)
+              {
+                if(data.success == true){
+                  callback(data.filePath)
+                  $("#myModal").modal("hide");
+                }else{
+                  console.log(data);
+                }
+              },
+              error: function(data, status){
+                alert("shit");
+              }
+            });
+          }
+          return true;
+        });
   .tags-editer
   =render 'tags/blog_tags' 

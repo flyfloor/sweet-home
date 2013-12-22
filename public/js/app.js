@@ -19,7 +19,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: "/blogs/" + $article.attr("id"),
 			type : "DELETE",
-			beforeSend: function(data){
+			success: function(data){
 				$article.fadeOut();
 			}
 		});

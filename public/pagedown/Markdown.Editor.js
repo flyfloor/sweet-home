@@ -1390,8 +1390,6 @@
             buttons.redo = makeButton("wmd-redo-button", "Redo", "", null, group4);
             buttons.redo.execute = function (manager) { if (manager) manager.redo(); };
 
-            group5 = makeGroup(5);
-            buttons.fullscreen = makeButton("wmd-fullscreen-button", "全屏", "", bindCommand("fullscreen"), group5);
 
             if (helpOptions) {
                 group5 = makeGroup(5);

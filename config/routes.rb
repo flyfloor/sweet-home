@@ -6,7 +6,7 @@ SweetHome::Application.routes.draw do
   delete '/signout' => 'admin#destroy'
   post '/signin' => 'admin#create'
   post 'blogs/:id/like' => 'blogs#like'
-  post 'pics/upload' => 'pics#upload_picture'
+  post '/upload' => 'pics#upload'
   resources :tags
   resources :blogs do
     resources :tags

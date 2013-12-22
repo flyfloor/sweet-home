@@ -6,17 +6,10 @@ class BlogsController < ApplicationController
 
 	def index
 		@blogs = Blog.paginate(page: params[:page], per_page:5).order("created_at DESC")
-		respond_to do |format|
-			format.html
-			format.json { render json: @blogs }
-		end
 	end
 
 	def new
 		@blog = Blog.new
-		respond_to do |format|
-			format.html
-		end
 	end
 
 	def create
@@ -26,10 +19,8 @@ class BlogsController < ApplicationController
 		respond_to do |format|
 			if @blog.save
 				format.html { redirect_to @blog }
-				format.json { render json: @blog }
 			else
 				format.html { render 'new' }
-				format.json
 			end
 		end
 	end
@@ -47,7 +38,6 @@ class BlogsController < ApplicationController
 		respond_to do |format|
 			if @blog.update_attributes params[:blog]
 				format.html { redirect_to @blog }
-				format.json { render json: @blog }
 			end
 		end
 	end
