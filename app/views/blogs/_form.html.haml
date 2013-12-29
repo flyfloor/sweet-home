@@ -21,35 +21,35 @@
     .modal-footer
       %input.button{type:"button", data:{dismiss:"modal"}, aria:{hidden:"true"}, value:"取消"}
       :javascript
-        var converter1 = Markdown.getSanitizingConverter();
-        var editor1 = new Markdown.Editor(converter1);
-        editor1.run();
+        $(document).ready(function(){
 
-        editor1.hooks.set("insertImageDialog", function(callback){
-          $("#myModal").modal("show");
-          $("#file")[0].onchange=function(){
-            $.ajaxFileUpload({
-              url:"/upload", 
-              secureuri:false,
-              fileElementId:'file',
-              async:false,
-              type: "POST",
-              dataType: "json",
-              success: function (data, status)
-              {
-                if(data.success == true){
-                  callback(data.filePath)
-                  $("#myModal").modal("hide");
-                }else{
-                  console.log(data);
+          var converter1 = Markdown.getSanitizingConverter();
+          var editor1 = new Markdown.Editor(converter1);
+          editor1.run();
+
+          editor1.hooks.set("insertImageDialog", function(callback){
+            $("#myModal").modal("show");
+            $("#file")[0].onchange=function(){
+              $.ajaxFileUpload({
+                url:"/upload", 
+                secureuri:false,
+                fileElementId:'file',
+                async:false,
+                type: "POST",
+                dataType: "json",
+                success: function (data, status)
+                {
+                  if(data.success === true){
+                    callback(data.filePath)
+                    $("#myModal").modal("hide");
+                  }else{
+                    
+                  }
                 }
-              },
-              error: function(data, status){
-                alert("shit");
-              }
-            });
-          }
-          return true;
-        });
+              });
+            }
+            return true;
+          });
+        })
   .tags-editer
   =render 'tags/blog_tags' 

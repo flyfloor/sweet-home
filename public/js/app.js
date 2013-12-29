@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+	// $("#shit").click(function(){
+	// 	mainTip.display("shit");
+	// });
+
 	//导航选中
 	var path = document.location.pathname;
 	var pathArray = path.split("/");

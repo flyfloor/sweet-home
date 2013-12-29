@@ -10,10 +10,10 @@ sub{vertical-align:sub}
 legend{color:#000}
 input,button,textarea,select{*font-size:100%}
 
-a{font-size:13px; cursor:pointer;transition: background 0.2s linear 0s;}
+a{font-size:13px; cursor:pointer;transition: background 0.3s linear 0s;}
 a:link{color:#556;text-decoration:none}
 a:visited{color:#556;text-decoration:none}
-a:hover{color:#000;background-color: #ccc;text-decoration:none;}
+a:hover{color:#fff;background-color: #ccc;text-decoration:none;}
 a:active{color:#000;text-decoration:none}
 a img{border-width:0;vertical-align:middle}
 body,td,th{font:15px;line-height:1.62; letter-spacing: 0.5px}
@@ -630,4 +630,14 @@ time {
 	font-style: italic;
 	color: #aaa;
 	font-size: 13px;
+}
+
+.main-tip {
+	position: fixed;
+	color: #999;
+	display: none;
+	top: 10px;
+	background: #fefefe;
+	z-index: 999999;
+	padding: 3px 8px;
 }
