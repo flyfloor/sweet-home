@@ -1,5 +1,4 @@
-.wmd-panel{width:100%;}
-.wmd-input{min-height:600px;width:100%;}
+.wmd-input{min-height:600px;}
 .wmd-panel .btn-toolbar{margin-bottom:0;padding:0;width:100%;}
 .wmd-prompt-background{background-color:Black;}
 .wmd-prompt-dialog{border:1px solid #999999;background-color:#F5F5F5;}
@@ -23,62 +22,6 @@
 .wmd-preview{margin-top:10px;}
 .preview_title{line-height:40px;font-size:16px;color:#999;}
 #url{width:100%;}
-#fullscreen-editor{
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: #efefef;
-   z-index:100000000;
-}
-#fullscreen-editor .padding{
-  padding:10px;
-}
-#fullscreen-editor .btn-toolbar{
-  margin:0;
-}
-#fullscreen-editor textarea{
-  border-radius: 0;
-  background: #fff;
-  border:none;
-  height:600px;
-  overflow-y:auto;
-}
-#fullscreen-editor #wmd-button-bar{
-  background: #dedede;
-  display: block;
-  padding:10px;
-}
-#fullscreen-exit {
-  position: fixed;
-  right:20px;
-  top:10px;
-  font-size: 18px;
-  color:#777;
-  width:30px;
-  height:30px;
-  z-index:100000001;
-}
-#fullscreen-editor .btn-toolbar .btn i{color:#444;background: none;}
-#fullscreen-editor #wmd-preview{
-  border:1px solid #ddd;
-  padding:10px;
-  height:600px;
-  overflow-y:auto;
-}
-#fullscreen-exit i{background: none;}
-#fullscreen-editor  .btn-toolbar .btn:hover{background:#fff;background-image:none;}
-#fullscreen-editor #wmd-editor-con{
-  width:50%;
-  display: inline-block;
-  vertical-align: top;
-}
-#fullscreen-editor #wmd-preview-con{
-  width:50%;
-  display: inline-block;
-  vertical-align: top;
-}
 #wmd-preview{
   background: #eee;
   border: 1px solid #ddd;

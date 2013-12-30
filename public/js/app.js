@@ -1,8 +1,11 @@
 $(document).ready(function(){
 
-	// $("#shit").click(function(){
-	// 	mainTip.display("shit");
-	// });
+	//单例模式
+	var singleton = function(fn){
+		var result;
+		return result || (result = fn.apply(this, arguments));
+	}
+
 
 	//导航选中
 	var path = document.location.pathname;
@@ -77,10 +80,16 @@ $(document).ready(function(){
 	//滚动到顶部
 	$(function(){
 		$(window).scroll(function(){
-			if ($(window).scrollTop() > 800) {
-				$(".screen-top").fadeIn(100);
+			if ($(window).scrollTop() > 50) {
+				$(".tag-editor").css("top",-30);
+
+				if ($(window).scrollTop() > 800) {
+					$(".screen-top").fadeIn(100);
+				}else{
+					$(".screen-top").fadeOut(100);
+				}
 			}else{
-				$(".screen-top").fadeOut(100);
+				$(".tag-editor").css("top",20);
 			}
 		});
 	});
@@ -90,107 +99,157 @@ $(document).ready(function(){
 		return false;
 	});
 
+	var Tag = function(){
+		var tag = document.createElement("tag");
+		
+		return{
+			enabled: function($dom){
+				$dom.removeAttr("disabled");
+			},
 
-
-	$(function(){
-		$(".tag-tokens .tag-token").each(function(){
-			disableTag($(this));
-		});
-		refreshAuthorTags();
-	});
-
-	$(".new-tag").bind("input",function(){
-		$("#hidden_swap_tag").text($(this).val());
-		$(this).css("width",$(this).val().length*16);
-	});
-
-
-	$(".new-tag").on("keypress", function(event){
-		var _keyCode = event.which? event.which : event.keyCode;
-
-		if(_keyCode == 8 && $(this).val() == ""){
-			var $last_tag = $(".tag-tokens").children(".tag-token:last");
-			enableTag($last_tag);
-			$last_tag.remove();
-		}else if(_keyCode == 13){
-			if($("#hidden_swap_tag").text() != "") {
-				$(this).val("").css("width", "60");
-
-				makeTagToken($(this));
-			};
-			return false;
+			disabled: function($dom){
+				$dom.addClass("tag-disabled");
+				$dom.attr("disabled","disabled");
+			},
+			addTo: function($dom){
+				$tag.insertAfert($dom);
+			},
+			remove: function($dom){
+				$dom.remove();
+			},
+			refreshData:function($dom, fn){
+				$dom.val(fn.apply(this, arguments));
+			}
 		}
-		refreshAuthorTags();
+	}()
+
+
+
+	//Tag初始化
+	$(function(){
+		var tag_val = "", tag_token;
+		$(".selected-tags .sld-tag").each(function(){
+			tag_token = $(this).text() + "#tag#";
+			var $selected_tags = $(".selected-tags").children(".sld-tag"),
+					$exist_tags = $(".exist-tags .ext-tag");
+			for (var i = 0; i < $exist_tags.length; i++) {
+				if($(this).text() === $exist_tags.eq(i).text()){
+					Tag.disabled($exist_tags.eq(i));
+				}
+			};
+			Tag.refreshData($("#hid_tag"), function(){
+				return tag_val += tag_token;
+			});
+		});
 	});
 
-	$(".new-tag").on("change", function(event){
-		$(this).val("").css("width", "60");
-
-		makeTagToken($(this));
+	 $("#new-tag").bind("input",function(){
+		$("#hid_swap").text($(this).val());
+		// $(this).css("width",$(this).val().length*16);
 	});
 
-	function makeTagToken(dom){
-		var $new_tag_token = $("<span class='tag-token'>"+$("#hidden_swap_tag").text()+"</span>");
-		$new_tag_token.insertBefore(dom.parents(".create-tags"));
+
+
+	// $(function(){
+	// 	$(".tag-tokens .tag-token").each(function(){
+	// 		disableTag($(this));
+	// 	});
+	// 	refreshAuthorTags();
+	// });
+
+	// $(".new-tag").bind("input",function(){
+	// 	$("#hidden_swap_tag").text($(this).val());
+	// 	// $(this).css("width",$(this).val().length*16);
+	// });
+
+
+	// $(".new-tag").on("keypress", function(event){
+	// 	var _keyCode = event.which? event.which : event.keyCode;
+
+	// 	if(_keyCode == 8 && $(this).val() == ""){
+	// 		var $last_tag = $(".tag-tokens").children(".tag-token:last");
+	// 		enableTag($last_tag);
+	// 		$last_tag.remove();
+	// 	}else if(_keyCode == 13){
+	// 		if($("#hidden_swap_tag").text() != "") {
+	// 			$(this).val("").css("width", "60");
+
+	// 			makeTagToken($(this));
+	// 		};
+	// 		return false;
+	// 	}
+	// 	refreshAuthorTags();
+	// });
+
+	// $(".new-tag").on("change", function(event){
+	// 	$(this).val("").css("width", "60");
+
+	// 	// makeTagToken($(this));
+	// });
+
+	// function makeTagToken(dom){
+	// 	var $new_tag_token = $("<span class='tag-token'>"+$("#hidden_swap_tag").text()+"</span>");
+	// 	$new_tag_token.insertBefore(dom.parents(".create-tags"));
 	
-		$("#hidden_swap_tag").val("");
-		disableTag($new_tag_token);
+	// 	$("#hidden_swap_tag").val("");
+	// 	disableTag($new_tag_token);
 
 		
-		refreshAuthorTags();
-	}
+	// 	refreshAuthorTags();
+	// }
 	
 
 
-	$(document).on("click", ".tag-tokens .tag-token", function(){
-		enableTag($(this));
-		$(this).remove();
+	// $(document).on("click", ".tag-tokens .tag-token", function(){
+	// 	// enableTag($(this));
+	// 	// $(this).remove();
+	// 	Tag.remove($(this));
 
-		refreshAuthorTags();
-	});
+	// 	refreshAuthorTags();
+	// });
 
-	$(".exist-tags").children(".tag-token").click(function(){
-		if (!$(this).hasClass("tag-disabled")) {
-			$("<span class='tag-token'>"+$(this).text()+"</span>").insertBefore($(".create-tags"));
+	// $(".exist-tags").children(".tag-token").click(function(){
+	// 	if (!$(this).hasClass("tag-disabled")) {
+	// 		$("<span class='tag-token'>"+$(this).text()+"</span>").insertBefore($(".create-tags"));
 			
-			$(this).addClass("tag-disabled");
-			$(this).attr("disabled", "disabled");
-			refreshAuthorTags();
-		};
-	});
+	// 		$(this).addClass("tag-disabled");
+	// 		$(this).attr("disabled", "disabled");
+	// 		refreshAuthorTags();
+	// 	};
+	// });
 
 
-	function disableTag(tag){
-		var $exist_tags = $(".exist-tags").children(".tag-token");
-		for(var i=0; i < $exist_tags.length; i++){
-			var $disabled_tag = $(".exist-tags").children(".tag-token:eq("+i+")");
-			if(tag.text() === $disabled_tag.text()){
-				$disabled_tag.addClass("tag-disabled");
-				$disabled_tag.attr("disabled", "disabled");
-			}
-		}
+	// function disableTag(tag){
+	// 	var $exist_tags = $(".exist-tags").children(".tag-token");
+	// 	for(var i=0; i < $exist_tags.length; i++){
+	// 		var $disabled_tag = $(".exist-tags").children(".tag-token:eq("+i+")");
+	// 		if(tag.text() === $disabled_tag.text()){
+	// 			$disabled_tag.addClass("tag-disabled");
+	// 			$disabled_tag.attr("disabled", "disabled");
+	// 		}
+	// 	}
 
-	}
+	// }
 
-	function enableTag(tag){
-		var $exist_tags = $(".exist-tags").children(".tag-token");
-		for(var i=0; i < $exist_tags.length; i++){
-			var $disabled_tag = $(".exist-tags").children(".tag-token:eq("+i+")");
-			if(tag.text() === $disabled_tag.text()){
-				$disabled_tag.removeClass("tag-disabled");
-				$disabled_tag.removeAttr("disabled");
-			}
-		}
-	}
+	// function enableTag(tag){
+	// 	var $exist_tags = $(".exist-tags").children(".tag-token");
+	// 	for(var i=0; i < $exist_tags.length; i++){
+	// 		var $disabled_tag = $(".exist-tags").children(".tag-token:eq("+i+")");
+	// 		if(tag.text() === $disabled_tag.text()){
+	// 			$disabled_tag.removeClass("tag-disabled");
+	// 			$disabled_tag.removeAttr("disabled");
+	// 		}
+	// 	}
+	// }
 
-	function refreshAuthorTags(){
-		var author_tags = "";
-		$(".tag-tokens .tag-token").each(function(index){
-			author_tags += $(this).text() + "#tag#";
-		});
+	// function refreshAuthorTags(){
+	// 	var author_tags = "";
+	// 	$(".tag-tokens .tag-token").each(function(index){
+	// 		author_tags += $(this).text() + "#tag#";
+	// 	});
 
-		$("#author_tags").val(author_tags);
-	}
+	// 	$("#author_tags").val(author_tags);
+	// }
 
 
 	$(".subcheck").on("keypress", stopSubmit); 

@@ -1,6 +1,5 @@
-%link{rel:"stylesheet", href:"/css/blogs.css", media:"all"}
 -provide(:title, @blog.title)
-%section.article-content
+.article-content
 	%article{id:"#{@blog.id}"}
 		%h1=@blog.title
 		%time=updated_time @blog

@@ -40,10 +40,10 @@ input[type="color"]:focus{
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 
-::-webkit-input-placeholder { font-style: italic; color: #888}
-::-moz-placeholder { font-style: italic; color: #888 } 
-:-ms-input-placeholder { font-style: italic; color: #888 } 
-input:-moz-placeholder { font-style: italic; color: #888 }
+::-webkit-input-placeholder { font-weight: normal; font-style: italic; color: #888}
+::-moz-placeholder { font-weight: normal; font-style: italic; color: #888 } 
+:-ms-input-placeholder { font-weight: normal; font-style: italic; color: #888 } 
+input:-moz-placeholder { font-weight: normal; font-style: italic; color: #888 }
 
 @font-face {
 	font-family: "Bauhaus Lt BT";
@@ -53,7 +53,7 @@ input:-moz-placeholder { font-style: italic; color: #888 }
 }
 
 .field {
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 	margin-left: 5px;
 }
 
@@ -125,27 +125,37 @@ article .escaped-content a {
 		line-height: 20px;
 	}
 
-	nav.main, section.page-content, section.article-content {
+	nav.main, .index-content, .article-content, .article-editor {
 		max-width: 1000px;
 		position: relative;
 		margin: 0 auto;
 	}
 
 
-	section.page-content article {
+	.index-content article {
 		position: relative;
 	}	
-
-	.page-content article .bref, .article-content article, comment {
+	
+	.index-content article .bref, .article-content article, comment {
 		min-height: 250px;
-		overflow: hidden;
-		background-color: #fff;
-		margin: 10px 150px 30px -4px;
 		padding: 80px  80px 50px;
 	}
 
+	.index-content article .bref, .article-content article, comment, .article-editor article {
+		overflow: hidden;
+		background-color: #fff;
+		margin: 10px 150px 30px -4px;
+	}
+
+
+	.article-editor article {
+		padding: 50px 30px;
+		width: 740px;
+		background-color: #fff;
+	}
+
 	.bref-title a:hover {
-		color: #888;
+		color: #775;
 		background: none;
 	}
 
@@ -189,7 +199,7 @@ article .escaped-content a {
 	  background-color: #fff;
 	}
 
-	section.page-content article, section.article-content article {
+	.page-content article, .article-content article {
 		padding: 20px;
 		padding-top: 70px;
 		margin-left: -60px;
@@ -380,15 +390,15 @@ a.lnk-flat:link, a.lnk-flat:visited {
 }
 
 
-	section.page-content article .blog-title {
+	.index-content article .blog-title {
 		position: relative;
 		margin-right: -20px;
 	}
-	section.page-content article a:hover, section.page-content section a:hover {
+	.index-content article a:hover, .idex-content section a:hover {
 		color: #557;
 	}
 	
-	section.page-content tag {
+	.index-content tag {
 		display: inline-block;
 		width: 235px;
 		height: 90px;
@@ -400,7 +410,7 @@ a.lnk-flat:link, a.lnk-flat:visited {
 		background-color: #fff;
 	}
 
-	section.page-content tag:hover {
+	.index-content tag:hover {
 	  background:-webkit-gradient(linear, 0 0, 0 100%, from(#fefefe), to(#ffffff));
 	  background:-moz-linear-gradient(#fefefe, #ffffff);
 	  background:-o-linear-gradient(#fefefe, #ffffff);
@@ -410,21 +420,21 @@ a.lnk-flat:link, a.lnk-flat:visited {
 	}
 
 
-	section.page-content .tag-view {
+	.index-content .tag-view {
 		display: block;
 	}
 
-	section.page-content tag a.tag-view {
+	.index-content tag a.tag-view {
 		font-size: 20px;
 		padding: 10px 20px;
 		letter-spacing: 3px;
 	}
 
-	section.page-content tag span.tag-view {
+	.index-content tag span.tag-view {
 		font-size: 12px;
 	}
 
-	section.page-content article .blog-view {
+	.index-content article .blog-view {
 		color: #556;
 		display: block;
 	}
@@ -560,14 +570,14 @@ pagination{
 	background-color: #fff;
   border: 1px solid #ddd;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
-  height: 250px;
+  height: 280px;
   margin: 100px auto;
   padding: 30px;
   width: 360px;
 }
 
 #signin h2 {
-	margin-bottom: 40px;
+	margin: 20px 0 30px;
 }
 
 .tip {
@@ -632,12 +642,331 @@ time {
 	font-size: 13px;
 }
 
-.main-tip {
-	position: fixed;
-	color: #999;
-	display: none;
-	top: 10px;
-	background: #fefefe;
-	z-index: 999999;
-	padding: 3px 8px;
+
+.tag-editor {
+	background-color: #eee;
+  margin: 30px 100px 0 0;
+  padding: 30px 20px;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 250px;
+  transition: top 0.2s;
 }
+
+.article-content{
+	min-height: 640px;
+}
+
+@media screen and (min-width: 1000px){
+	.article-content {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+	.article-content article{
+		-moz-box-sizing: border-box;
+		box-shadow: 0 1px 2px rgba(59,175,54, 0.2);
+	}
+	
+
+	.screen-top {
+		right: 380px;
+	}
+	
+}
+
+/*--窗口640px以上、999px以下--*/
+@media screen and (min-width: 640px) and (max-width: 999px){
+	.article-content {
+		margin: 0 20px;
+	}
+	.article-content article{
+		margin-top: 10px;
+		-moz-box-sizing: border-box;
+		box-shadow: 0 1px 2px rgba(59,175,54, 0.2);
+	}
+	.screen-top {
+		right: 150px;
+	}
+}
+
+/*--窗口640px以下*/
+@media screen and (max-width: 639px){
+	.screen-top {
+		right: 50px;
+	}
+}
+
+
+.article-content article {
+	background-color: #fff;
+}
+
+
+#blog_title, .wmd-input,.wmd-preview, #comment_content {
+	width: 720px;
+}
+
+
+.editor-tools {
+	border-bottom: 0;
+}
+
+#blog_title {
+	margin-top: 5px;
+}
+
+.control-panel {
+	float: right;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+
+	.control-panel li {
+		float: left;
+	}
+
+	.control-panel .lnk-flat {
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+
+
+.image-btn .lnk-flat {
+	border-top-right-radius:0; 
+	border-bottom-right-radius:0; 
+}
+.link-btn .lnk-flat {
+	border-top-left-radius:0; 
+	border-bottom-left-radius:0; 
+}
+
+.lnk-flat,.lnk-confirm,.bn-flat {
+	background:transparent; 
+	border-width: 1px;
+	border-style: solid;
+	border-color: #bbb;
+	display: inline-block;
+	color: #444;
+	border-radius: 3px;
+		-webkit-border-radius:3px;
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+	.btn, .lnk-flat, .lnk-confirm, .bn-flat input {
+		cursor: pointer;
+	}
+
+.bn-flat input {
+	border-width: 0;
+}
+	
+
+.bn-flat input {
+	height: 25px;
+	padding: 0 14px;
+	color: #333;
+}
+
+
+.row.footer {
+	margin-top: 50px;
+	position: relative;
+}
+
+.cancel-blog {
+	position: absolute;
+	right: 0px;
+}
+
+.pic-dialog {
+	position: fixed;
+	z-index: 1000;
+}
+
+.pic-dialog-shadow {
+	position: absolute;
+	left: -8px;
+	top: -8px;
+	width: 100%;
+	height: 100%;
+	padding: 8px;
+	background: #666;
+	opacity: .4;
+}
+
+.pic-dialog-content {
+	position: relative;
+	z-index: 2;
+	background: #fff;
+	border: 1px solid #bbb;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#cancel_edit {
+	height: 25px;
+	margin-top: 3px;
+	margin-bottom: -3px;
+	border: 0;
+	display: block;
+	padding: 0 14px;
+}
+
+.screen-top {
+	background-color: #ddd;
+  border: 1px solid #D5D5D5;
+  border-radius: 3px;
+  bottom: 100px;
+  box-shadow: 0 0 5px #F5F5F5;
+  height: 30px;
+  outline: 0 none;
+  overflow: hidden;
+  position: fixed;
+  text-indent: -9999px;
+  width: 30px;
+}
+.screen-top:hover {
+	background-color: #ded;
+}
+.screen-top del {
+	border-color: transparent transparent #aaa;
+  border-style: dashed dashed solid;
+  border-width: 8px;
+  font-size: 0;
+  height: 0;
+  left: 7px;
+  position: absolute;
+  top: -2px;
+  width: 0;
+}
+.screen-top b {
+	background-color: #aaa;
+  height: 10px;
+  left: 12px;
+  position: absolute;
+  top: 12px;
+  width: 6px;
+}
+
+
+/*Tags*/
+tag:hover {
+	cursor: pointer;
+}
+
+tag {
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  margin: 2px 4px;
+  border-radius: 2px;
+}
+
+.sld-tag{
+	background-color: #EEFFEE;
+  box-shadow: 0 1px 1px rgba(200, 230, 200, 0.8);
+  color: #777;
+  font-size: 12px;
+  height: 18px;
+  padding: 1px 10px;
+}
+
+.ext-tag {
+	background-color: #AACCAA;
+  color: #FFFFFF;
+  font-size: 12px;
+  margin-right: 5px;
+  padding: 2px 10px;
+}
+
+.ext-tag:hover {
+	background-color: #777;
+}
+
+
+#new-tag{
+	min-width: 60px;
+	background: #eee;
+	border: none;
+	box-shadow: none;
+	font-size: 13px;
+}
+
+tag.tag-disabled {
+	cursor: default;
+	background-color: #ccc !important;
+}
+
+.hiddenspan {
+	position: absolute;
+	visibility: hidden;
+	font-size: 12px;
+}
+.cvt-content {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.comments, .write-content {
+	padding: 10px;
+}
+
+.comments .item{
+	position: relative;
+	font-size: 13px;
+	line-height: 1.5;
+	padding: 10px 40px 0 0;
+	margin-bottom: 25px;
+}
+
+#comment_content {
+ 	height: 150px;
+}
+
+
+.item-avator{
+	width: 32px;
+	height: 32px;
+	float: left;
+	margin-right: 10px;
+	margin-top: 3px;
+	border: 1px solid #eff;
+	background-color: #fafafa;
+}
+
+
+.item-content {
+	margin-top: 5px;
+	margin-left: 42px;
+}
+
+a.delete-comment {
+	position: absolute;
+	right:10px;
+	top:10px;
+	color:#f44;
+	display: none;
+	transition: color 0.2s linear 0s;
+}
+
+
+aside {
+	padding: 0 15px 10px;
+	position: absolute;
+	right: -100px;
+  top: 0px;
+  width: 220px;
+}
+
+
+.latest_articles {
+	margin: 10px;
+}
+
+.latest_articles a {
+	font-size: 14px;
+}
+
+
