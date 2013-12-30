@@ -80,16 +80,17 @@ $(document).ready(function(){
 	//滚动到顶部
 	$(function(){
 		$(window).scroll(function(){
-			if ($(window).scrollTop() > 50) {
-				$(".tag-editor").css("top",-30);
+			var scrollHight = $(window).scrollTop();
+			if (scrollHight > 50) {
+				$(".tag-editor").css("position", "fixed");
 
-				if ($(window).scrollTop() > 800) {
+				if (scrollHight > 800) {
 					$(".screen-top").fadeIn(100);
 				}else{
 					$(".screen-top").fadeOut(100);
 				}
 			}else{
-				$(".tag-editor").css("top",20);
+				$(".tag-editor").css("position", "absolute");
 			}
 		});
 	});

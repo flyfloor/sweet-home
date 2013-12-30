@@ -46,10 +46,19 @@ input[type="color"]:focus{
 input:-moz-placeholder { font-weight: normal; font-style: italic; color: #888 }
 
 @font-face {
-	font-family: "Bauhaus Lt BT";
+	font-family: "Bauhaus";
 	src:url("/font/BauhausLtBT.ttf");
 	font-weight: normal;
 	font-style: normal;
+}
+
+.italic {
+	font-family: "Bauhaus";
+	font-style: italic !important;
+}
+
+.bold {
+	font-weight: bold;
 }
 
 .field {
@@ -63,7 +72,6 @@ input:-moz-placeholder { font-weight: normal; font-style: italic; color: #888 }
 .minimum{
 	width: 350px;
 }
-
 
 
 header {
@@ -149,7 +157,7 @@ article .escaped-content a {
 
 
 	.article-editor article {
-		padding: 50px 30px;
+		padding: 50px 57px;
 		width: 740px;
 		background-color: #fff;
 	}
@@ -173,7 +181,7 @@ article .escaped-content a {
 
 
 	.statistical-info {
-		font-family: "Bauhaus Lt BT";
+		font-family: "Bauhaus";
 		position: absolute;
 		width: 100px;
 		height: 100%;
@@ -451,7 +459,7 @@ tags .tag{
 }
 
 .create-time {
-	font-family: "Bauhaus Lt BT";
+	font-family: "Bauhaus";
 	font-size: 13px;
 }
 
@@ -502,7 +510,7 @@ pagination{
 
 .pagination a, #article_nav a{
 	font-size: 15px;
-	font-family: "Bauhaus Lt BT";
+	font-family: "Bauhaus";
 	display: inline-block;
 	padding: 2px 6px;
 }
@@ -595,7 +603,7 @@ pagination{
 	text-align: left;
 	vertical-align: middle;
 	font-size: 16px;
-	font-family: "Bauhaus Lt BT";
+	font-family: "Bauhaus";
 	width: 1000px;
 	margin: 0 auto;
 }
@@ -636,7 +644,6 @@ pagination{
 }
 
 time {
-	/*font-family: "Bauhaus Lt BT";*/
 	font-style: italic;
 	color: #aaa;
 	font-size: 13px;
@@ -645,13 +652,9 @@ time {
 
 .tag-editor {
 	background-color: #eee;
-  margin: 30px 100px 0 0;
-  padding: 30px 20px;
-  position: fixed;
-  right: 20px;
-  top: 20px;
+	padding: 30px 20px;
   width: 250px;
-  transition: top 0.2s;
+  top: 0;
 }
 
 .article-content{
@@ -857,28 +860,50 @@ tag:hover {
 }
 
 tag {
-  float: left;
+	display: inline-block;
+  font-size: 12px;
   height: 20px;
   line-height: 20px;
-  margin: 2px 4px;
+  margin: 2px 8px 2px 0;
   border-radius: 2px;
 }
 
+.tag-picker {
+	padding: 10px 2px 0;
+}
+
+.tag-input, #new-tag {
+	background: #efe;
+}
+
+.tag-input {
+	border: 1px solid #dff;
+	height: 30px;
+}
+
+#new-tag{
+	background: #eef;
+	border: 1px solid #cef;
+	box-shadow: 0 0 10px rgba(20, 250, 200, 0.2) inset;
+  font-size: 13px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 0 6px;
+  min-width: 100px;
+  padding: 0 5px;
+  width: 100px;
+}
 .sld-tag{
 	background-color: #EEFFEE;
   box-shadow: 0 1px 1px rgba(200, 230, 200, 0.8);
   color: #777;
-  font-size: 12px;
-  height: 18px;
   padding: 1px 10px;
 }
 
 .ext-tag {
-	background-color: #AACCAA;
+	background-color: #aaccaa;
   color: #FFFFFF;
-  font-size: 12px;
-  margin-right: 5px;
-  padding: 2px 10px;
+  padding: 3px 10px;
 }
 
 .ext-tag:hover {
@@ -886,17 +911,10 @@ tag {
 }
 
 
-#new-tag{
-	min-width: 60px;
-	background: #eee;
-	border: none;
-	box-shadow: none;
-	font-size: 13px;
-}
 
 tag.tag-disabled {
 	cursor: default;
-	background-color: #ccc !important;
+	background-color: #dee !important;
 }
 
 .hiddenspan {

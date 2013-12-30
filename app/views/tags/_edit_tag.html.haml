@@ -1,17 +1,14 @@
-.selected-tags.row
-	%p Selected tags
-	.newtag-input
-		%input#new-tag{type:'text', maxlength: '60', style: 'height:16px;width: 60px; font-weight: bold;', placeholder: 'Add a label'}
-	-unless @blog.tags.blank?
-		-@blog.tags.each do |tag|
-			%tag.sld-tag=tag.name
-	%input#hid_tag{type: 'hidden', name: 'tags'}
-	%input#hid_swap{type: 'hidden'}
-.exist-tags
-	%p All existed tags	
-	-Tag.all.each do |tag|
-		%tag.ext-tag=tag.name
-:css
-	#new-tag:focus{
-		box-shadow: none;
-	}
+%h4.italic Label a tag
+.tag-picker
+	.selected-tags
+		.tag-input
+			%input#new-tag{type:'text', maxlength: '60', placeholder: 'Add a label'}
+		-unless @blog.tags.blank?
+			-@blog.tags.each do |tag|
+				%tag.sld-tag=tag.name
+		%input#hid_tag{type: 'hidden', name: 'tags'}
+		%input#hid_swap{type: 'hidden'}
+	.exist-tags
+		%p.italic All existed tags	
+		-Tag.all.each do |tag|
+			%tag.ext-tag=tag.name
