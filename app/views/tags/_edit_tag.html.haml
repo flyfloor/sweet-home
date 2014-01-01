@@ -3,11 +3,11 @@
 	.selected-tags
 		.tag-input
 			%input#new-tag{type:'text', maxlength: '60', placeholder: 'Add a label'}
+		%input#hid_tag{type: 'hidden', name: 'tags'}
+		%input#hid_swap{type: 'hidden'}
 		-unless @blog.tags.blank?
 			-@blog.tags.each do |tag|
 				%tag.sld-tag=tag.name
-		%input#hid_tag{type: 'hidden', name: 'tags'}
-		%input#hid_swap{type: 'hidden'}
 	.exist-tags
 		%p.italic All existed tags	
 		-Tag.all.each do |tag|

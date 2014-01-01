@@ -1,13 +1,12 @@
 $(document).ready(function(){
 
-	//单例模式
+	//Singleton
 	var singleton = function(fn){
 		var result;
 		return result || (result = fn.apply(this, arguments));
 	}
 
-
-	//导航选中
+	//Navigate
 	var path = document.location.pathname;
 	var pathArray = path.split("/");
 	if(path === "/"){
@@ -19,8 +18,7 @@ $(document).ready(function(){
 		};
 	}
 
-
-	//删除文章
+	//Delete a blog
 	$(".delete-blog").click(function(){
 		var $article = $(this).parents("article");
 		$.ajax({
@@ -33,7 +31,7 @@ $(document).ready(function(){
 		return false;
 	});
 
-	//删除评论
+	//Delete a comment
 	var $comment_item = $(".comments").find(".item");
 	$comment_item.hover(function(){
 		$(this).find(".delete-comment").stop().fadeIn();
@@ -52,8 +50,7 @@ $(document).ready(function(){
 		return false;
 	});
 
-
-	//喜欢
+	//Like the blog
 	$(".article-content a.like-count").click(function(){
 		var articleId = $("article").attr("id");
 		$.ajax({
@@ -66,18 +63,17 @@ $(document).ready(function(){
 		return false;
 	});
 
-	//首页、末页分页显示
+	//Pagination
 	$(function(){
-		$(".previous_page, .next_page").bind("whetherDisplay", function(){
+		$(".previous_page, .next_page").bind("page_display", function(){
 			if ($(this).hasClass("disabled")) {
 				$(this).css("display","none");
 			};
 		});
-		$(".previous_page, .next_page").trigger("whetherDisplay");
+		$(".previous_page, .next_page").trigger("page_display");
 	})
 
-
-	//滚动到顶部
+	//Scrolltop display,action
 	$(function(){
 		$(window).scroll(function(){
 			var scrollHight = $(window).scrollTop();
@@ -100,11 +96,12 @@ $(document).ready(function(){
 		return false;
 	});
 
+	//Tag part
 	var Tag = function(){
-		var tag = document.createElement("tag");
-		
+
 		return{
 			enabled: function($dom){
+				$dom.removeClass("tag-disabled");
 				$dom.removeAttr("disabled");
 			},
 
@@ -112,145 +109,79 @@ $(document).ready(function(){
 				$dom.addClass("tag-disabled");
 				$dom.attr("disabled","disabled");
 			},
-			addTo: function($dom){
-				$tag.insertAfert($dom);
+			addTo: function(className, val, $target){
+				var tag = document.createElement("tag");
+				tag.innerHTML = val;
+				tag.className = className;
+				$(tag).appendTo($target);
 			},
 			remove: function($dom){
 				$dom.remove();
 			},
-			refreshData:function($dom, fn){
-				$dom.val(fn.apply(this, arguments));
+			refresh: function($save_tag, spliter, $selectTags, $existTags){
+				var tags_val = "", tag_token;
+				$selectTags.find("tag").each(function(){
+					tag_token = $(this).text() + spliter;
+					var $selected_tags = $selectTags.children("tag"),
+							$exist_tags = $existTags.find("tag");
+					for (var i = 0; i < $exist_tags.length; i++) {
+						if($(this).text() === $exist_tags.eq(i).text()){
+							Tag.disabled($exist_tags.eq(i));
+						}
+					};
+					tags_val += tag_token;
+					$save_tag.val(tags_val);
+				});
+			},
+			refreshData: function(){
+				this.refresh($("#hid_tag"), "#tag#", $(".selected-tags"), $(".exist-tags"));
 			}
 		}
 	}()
 
+	//Tag init
+	Tag.refreshData();
 
-
-	//Tag初始化
-	$(function(){
-		var tag_val = "", tag_token;
-		$(".selected-tags .sld-tag").each(function(){
-			tag_token = $(this).text() + "#tag#";
-			var $selected_tags = $(".selected-tags").children(".sld-tag"),
-					$exist_tags = $(".exist-tags .ext-tag");
-			for (var i = 0; i < $exist_tags.length; i++) {
-				if($(this).text() === $exist_tags.eq(i).text()){
-					Tag.disabled($exist_tags.eq(i));
-				}
-			};
-			Tag.refreshData($("#hid_tag"), function(){
-				return tag_val += tag_token;
-			});
-		});
-	});
-
-	 $("#new-tag").bind("input",function(){
+	//Tag actions
+	$("#new-tag").bind("input",function(){
 		$("#hid_swap").text($(this).val());
-		// $(this).css("width",$(this).val().length*16);
 	});
 
+	$("#new-tag").on("change", function(event){
+		Tag.addTo("sld-tag", $(this).val(), $(".selected-tags"));
+		Tag.refreshData();
+		$(this).val("");
+	});
 
+	$("#new-tag").on("keypress", function(event){
+		var _keyCode = event.which? event.which : event.keyCode;
 
-	// $(function(){
-	// 	$(".tag-tokens .tag-token").each(function(){
-	// 		disableTag($(this));
-	// 	});
-	// 	refreshAuthorTags();
-	// });
+		if(_keyCode == 13){
+			Tag.addTo("sld-tag", $(this).val(), $(".selected-tags"));
+			Tag.refreshData();
+			$(this).val("");
+			return false;
+		}
+	});
 
-	// $(".new-tag").bind("input",function(){
-	// 	$("#hidden_swap_tag").text($(this).val());
-	// 	// $(this).css("width",$(this).val().length*16);
-	// });
+	$(document).on("click", ".selected-tags tag", function(){
+		var tagText = $(this).text();
+		$(".exist-tags").find("tag").each(function(){
+			if($(this).text() === tagText){
+				Tag.enabled($(this));
+			}
+		});
+		Tag.remove($(this));
+		Tag.refreshData();
+	});
 
-
-	// $(".new-tag").on("keypress", function(event){
-	// 	var _keyCode = event.which? event.which : event.keyCode;
-
-	// 	if(_keyCode == 8 && $(this).val() == ""){
-	// 		var $last_tag = $(".tag-tokens").children(".tag-token:last");
-	// 		enableTag($last_tag);
-	// 		$last_tag.remove();
-	// 	}else if(_keyCode == 13){
-	// 		if($("#hidden_swap_tag").text() != "") {
-	// 			$(this).val("").css("width", "60");
-
-	// 			makeTagToken($(this));
-	// 		};
-	// 		return false;
-	// 	}
-	// 	refreshAuthorTags();
-	// });
-
-	// $(".new-tag").on("change", function(event){
-	// 	$(this).val("").css("width", "60");
-
-	// 	// makeTagToken($(this));
-	// });
-
-	// function makeTagToken(dom){
-	// 	var $new_tag_token = $("<span class='tag-token'>"+$("#hidden_swap_tag").text()+"</span>");
-	// 	$new_tag_token.insertBefore(dom.parents(".create-tags"));
-	
-	// 	$("#hidden_swap_tag").val("");
-	// 	disableTag($new_tag_token);
-
-		
-	// 	refreshAuthorTags();
-	// }
-	
-
-
-	// $(document).on("click", ".tag-tokens .tag-token", function(){
-	// 	// enableTag($(this));
-	// 	// $(this).remove();
-	// 	Tag.remove($(this));
-
-	// 	refreshAuthorTags();
-	// });
-
-	// $(".exist-tags").children(".tag-token").click(function(){
-	// 	if (!$(this).hasClass("tag-disabled")) {
-	// 		$("<span class='tag-token'>"+$(this).text()+"</span>").insertBefore($(".create-tags"));
-			
-	// 		$(this).addClass("tag-disabled");
-	// 		$(this).attr("disabled", "disabled");
-	// 		refreshAuthorTags();
-	// 	};
-	// });
-
-
-	// function disableTag(tag){
-	// 	var $exist_tags = $(".exist-tags").children(".tag-token");
-	// 	for(var i=0; i < $exist_tags.length; i++){
-	// 		var $disabled_tag = $(".exist-tags").children(".tag-token:eq("+i+")");
-	// 		if(tag.text() === $disabled_tag.text()){
-	// 			$disabled_tag.addClass("tag-disabled");
-	// 			$disabled_tag.attr("disabled", "disabled");
-	// 		}
-	// 	}
-
-	// }
-
-	// function enableTag(tag){
-	// 	var $exist_tags = $(".exist-tags").children(".tag-token");
-	// 	for(var i=0; i < $exist_tags.length; i++){
-	// 		var $disabled_tag = $(".exist-tags").children(".tag-token:eq("+i+")");
-	// 		if(tag.text() === $disabled_tag.text()){
-	// 			$disabled_tag.removeClass("tag-disabled");
-	// 			$disabled_tag.removeAttr("disabled");
-	// 		}
-	// 	}
-	// }
-
-	// function refreshAuthorTags(){
-	// 	var author_tags = "";
-	// 	$(".tag-tokens .tag-token").each(function(index){
-	// 		author_tags += $(this).text() + "#tag#";
-	// 	});
-
-	// 	$("#author_tags").val(author_tags);
-	// }
+	$(".exist-tags").children("tag").click(function(){
+		if (!$(this).hasClass("tag-disabled")) {
+			Tag.addTo("sld-tag", $(this).text(), $(".selected-tags"));			
+			Tag.disabled($(this));
+			Tag.refreshData();
+		};
+	});
 
 
 	$(".subcheck").on("keypress", stopSubmit); 
