@@ -3,8 +3,8 @@
 		%article{id:"#{blog.id}"}
 			.bref
 				.bref-title
-					%a.blog-view{href:"#{blog_path(blog)}"} 
-						%h1 #{blog.title}
+					%h1
+						=link_to blog.title, blog_path(blog)
 				.escaped-content=sanitize html_view blog.bref_content
 				%a{href:"#{blog_path(blog)}"} ...
 				%br

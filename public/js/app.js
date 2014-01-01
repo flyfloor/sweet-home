@@ -148,8 +148,10 @@ $(document).ready(function(){
 	});
 
 	$("#new-tag").on("change", function(event){
-		Tag.addTo("sld-tag", $(this).val(), $(".selected-tags"));
-		Tag.refreshData();
+		if($(this).val().trim()!= ""){
+			Tag.addTo("sld-tag", $(this).val(), $(".selected-tags"));
+			Tag.refreshData();
+		}
 		$(this).val("");
 	});
 
@@ -157,22 +159,26 @@ $(document).ready(function(){
 		var _keyCode = event.which? event.which : event.keyCode;
 
 		if(_keyCode == 13){
-			Tag.addTo("sld-tag", $(this).val(), $(".selected-tags"));
-			Tag.refreshData();
+			if($(this).val().trim()!= ""){
+				Tag.addTo("sld-tag", $(this).val(), $(".selected-tags"));
+				Tag.refreshData();
+			}
 			$(this).val("");
 			return false;
 		}
 	});
 
 	$(document).on("click", ".selected-tags tag", function(){
-		var tagText = $(this).text();
-		$(".exist-tags").find("tag").each(function(){
-			if($(this).text() === tagText){
-				Tag.enabled($(this));
-			}
-		});
-		Tag.remove($(this));
-		Tag.refreshData();
+		var tagText = $(this).text().trim();
+		if(tagText != ""){
+			$(".exist-tags").find("tag").each(function(){
+				if($(this).text() === tagText){
+					Tag.enabled($(this));
+				}
+			});
+			Tag.remove($(this));
+			Tag.refreshData();
+		}
 	});
 
 	$(".exist-tags").children("tag").click(function(){

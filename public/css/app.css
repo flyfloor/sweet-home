@@ -10,7 +10,7 @@ sub{vertical-align:sub}
 legend{color:#000}
 input,button,textarea,select{*font-size:100%}
 
-a{font-size:13px; cursor:pointer;transition: background 0.3s linear 0s;}
+a{cursor:pointer;transition: background 0.3s linear 0s;}
 a:link{color:#556;text-decoration:none}
 a:visited{color:#556;text-decoration:none}
 a:hover{color:#fff;background-color: #ccc;text-decoration:none;}
@@ -56,6 +56,13 @@ input:-moz-placeholder { font-weight: normal; font-style: italic; color: #888 }
 	font-family: "Bauhaus";
 	font-style: italic !important;
 }
+
+.padding {
+	padding: 10px;
+	margin: 10px 0;
+}
+
+
 
 .bold {
 	font-weight: bold;
@@ -396,56 +403,6 @@ a.lnk-flat:link, a.lnk-flat:visited {
 	bottom: 30px;
 	z-index: 999;
 }
-
-
-	.index-content article .blog-title {
-		position: relative;
-		margin-right: -20px;
-	}
-	.index-content article a:hover, .idex-content section a:hover {
-		color: #557;
-	}
-	
-	.index-content tag {
-		display: inline-block;
-		width: 235px;
-		height: 90px;
-		color: #335544;
-		margin: 10px 10px 10px -5px;
-		padding: 30px 20px 10px;
-		text-align: center;
-		border: 1px solid #fefefe;
-		background-color: #fff;
-	}
-
-	.index-content tag:hover {
-	  background:-webkit-gradient(linear, 0 0, 0 100%, from(#fefefe), to(#ffffff));
-	  background:-moz-linear-gradient(#fefefe, #ffffff);
-	  background:-o-linear-gradient(#fefefe, #ffffff);
-	  background:linear-gradient(#fefefe, #ffffff);
-		box-shadow: 0 2px 20px rgba(200, 200, 200, 0.2) inset;
-		border: 1px solid #f0f0f0;
-	}
-
-
-	.index-content .tag-view {
-		display: block;
-	}
-
-	.index-content tag a.tag-view {
-		font-size: 20px;
-		padding: 10px 20px;
-		letter-spacing: 3px;
-	}
-
-	.index-content tag span.tag-view {
-		font-size: 12px;
-	}
-
-	.index-content article .blog-view {
-		color: #556;
-		display: block;
-	}
 
 
 tags .tag{
@@ -872,6 +829,10 @@ tag {
 	padding: 10px 2px 0;
 }
 
+.selected-tags, .exist-tags {
+	padding-bottom: 20px;
+}
+
 .tag-input, #new-tag {
 	background: #efe;
 }
@@ -890,7 +851,7 @@ tag {
   line-height: 30px;
   margin: 0 0 6px;
   padding: 0 5px;
-  width: 110px;
+  width: 70px;
 }
 .sld-tag{
 	background-color: #EEFFEE;
@@ -959,7 +920,7 @@ tag.tag-disabled {
 	margin-left: 42px;
 }
 
-a.delete-comment {
+.delete-comment {
 	position: absolute;
 	right:10px;
 	top:10px;
@@ -980,10 +941,20 @@ aside {
 
 .latest_articles {
 	margin: 10px;
+	font-style: italic;
 }
 
 .latest_articles a {
 	font-size: 14px;
 }
 
+.tag-detail {
+	padding: 10px 20px;
+}
+
+.tag-list {
+	width: 800px;
+	padding: 20px;
+	background-color: #fff;
+}
 

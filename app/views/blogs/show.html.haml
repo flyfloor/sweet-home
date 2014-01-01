@@ -30,11 +30,12 @@
 			.author-info
 				%h5 杀手马鹿
 			%p.motto The things you own, end up oweing you.
-		%section
+		%section.padding
 			%h3 Latest...
 			%ul.latest_articles
 				-Blog.recent_blogs.each do |blog|
-					%li=link_to blog.title, blog_path(blog)
+					%li
+						=link_to blog.title, blog_path(blog)
 	%nav#article_nav
 		-if @blog.has_pre?
 			=link_to "Older", blog_path(@blog.pre_blog), class: "pre_blog"

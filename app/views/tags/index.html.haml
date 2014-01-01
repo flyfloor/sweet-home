@@ -1,6 +1,9 @@
 .index-content
-	-@tags.each do |tag|
-		%tag
-			.tag-view
-				=link_to tag.name, tag_path(tag), class:'tag-view'
-				%span{class:'tag-view'} #{tag.blogs.count} 篇文章
+	%h3.italic{style:"padding:20px;"} All the tags
+	.tag-list
+		%ul.tag-detail
+			-@tags.each do |tag|
+				%li
+					%h3
+						=link_to tag.name, tag_path(tag)
+					%span #{tag.blogs.count} articles
