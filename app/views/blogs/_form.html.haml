@@ -2,12 +2,12 @@
   .blog-title
     =f.label "Title:", class:'field', for:'blog_title'
     %div
-      =f.text_field :title, class:'blog-title', name:'blog[title]'
+      =f.text_field :title, class:'blog-title', name:'blog[title]', required: true
   .blog-content
     =f.label "Content:", class:'field', for:'wmd-input' 
     .wmd-panel
       #wmd-button-bar
-      =f.text_area :content, class:'wmd-input blog_content_md', id: 'wmd-input',name: 'blog[content]'
+      =f.text_area :content, class:'wmd-input blog_content_md', id: 'wmd-input',name: 'blog[content]', required: true
       .footer
         =f.submit "Submit", class: "button"
     #wmd-preview.wmd-panel.wmd-preview
