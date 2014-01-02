@@ -4,6 +4,7 @@
 		%ul.tag-detail
 			-@tags.each do |tag|
 				%li
-					%h3
-						=link_to tag.name, tag_path(tag)
-					%span #{tag.blogs.count} articles
+					-count = 20
+					-count = tag.blogs.count unless tag.blogs.count > count
+					=link_to tag.name, tag_path(tag), style:"font-size:#{count+12}px;"
+					%span x #{tag.blogs.count}
