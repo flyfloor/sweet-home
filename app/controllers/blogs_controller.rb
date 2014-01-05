@@ -14,7 +14,7 @@ class BlogsController < ApplicationController
 
 	def create
 		@blog = Blog.new params[:blog]
-		make_tag
+		make_tag @blog
 
 		respond_to do |format|
 			if @blog.save
@@ -63,10 +63,5 @@ class BlogsController < ApplicationController
 	def find_blog
 		@blog = Blog.find params[:id]
 	end
-
-	private
-		def make_tag
-			split_tag(@blog, params[:tags].split('#tag#'))
-		end
 
 end

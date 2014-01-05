@@ -16,7 +16,7 @@ class PicsController < ApplicationController
 
 	def create
 		@pic = Picture.create params[:picture]
-		make_tag
+		make_tag @pic
 
 		if @pic.save
 			redirect_to pic_path(@pic)
@@ -36,11 +36,5 @@ class PicsController < ApplicationController
 	def destroy
 		
 	end
-
-	private
-		def make_tag
-			split_tag(@pic, params[:tags].split('#tag#'))
-		end
-
 
 end

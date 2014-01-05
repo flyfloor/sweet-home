@@ -30,4 +30,8 @@ module ApplicationHelper
     end
   end
 
+  def make_tag object
+    split_tag(object, params[:tags].split('#tag#'))
+  end
+
 end
