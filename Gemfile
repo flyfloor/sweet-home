@@ -32,7 +32,7 @@ gem 'therubyracer'
 gem 'execjs'
 gem 'haml'
 gem 'pry', :group => :development
-gem "paperclip", "~> 3.0"
+gem 'carrierwave'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

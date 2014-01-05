@@ -1,14 +1,7 @@
-.content
-	%h1 上传照片
-	%picture
-		%form.upload-form#upload_pic_form{method:'post', enctype: 'multipart/form-data', action:'/pics/upload'}
-			#pic_upload.pic_empty
-				.upload-panel
-					.upload-hd
-						.upload-button
-							%input#upload{type:'file', name:'upload'}
-					.upload-bd
-						.upload-items
-			.upload-buttons
-				%input{type: 'submit', value: '上传'}
-				%input{type: 'button', value: '取消'}
+.new-pic
+	%h1 Take a shot
+	%section
+		=form_for @pic, url: pics_path, html: { multipart: true } do |f|
+			=f.file_field :avatar
+			=f.text_area :description
+			=f.submit "submit"

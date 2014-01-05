@@ -1,2 +1,4 @@
 -if signed_in?
 	%a.create-blog.italic{href:"#{new_pic_path}"} Take a shoot
+=render 'index_section'
+%pagination=will_paginate(page_links: false, previous_label: "Newer", next_label: "Older")
