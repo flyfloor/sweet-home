@@ -1,0 +1,7 @@
+.index-content
+	-@pics.each do |pic|
+		%article{id:"#{pic.id}"}
+			.bref
+				=image_tag(pic.avatar.url)
+			.bref-title
+				=pic.description
