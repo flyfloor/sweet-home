@@ -18,4 +18,16 @@ module ApplicationHelper
   def updated_time target
     target.updated_at.localtime.to_s(:db) unless target.blank?
   end
+
+  def split_tag(object, tags)
+    tags.each do |tag|
+      @exist_tag = Tag.where("name = ?", tag.to_s)
+      if @exist_tag.blank?
+        object.tags << Tag.new(name: tag.to_s)
+      else
+        object.tags << @exist_tag        
+      end
+    end
+  end
+
 end

@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-	include AdminHelper
+	include ApplicationHelper, AdminHelper
 	before_filter :sign_in_user, except: [:index, :show, :like]
 	before_filter :find_blog, only: [:show, :edit, :update, :destroy, :like]
 	caches_page :show
@@ -14,7 +14,7 @@ class BlogsController < ApplicationController
 
 	def create
 		@blog = Blog.new params[:blog]
-		@blog.label_tag params[:tags].split('#tag#')
+		make_tag
 
 		respond_to do |format|
 			if @blog.save
@@ -33,7 +33,7 @@ class BlogsController < ApplicationController
 	def update
 		expire_page action: :show
 		@blog.tags = []
-		@blog.label_tag params[:tags].split('#tag#')
+		make_tag
 
 		respond_to do |format|
 			if @blog.update_attributes params[:blog]
@@ -63,5 +63,10 @@ class BlogsController < ApplicationController
 	def find_blog
 		@blog = Blog.find params[:id]
 	end
+
+	private
+		def make_tag
+			split_tag(@blog, params[:tags].split('#tag#'))
+		end
 
 end

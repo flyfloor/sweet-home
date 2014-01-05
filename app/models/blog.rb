@@ -37,14 +37,4 @@ class Blog < ActiveRecord::Base
     end
   end
 
-  def label_tag tags
-    tags.each do |tag|
-      @exist_tag = Tag.where("name = ?", tag.to_s)
-      if @exist_tag.blank?
-        self.tags << Tag.new(name: tag.to_s)
-      else
-        self.tags << @exist_tag        
-      end
-    end
-  end
 end

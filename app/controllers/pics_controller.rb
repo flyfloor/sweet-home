@@ -1,5 +1,5 @@
 class PicsController < ApplicationController
-	include AdminHelper
+	include ApplicationHelper, AdminHelper
 	before_filter :sign_in_user, only: [:new, :edit, :update]
 	
 	def index
@@ -16,6 +16,8 @@ class PicsController < ApplicationController
 
 	def create
 		@pic = Picture.create params[:picture]
+		make_tag
+
 		if @pic.save
 			redirect_to pic_path(@pic)
 		else
@@ -24,7 +26,6 @@ class PicsController < ApplicationController
 	end
 
 	def show
-		# binding.pry
 		@pic = Picture.find(params[:id])
 	end
 
@@ -35,6 +36,11 @@ class PicsController < ApplicationController
 	def destroy
 		
 	end
+
+	private
+		def make_tag
+			split_tag(@pic, params[:tags].split('#tag#'))
+		end
 
 
 end
