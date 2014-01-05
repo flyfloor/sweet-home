@@ -73,23 +73,6 @@ $(document).ready(function(){
 		$(".previous_page, .next_page").trigger("page_display");
 	})
 
-	//Scrolltop display,action
-	$(function(){
-		$(window).scroll(function(){
-			var scrollHight = $(window).scrollTop();
-			if (scrollHight > 50) {
-				$(".tag-editor").css("position", "fixed");
-
-				if (scrollHight > 800) {
-					$(".screen-top").fadeIn(100);
-				}else{
-					$(".screen-top").fadeOut(100);
-				}
-			}else{
-				$(".tag-editor").css("position", "absolute");
-			}
-		});
-	});
 
 	$(".screen-top").click(function(){
 		$("body, html").animate({scrollTop: 0}, 1000);

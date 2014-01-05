@@ -21,7 +21,6 @@
       %input.button{type:"button", data:{dismiss:"modal"}, aria:{hidden:"true"}, value:"取消"}
       :javascript
         $(document).ready(function(){
-
           var converter1 = Markdown.getSanitizingConverter();
           var editor1 = new Markdown.Editor(converter1);
           editor1.run();
@@ -50,6 +49,24 @@
             return true;
           });
         })
+
+        //Scrolltop display,action
+        $(function(){
+          $(window).scroll(function(){
+            var scrollHight = $(window).scrollTop();
+            if (scrollHight > 50) {
+              $(".tag-editor").css("position", "fixed");
+
+              if (scrollHight > 800) {
+                $(".screen-top").fadeIn(100);
+              }else{
+                $(".screen-top").fadeOut(100);
+              }
+            }else{
+              $(".tag-editor").css("position", "absolute");
+            }
+          });
+        });
   %aside
     .tag-editor
-      =render 'tags/edit_tag' 
+      =render partial: 'tags/edit_tag', locals: {model: @blog}

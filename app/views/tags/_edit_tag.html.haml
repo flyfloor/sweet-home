@@ -5,8 +5,8 @@
 			%input#new-tag{type:'text', placeholder: 'Add a label'}
 		%input#hid_tag{type: 'hidden', name: 'tags'}
 		%input#hid_swap{type: 'hidden'}
-		-unless @blog.tags.blank?
-			-@blog.tags.each do |tag|
+		-unless model.tags.blank?
+			-model.tags.each do |tag|
 				%tag.sld-tag=tag.name
 	.exist-tags
 		%p.italic All existed tags	

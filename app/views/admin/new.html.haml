@@ -4,9 +4,9 @@
 	=form_for :admin, url: '/signin', method: :post do |f|
 		.field
 			=f.label "Email:", for: 'admin_email'
-			=f.text_field :email,class:"minimum"
+			=f.text_field :email,class:"minimum", required: true
 		.field
 			=f.label "Password:", for: 'admin_password'
-			=f.password_field :password, class:"minimum"
+			=f.password_field :password, class:"minimum", required: true
 		.field
 			=f.submit 'Submit', class: 'button'

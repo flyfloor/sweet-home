@@ -69,8 +69,7 @@ input:-moz-placeholder { font-weight: normal; font-style: italic; color: #888 }
 }
 
 .field {
-	margin-bottom: 10px;
-	margin-left: 5px;
+	margin: 0 5px 10px;
 }
 
 .normal{
@@ -102,6 +101,9 @@ article ol {
 	list-style: decimal inside none;
 }
 
+article .tag-editor {
+	width: 250px;
+}
 
 article img {
 	max-width: 700px;
@@ -611,7 +613,6 @@ time {
 .tag-editor {
 	background-color: #eee;
 	padding: 30px 20px;
-  width: 250px;
   top: 0;
 }
 
@@ -975,3 +976,49 @@ aside {
 	background-color: #fff;
 }
 
+picture {
+	width: 1000px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.new-pic {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
+	min-height: 580px;
+	margin: 10px auto;
+	padding: 30px;
+	width: 600px;
+}
+
+.new-pic h2 {
+	margin: 10px 0 30px;
+}
+
+.new-pic textarea {
+	width: 560px;
+	height: 100px;
+	resize: none;
+}
+
+.a-upload {
+	margin-left: 5px;
+	padding: 2px 5px;
+	height: 20px;
+	line-height: 20px;
+	position: relative;
+	background: #f5f5f5;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow: hidden;
+	display: inline-block;
+}
+ 
+.a-upload  input {
+	position: absolute;
+	right: 0;
+	top: 0;
+	opacity: 0;
+	cursor: pointer;
+}
