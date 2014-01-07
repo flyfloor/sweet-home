@@ -3,8 +3,8 @@
 	.tag-list
 		%ul.tag-detail
 			-@tags.each do |tag|
-				%li
-					-count = 20;count = tag.blogs.count unless tag.blogs.count > count
-					-unless count == 0
+				-count = 20;count = tag.blogs.count unless tag.blogs.count > count
+				-unless count == 0
+					%li
 						=link_to tag.name, tag_path(tag), style:"font-size:#{count+12}px;"
 						%span x #{tag.blogs.count}
