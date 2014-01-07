@@ -1,5 +1,5 @@
 module CommentsHelper
-	def owner_comment comment
+	def author_comment comment
 		if current_user
 			comment[:email] = current_user.email
 			comment[:website] = current_user.website

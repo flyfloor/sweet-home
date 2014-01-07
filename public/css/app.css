@@ -278,7 +278,7 @@ article, picture, section, header, footer, nav, wrapper, page, pagination, comme
 }
 
 article {
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 32px;
 }
 
@@ -841,6 +841,7 @@ tag {
 
 .tag-input {
 	border: 1px solid #dff;
+	margin: 0 0 5px -2px;
 	height: 30px;
 }
 

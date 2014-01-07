@@ -49,24 +49,6 @@
             return true;
           });
         })
-
-        //Scrolltop display,action
-        $(function(){
-          $(window).scroll(function(){
-            var scrollHight = $(window).scrollTop();
-            if (scrollHight > 50) {
-              $(".tag-editor").css("position", "fixed");
-
-              if (scrollHight > 800) {
-                $(".screen-top").fadeIn(100);
-              }else{
-                $(".screen-top").fadeOut(100);
-              }
-            }else{
-              $(".tag-editor").css("position", "absolute");
-            }
-          });
-        });
   %aside
     .tag-editor
       =render partial: 'tags/edit_tag', locals: {model: @blog}

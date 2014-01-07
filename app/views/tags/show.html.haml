@@ -1,4 +1,4 @@
 %page
-	=render 'blogs/index_section'
+	=render partial:'blogs/index_section', locals:{blogs: @tag.blogs}
 	.tag-name
 		%span #{@tag.name},#{@tag.blogs.count} articles

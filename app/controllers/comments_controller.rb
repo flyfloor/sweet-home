@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 		# binding.pry
 		@comment = Comment.new
 		if signed_in?
-			owner_comment @comment
+			author_comment @comment
 			@comment[:content] = params[:comment][:content]
 		else
 			@comment = Comment.new(params[:comment])
@@ -18,9 +18,8 @@ class CommentsController < ApplicationController
 
 	def destroy
 		@comment = @blog.comments.find params[:id]
-		@comment.destroy
-		respond_to do |format|
-			format.json	{render json:{delete: "ok"}}	
+		if @comment.destroy
+			render json:{success: true}
 		end
 	end
 

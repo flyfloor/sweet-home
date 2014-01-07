@@ -16,12 +16,10 @@ class BlogsController < ApplicationController
 		@blog = Blog.new params[:blog]
 		make_tag @blog
 
-		respond_to do |format|
-			if @blog.save
-				format.html { redirect_to @blog }
-			else
-				format.html { render 'new' }
-			end
+		if @blog.save
+			redirect_to @blog
+		else
+			render 'new'
 		end
 	end
 
@@ -32,20 +30,18 @@ class BlogsController < ApplicationController
 
 	def update
 		expire_page action: :show
-		@blog.tags = []
-		make_tag
+		make_tag @blog
 
-		respond_to do |format|
-			if @blog.update_attributes params[:blog]
-				format.html { redirect_to @blog }
-			end
+		if @blog.update_attributes params[:blog]
+			redirect_to @blog
 		end
 	end
 
 	def destroy
-		@blog.destroy	
-		respond_to do |format|
-			format.json	{render json:{delete: "ok"}}	
+		if @blog.destroy
+			render json:{success: true}
+		else
+			render json:{success: false}
 		end
 	end
 
@@ -54,9 +50,7 @@ class BlogsController < ApplicationController
 	def like
 		@blog.like_count += 1
 		if @blog.save
-			respond_to do |format|
-				format.json {render json: @blog.like_count}
-			end
+			render json: @blog.like_count
 		end			
 	end
 

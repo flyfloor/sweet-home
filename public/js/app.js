@@ -1,5 +1,23 @@
 $(document).ready(function(){
 
+	//Scrolltop display,action
+  $(function(){
+    $(window).scroll(function(){
+      var scrollHight = $(window).scrollTop();
+      if (scrollHight > 50) {
+        $("aside .tag-editor").css("position", "fixed");
+        $screentop = $(".screen-top");
+	      if (scrollHight > 800) {
+	        $screentop.fadeIn(100);
+	      }else{
+	        $screentop.fadeOut(100);
+	      }
+      }else{
+        $("aside .tag-editor").css("position", "absolute");
+      }
+    });
+  });
+
 	//Singleton
 	var singleton = function(fn){
 		var result;
@@ -25,30 +43,40 @@ $(document).ready(function(){
 			url: "/blogs/" + $article.attr("id"),
 			type : "DELETE",
 			success: function(data){
-				$article.fadeOut();
+				delSucc(data, $article);
 			}
 		});
 		return false;
 	});
 
-	//Delete a comment
-	var $comment_item = $(".comments").find(".item");
-	$comment_item.hover(function(){
-		$(this).find(".delete-comment").stop().fadeIn();
+	//Comment hover for delete
+	var $commentItem = $(".comments").find(".item"),
+			$delComment = $(".delete-comment");
+	
+	$commentItem.hover(function(){
+		$(this).find($delComment).stop().fadeIn();
 	},function(){
-		$(this).find(".delete-comment").stop().fadeOut();
+		$(this).find($delComment).stop().fadeOut();
 	});
+	
+	//Delete a comment
 	$(document).on("click",".delete-comment", function(){
 		var $comment = $(this).parents("li.item");
 		$.ajax({
 			url: $(this).attr("href"),
 			type: "DELETE",
 			success: function(data){
-				$comment.fadeOut();
+				afterDel(data, $comment);
 			}
 		});
 		return false;
 	});
+
+	var delSucc = function(data, $dom){
+		if (data.success === true) {
+			$dom.fadeOut();
+		};
+	};
 
 	//Like the blog
 	$(".article-content a.like-count").click(function(){

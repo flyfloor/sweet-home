@@ -1,2 +1,5 @@
 %picture
 	=image_tag @pic.avatar.url
+	%p=@pic.description
+	%tags
+		=render @pic.tags
