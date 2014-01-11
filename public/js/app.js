@@ -78,14 +78,33 @@ $(document).ready(function(){
 		};
 	};
 
-	//Like the blog
-	$(".article-content a.like-count").click(function(){
-		var articleId = $("article").attr("id");
+	//Like the blog or a picture
+	$(".likeIt").click(function(){
+		var	$picture = $(this).parents("picture"),
+			 	$article = $(this).parents("article"),
+				tLength = $article.length || $picture.length,
+			 	$count = $(this).siblings(".like-counts"),
+				urlRoute,
+				tId;
+
+		if (tLength == 0) {
+			return false;
+		}else{
+			if ($article.length > 0) {
+				urlRoute = "/blogs/";
+				tId = $article.attr("id");
+			}
+			if ($picture.length > 0) {
+				urlRoute = "/pics/";
+				tId = $picture.attr("id");
+			}
+		}
+
 		$.ajax({
-			url:"/blogs/"+articleId+"/like",
+			url: urlRoute + tId + "/like",
 			type:"POST",
 			success: function(data){
-				$("span.like-nums").html(data);
+				$count.html(data);
 			}
 		});
 		return false;
@@ -215,5 +234,11 @@ $(document).ready(function(){
 		}
 	}
 
+	//Thumb picture's hover action
+	$(".index-content picture").hover(function(){
+		$(this).find(".shade, .pic-info").stop().fadeIn();
+	},function(){
+		$(this).find(".shade, .pic-info").stop().fadeOut();
+	});
 
 })

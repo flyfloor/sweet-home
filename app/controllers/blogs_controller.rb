@@ -51,7 +51,7 @@ class BlogsController < ApplicationController
 		@blog.like_count += 1
 		if @blog.save
 			render json: @blog.like_count
-		end			
+		end	
 	end
 
 	def find_blog

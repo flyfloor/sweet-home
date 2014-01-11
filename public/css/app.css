@@ -414,7 +414,15 @@ tags .tag{
 	font-size: 12px;
 }
 
-.like-nums {
+.likes {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	float: right;
+	display: inline-block;
+}
+
+.like-counts {
 	font-size: 14px;
 }
 
@@ -431,12 +439,12 @@ tags .tag{
 	padding-left: 5px;
 }
 
-.like-count:hover{
+.likeIt:hover{
 	background:none;
 }
 
 
-.like-count:after{
+.likeIt:after{
 	content: "\f004";
 	color: #ff6c7c;
 	font: 12px FontAwesome;
@@ -1023,3 +1031,29 @@ picture {
 	opacity: 0;
 	cursor: pointer;
 }
+
+.index-content picture {
+	display: inline-block;
+	max-width: 300px;
+	margin: 5px;
+	position: relative;
+}
+
+picture .shade, .pic-info {
+	display: none;
+	width: 290px;
+	padding: 5px;
+	position: absolute;
+	min-height: 30px;
+	bottom: 0;
+
+}
+picture .shade {
+	background-color: #022;
+	opacity: 0.7;
+}
+
+.pic-info {
+	color: #eee;
+}
+

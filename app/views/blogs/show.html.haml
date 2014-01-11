@@ -9,8 +9,8 @@
 		-unless @blog.tags.blank?
 			%tags 
 				=render @blog.tags
-			%a.like-count
-			%span.like-nums=@blog.like_count
+			%a.likeIt
+			%span.like-counts=@blog.like_count
 		-if signed_in?
 			=link_to 'edit', edit_blog_path(@blog)
 	%comment

@@ -1,5 +1,7 @@
-%picture
-	=image_tag @pic.avatar.url
-	%p=@pic.description
-	%tags
-		=render @pic.tags
+-provide(:title)
+.article-content
+	%picture
+		=image_tag @pic.avatar.url
+		%p=@pic.description
+		%tags
+			=render @pic.tags

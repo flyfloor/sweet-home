@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140105164150) do
+ActiveRecord::Schema.define(:version => 20140111151337) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -41,16 +41,12 @@ ActiveRecord::Schema.define(:version => 20140105164150) do
   add_index "comments", ["blog_id"], :name => "index_comments_on_blog_id"
   add_index "comments", ["picture_id"], :name => "index_comments_on_picture_id"
 
-  create_table "pics_tags", :force => true do |t|
-    t.integer "picture_id"
-    t.integer "tag_id"
-  end
-
   create_table "pictures", :force => true do |t|
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "avatar"
+    t.integer  "like_count"
   end
 
   create_table "pictures_tags", :force => true do |t|
