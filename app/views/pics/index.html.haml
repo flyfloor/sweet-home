@@ -1,13 +1,14 @@
 -if signed_in?
 	%a.create-blog.italic{href:"#{new_pic_path}"} Take a shoot
 .index-content
-	-@pics.each do |pic|
-		%picture{id:"#{pic.id}"}
-			.mini-pic
-				=image_tag(pic.avatar.thumb.url)
-				.shade
-				.pic-info
-					%span=pic.description
-					.likes
-						%a.likeIt
-						%span.like-counts=pic.like_count
+	%h3.italic.hd All pictures
+	.pic_list
+		-@pics.each do |pic|
+			%picture{id:"#{pic.id}"}
+				.mini-pic
+					=image_tag(pic.avatar.thumb.url)
+					.pic-info
+						%span=pic.description
+						.likes
+							%a.likeIt
+							%span.like-counts=pic.like_count

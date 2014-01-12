@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	var viewHight = $(document).height();
 
 	//Scrolltop display,action
   $(function(){
@@ -35,6 +36,23 @@ $(document).ready(function(){
 													.parent("li").attr("class", "active");
 		};
 	}
+
+	//Global mask
+	$(".globalMask").height(viewHight);
+
+
+	//Mask fade
+	$(".globalMask").click(function(){
+		$(this).fadeOut();
+	});
+	
+	//Item display
+	$("picture img").click(function(){
+		var tId = $(this).attr("id");
+
+
+		$(".globalMask").fadeIn();
+	});
 
 	//Delete a blog
 	$(".delete-blog").click(function(){
@@ -235,10 +253,11 @@ $(document).ready(function(){
 	}
 
 	//Thumb picture's hover action
+	var $thumb_info = $(".pic-info");
 	$(".index-content picture").hover(function(){
-		$(this).find(".shade, .pic-info").stop().fadeIn();
+		$(this).find($thumb_info).stop().fadeIn();
 	},function(){
-		$(this).find(".shade, .pic-info").stop().fadeOut();
+		$(this).find($thumb_info).stop().fadeOut();
 	});
 
 })
