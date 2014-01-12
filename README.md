@@ -1,6 +1,6 @@
 #SweetHome
 ###annotation
-This is just a web project for fun  
+This is a web project just for fun  
 no need to care or even to fork  
 by [落在深海][1]
 
