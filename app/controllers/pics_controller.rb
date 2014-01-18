@@ -27,7 +27,10 @@ class PicsController < ApplicationController
 	end
 
 	def show
-		
+		respond_to do |format|
+			format.html
+			format.json { render json: @pic.avatar }
+		end
 	end
 
 	def update

@@ -1,5 +1,10 @@
 $(document).ready(function(){
-	var viewHight = $(document).height();
+	var viewHight = $(document).height(),
+			viewWidth = $(document).width(),
+			centreZone = {
+				"left": viewWidth/2,
+				"top": viewHight/2
+			};
 
 	//Scrolltop display,action
   $(function(){
@@ -25,6 +30,7 @@ $(document).ready(function(){
 		return result || (result = fn.apply(this, arguments));
 	}
 
+
 	//Navigate
 	var path = document.location.pathname;
 	var pathArray = path.split("/");
@@ -37,9 +43,38 @@ $(document).ready(function(){
 		};
 	}
 
-	//Global mask
-	$(".globalMask").height(viewHight);
+	//Picture
+	var Picture = function(){
+		var $item = $('<img/>');
+		return {
+			add: function(url){
+				if (url != undefined) {
+					$item.attr("src", url);
+					$("body").append($item);
+				};
+			},
+			remove: function(){
 
+			},
+			change: function(){
+
+			}
+		}
+	}();
+
+	//Loading
+	var Loading = function(){
+		var $tip = $('<i class="loading icon-spinner icon-spin"/>');
+		$tip.css(centreZone);
+		return {
+			display: function(){
+				$("body").append($tip);
+			},
+			hide: function(){
+				$(".loading").remove();
+			}
+		}
+	}();
 
 	//Mask fade
 	$(".globalMask").click(function(){
@@ -47,12 +82,26 @@ $(document).ready(function(){
 	});
 	
 	//Item display
-	$("picture img").click(function(){
+	$(".pic_list picture").click(function(){
 		var tId = $(this).attr("id");
+		$.ajax({
+			url: "/pics/" + tId,
+			type: "GET",
+			dataType: "json",
+			beforeSend: function(){
+				Loading.display();
+				$(".globalMask").fadeIn();
+			},
+			success: function(data){
+				Loading.hide();
+				// Picture.add(data.avatar.url);
+			}
+		});
 
-
-		$(".globalMask").fadeIn();
 	});
+
+	//Item fade
+	// $("")
 
 	//Delete a blog
 	$(".delete-blog").click(function(){
@@ -68,13 +117,13 @@ $(document).ready(function(){
 	});
 
 	//Comment hover for delete
-	var $commentItem = $(".comments").find(".item"),
-			$delComment = $(".delete-comment");
+	var $comItem = $(".comments").find(".item"),
+			$delCom = $(".delete-comment");
 	
-	$commentItem.hover(function(){
-		$(this).find($delComment).stop().fadeIn();
+	$comItem.hover(function(){
+		$(this).find($delCom).stop().fadeIn();
 	},function(){
-		$(this).find($delComment).stop().fadeOut();
+		$(this).find($delCom).stop().fadeOut();
 	});
 	
 	//Delete a comment

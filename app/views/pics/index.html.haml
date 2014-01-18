@@ -5,10 +5,10 @@
 	.pic_list
 		-@pics.each do |pic|
 			%picture{id:"#{pic.id}"}
-				.mini-pic
-					=image_tag(pic.avatar.thumb.url)
-					.pic-info
-						%span=pic.description
-						.likes
-							%a.likeIt
-							%span.like-counts=pic.like_count
+				=image_tag(pic.avatar.thumb.url)
+				.pic-info
+					%span=pic.description
+					.pic-acts
+						%a.likeIt
+						%span.like-counts=pic.like_count
+						=link_to "", pic_path(pic), class:"icon-comments"
