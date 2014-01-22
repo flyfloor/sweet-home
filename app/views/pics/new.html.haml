@@ -1,6 +1,6 @@
 .new-pic
 	%h2 Take a shot
-	%section.padding
+	%section
 		=form_for @pic, url: pics_path, html: { multipart: true } do |f|
 			%a.a-upload{href:"javascript:void(0)"}
 				=f.file_field :avatar, class: "upload-img field"

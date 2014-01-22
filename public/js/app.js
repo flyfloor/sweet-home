@@ -6,7 +6,7 @@ $(document).ready(function(){
 				"top": viewHight/2
 			};
 
-	//Scrolltop display,action
+	//ScrollTop display, Aside position attr
   $(function(){
     $(window).scroll(function(){
       var scrollHight = $(window).scrollTop();
@@ -31,7 +31,7 @@ $(document).ready(function(){
 	}
 
 
-	//Navigate
+	//Navigate active
 	var path = document.location.pathname;
 	var pathArray = path.split("/");
 	if(path === "/"){
@@ -45,19 +45,29 @@ $(document).ready(function(){
 
 	//Picture
 	var Picture = function(){
-		var $item = $('<img/>');
+		var $picLayer = $('<div class="pic-layer">'
+												+'<div class="view-mid">'
+													+'<a href="javascript:;" id="pre_pic" class="pic-nav icon-angle-left"/>'
+													+'<img id="pic_view"/>'
+													+'<a href="javascript:;" id="next_pic" class="pic-nav icon-angle-right"/>'
+												+'</div></div>');
 		return {
 			add: function(url){
 				if (url != undefined) {
-					$item.attr("src", url);
-					$("body").append($item);
+					$picLayer.find("img").attr("src", url);
+					$("body").append($picLayer);
 				};
 			},
 			remove: function(){
-
+				$(".pic-layer").remove();
 			},
 			change: function(){
 
+			},
+			existed: function(){
+				if($(".pic-layer").length > 0){
+					return true;
+				}
 			}
 		}
 	}();
@@ -76,32 +86,33 @@ $(document).ready(function(){
 		}
 	}();
 
-	//Mask fade
-	$(".globalMask").click(function(){
-		$(this).fadeOut();
-	});
 	
 	//Item display
-	$(".pic_list picture").click(function(){
-		var tId = $(this).attr("id");
+	$(".pic_list img").click(function(){
+		var tId = $(this).parents("picture").attr("id");
 		$.ajax({
 			url: "/pics/" + tId,
 			type: "GET",
 			dataType: "json",
 			beforeSend: function(){
 				Loading.display();
-				$(".globalMask").fadeIn();
 			},
 			success: function(data){
 				Loading.hide();
-				// Picture.add(data.avatar.url);
+				Picture.add(data.avatar.url);
 			}
 		});
 
 	});
 
-	//Item fade
-	// $("")
+	//Item remove
+	$(document).click(".pic-layer", function(event){
+		if (Picture.existed() === true) {
+			console.log(event);
+			event.stopPropagation();
+			Picture.remove();
+		};
+	});
 
 	//Delete a blog
 	$(".delete-blog").click(function(){
@@ -187,7 +198,7 @@ $(document).ready(function(){
 		$(".previous_page, .next_page").trigger("page_display");
 	})
 
-
+	//Scroll to top
 	$(".screen-top").click(function(){
 		$("body, html").animate({scrollTop: 0}, 1000);
 		return false;

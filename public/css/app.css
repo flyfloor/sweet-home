@@ -892,6 +892,7 @@ tag {
 
 tag.tag-disabled {
 	cursor: default;
+	color: #ccc;
 	background-color: #dee !important;
 }
 
@@ -1014,7 +1015,7 @@ picture {
 }
 
 .new-pic textarea {
-	width: 560px;
+	width: 580px;
 	height: 100px;
 	resize: none;
 }
@@ -1069,21 +1070,38 @@ picture .pic-info {
 	position: absolute;
 }
 
-.globalMask {
-	display: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.8);
-	z-index: 10;
-}
-
 .loading {
 	position: fixed;
 	margin: 0 auto;
 	width: 16px;
 	height: 16px;
 	color: #fff;
+}
+
+.pic-layer {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.8);
+	z-index: 100;
+}
+
+.pic-layer img {
+	border: 2px solid rgba(0,0,0,0.1);
+}
+
+.view-mid {
+	max-width: 960px;
+	margin: 50px auto;
+}
+
+.pic-nav {
+	margin: 0 20px;
+	font-size: 32px;
+}
+
+.pic-nav:hover {
+	background: none;
 }
