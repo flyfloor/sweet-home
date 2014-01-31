@@ -6,6 +6,16 @@ $(document).ready(function(){
 				"top": viewHight/2
 			};
 
+	//Loading display
+	$(document).ajaxSend(function(){
+		Loading.display();
+	});
+
+	//Loading hide
+	$(document).ajaxStop(function(){
+		Loading.hide();
+	});
+
 	//ScrollTop display, Aside position attr
   $(function(){
     $(window).scroll(function(){
@@ -45,25 +55,41 @@ $(document).ready(function(){
 
 	//Picture
 	var Picture = function(){
-		var $picLayer = $('<div class="pic-layer">'
+		var	$picLayer = $('<div class="pic-layer">'
 												+'<div class="view-mid">'
 													+'<a href="javascript:;" id="pre_pic" class="pic-nav icon-angle-left"/>'
 													+'<img id="pic_view"/>'
 													+'<a href="javascript:;" id="next_pic" class="pic-nav icon-angle-right"/>'
 												+'</div></div>');
 		return {
-			add: function(url){
+
+			add: function(id, url){
 				if (url != undefined) {
-					$picLayer.find("img").attr("src", url);
+					$picLayer.attr("data", id)
+									.find("img").attr("src", url);
 					$("body").append($picLayer);
 				};
 			},
+
 			remove: function(){
 				$(".pic-layer").remove();
 			},
-			change: function(){
 
+			replace: function(id){
+				$.ajax({
+					url: "/pics/"+ id,
+					type: "GET",
+					dataType: "json",
+					success: function(data){
+						$picLayer.attr("data", id)
+									.find("img").attr("src", data.avatar.url);
+					},
+					error: function(data){
+						console.log("shit");
+					}
+				});
 			},
+
 			existed: function(){
 				if($(".pic-layer").length > 0){
 					return true;
@@ -72,7 +98,18 @@ $(document).ready(function(){
 		}
 	}();
 
-	//Loading
+	//Picture navigation
+	(function(){
+		$(document).on("click", "#pre_pic", function(){
+			Picture.replace(Number($(this).parents(".pic-layer").attr("data")) - 1);
+		});
+		$(document).on("click", "#next_pic", function(){
+			Picture.replace(Number($(this).parents(".pic-layer").attr("data")) + 1);
+		});
+	})();
+
+
+	//Loading spin
 	var Loading = function(){
 		var $tip = $('<i class="loading icon-spinner icon-spin"/>');
 		$tip.css(centreZone);
@@ -94,25 +131,21 @@ $(document).ready(function(){
 			url: "/pics/" + tId,
 			type: "GET",
 			dataType: "json",
-			beforeSend: function(){
-				Loading.display();
-			},
 			success: function(data){
-				Loading.hide();
-				Picture.add(data.avatar.url);
+				Picture.add(tId, data.avatar.url);
 			}
 		});
 
 	});
 
 	//Item remove
-	$(document).click(".pic-layer", function(event){
-		if (Picture.existed() === true) {
-			console.log(event);
-			event.stopPropagation();
+	$(document).on("click", ".pic-layer", function(event){
+		var target = $(event.target);
+		if(!target.is("img") && !target.is("a") && Picture.existed() === true){
 			Picture.remove();
-		};
+		}
 	});
+
 
 	//Delete a blog
 	$(".delete-blog").click(function(){
