@@ -23,13 +23,7 @@
 		.write-content
 			=render "comments/form"
 	%aside
-		.author
-			.author-avator
-				%a{href:"http://www.weibo.com/lacunafario", target:"_blank"}
-					%img{src:"/imgs/lacuna.jpg"}
-			.author-info
-				%h5 落在深海
-			%p.motto The things you own, end up oweing you.
+		=render "admin/author"
 		%section.padding
 			%h3 Latest...
 			%ul.latest_articles
