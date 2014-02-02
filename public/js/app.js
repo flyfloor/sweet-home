@@ -55,34 +55,45 @@ $(document).ready(function(){
 
 	//Picture
 	var Picture = function(){
-		var	$picLayer = $('<div class="pic-layer">'
+		var	$picLayer = $('<div id="pic-layer">'
 												+'<div class="view-mid">'
 													+'<a href="javascript:;" id="pre_pic" class="pic-nav icon-angle-left"/>'
-													+'<img id="pic_view"/>'
+													+'<div id="pic-view">'
+													+'<img/></div>'
 													+'<a href="javascript:;" id="next_pic" class="pic-nav icon-angle-right"/>'
-												+'</div></div>');
+												+'</div></div>'),
+				$img = $picLayer.find("img");
 		return {
 
 			add: function(id, url){
 				if (url != undefined) {
-					$picLayer.attr("data", id)
-									.find("img").attr("src", url);
+					$picLayer.attr("data", id);
+					$img.attr("src", url);
 					$("body").append($picLayer);
+					Picture.resize();
 				};
 			},
 
-			remove: function(){
-				$(".pic-layer").remove();
+			resize: function(){
+				$("#pic-view").css({"margin-top": (viewHight - $img.height())/2,
+														"width":$img.width()});
+				$("#pre_pic").css("left", 100);
+				$("#next_pic").css("right", 100);
 			},
 
-			replace: function(id){
+			remove: function(){
+				$("#pic-layer").remove();
+			},
+
+			replaceWith: function(id){
 				$.ajax({
 					url: "/pics/"+ id,
 					type: "GET",
 					dataType: "json",
 					success: function(data){
-						$picLayer.attr("data", id)
-									.find("img").attr("src", data.avatar.url);
+						$picLayer.attr("data", id);
+						$img.attr("src", data.avatar.url);
+						Picture.resize();
 					},
 					error: function(data){
 						console.log("shit");
@@ -91,7 +102,7 @@ $(document).ready(function(){
 			},
 
 			existed: function(){
-				if($(".pic-layer").length > 0){
+				if($("#pic-layer").length > 0){
 					return true;
 				}
 			}
@@ -101,10 +112,10 @@ $(document).ready(function(){
 	//Picture navigation
 	(function(){
 		$(document).on("click", "#pre_pic", function(){
-			Picture.replace(Number($(this).parents(".pic-layer").attr("data")) - 1);
+			Picture.replaceWith(Number($("#pic-layer").attr("data")) - 1);
 		});
 		$(document).on("click", "#next_pic", function(){
-			Picture.replace(Number($(this).parents(".pic-layer").attr("data")) + 1);
+			Picture.replaceWith(Number($("#pic-layer").attr("data"))+ 1);
 		});
 	})();
 
@@ -139,7 +150,7 @@ $(document).ready(function(){
 	});
 
 	//Item remove
-	$(document).on("click", ".pic-layer", function(event){
+	$(document).on("click", "#pic-layer", function(event){
 		var target = $(event.target);
 		if(!target.is("img") && !target.is("a") && Picture.existed() === true){
 			Picture.remove();
