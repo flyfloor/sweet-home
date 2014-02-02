@@ -374,29 +374,6 @@ a.editor-active {
 	color: red;
 }
 
-.lnk-flat {
-	height: 24px;
-	padding: 0 8px;
-	line-height: 24px;
-	border: 1px solid #d9d9d9;
-	display: inline-block;
-	border-radius: 4px;
-}
-
-a.bn-flat:hover {
-	background: transparent;
-}
-a.lnk-flat:link, a.lnk-flat:visited {
-	color: #333;
-}
-
-
-
-.bn-flat:hover, a.lnk-flat:hover {
-	border-color: #999 #999 #666;
-	color: #333;
-}
-
 
 .create-blog {
 	position: fixed;
@@ -995,13 +972,13 @@ aside {
 }
 
 .article-content picture {
+  float: left;
 	background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 20px rgba(200, 200, 230, 0.1) inset;
-  float: left;
   margin-top: 50px;
   max-width: 920px;
-  padding: 80px 30px;
+  padding: 80px 30px 50px;
 }
 
 picture .pic-frame {
@@ -1079,6 +1056,14 @@ picture .pic-info {
 	position: absolute;
 }
 
+a.pic-desc {
+	color: #fff;
+}
+
+a.pic-desc:hover {
+	background-color: transparent;
+}
+
 .loading {
 	position: fixed;
 	margin: 0 auto;
@@ -1116,6 +1101,14 @@ picture .pic-info {
 
 .pic-nav:hover {
 	background: none;
+}
+
+#pre_pic {
+	left: 100px;
+}
+
+#next_pic {
+	right: 100px;
 }
 
 #pic-view {

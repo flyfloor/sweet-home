@@ -1,4 +1,4 @@
-=form_for([@blog, @blog.comments.build]) do |f|
+=form_for([thing, thing.comments.build]) do |f|
 	-if !signed_in?
 		.field
 			=f.label "Name", for: "comment_commenter"

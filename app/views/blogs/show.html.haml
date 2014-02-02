@@ -21,7 +21,7 @@
 				%li.item=render comment
 		%h3 Write Something
 		.write-content
-			=render "comments/form"
+			=render partial: "comments/form", locals: {thing: @blog}
 	%aside
 		=render "admin/author"
 		%section.padding

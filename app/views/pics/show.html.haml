@@ -1,8 +1,0 @@
--provide(:title)
-.article-content
-	%picture
-		=image_tag @pic.avatar.url
-		%p=@pic.description
-		-unless @pic.tags.blank?
-			%tags
-				=render @pic.tags

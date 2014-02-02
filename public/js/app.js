@@ -68,17 +68,16 @@ $(document).ready(function(){
 			add: function(id, url){
 				if (url != undefined) {
 					$picLayer.attr("data", id);
-					$img.attr("src", url);
+					$img.attr("src", url).load(function(){
+						Picture.resize();
+					});
 					$("body").append($picLayer);
-					Picture.resize();
 				};
 			},
 
 			resize: function(){
 				$("#pic-view").css({"margin-top": (viewHight - $img.height())/2,
 														"width":$img.width()});
-				$("#pre_pic").css("left", 100);
-				$("#next_pic").css("right", 100);
 			},
 
 			remove: function(){
@@ -87,13 +86,14 @@ $(document).ready(function(){
 
 			replaceWith: function(id){
 				$.ajax({
-					url: "/pics/"+ id,
+					url: "/pictures/"+ id,
 					type: "GET",
 					dataType: "json",
 					success: function(data){
 						$picLayer.attr("data", id);
-						$img.attr("src", data.avatar.url);
-						Picture.resize();
+						$img.attr("src", data.avatar.url).load(function(){
+							Picture.resize();
+						});
 					},
 					error: function(data){
 						console.log("shit");
@@ -139,7 +139,7 @@ $(document).ready(function(){
 	$(".pic_list img").click(function(){
 		var tId = $(this).parents("picture").attr("id");
 		$.ajax({
-			url: "/pics/" + tId,
+			url: "/pictures/" + tId,
 			type: "GET",
 			dataType: "json",
 			success: function(data){
@@ -217,7 +217,7 @@ $(document).ready(function(){
 				tId = $article.attr("id");
 			}
 			if ($picture.length > 0) {
-				urlRoute = "/pics/";
+				urlRoute = "/pictures/";
 				tId = $picture.attr("id");
 			}
 		}
