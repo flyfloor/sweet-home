@@ -1,13 +1,12 @@
 -provide(:title)
-.article-content
-	%picture
+%section.full-pic
+	%figure
 		=image_tag @pic.avatar.url
-		%p=@pic.description
+		.field
+			%p=@pic.description
 		-unless @pic.tags.blank?
 			%tags
 				-@pic.tags.each do |tag|
 					%span.tag=tag.name
-	%ul.comments
-		-@pic.comments.each do |comment|
-			%li.item=render comment
-	=render partial: "comments/form", locals:{thing: @pic}
+%section.pic-comment
+	=render partial: "comments/comment", locals:{thing: @pic}

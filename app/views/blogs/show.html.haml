@@ -14,14 +14,7 @@
 		-if signed_in?
 			=link_to 'edit', edit_blog_path(@blog)
 	%comment
-		%h3 Comments...
-		%br
-		%ul.comments
-			-@blog.comments.each do |comment|
-				%li.item=render comment
-		%h3 Write Something
-		.write-content
-			=render partial: "comments/form", locals: {thing: @blog}
+		=render partial: "comments/comment", locals: {thing: @blog}
 	%aside
 		=render "admin/author"
 		%section.padding

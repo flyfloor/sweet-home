@@ -1,10 +1,8 @@
 class CommentsController < ApplicationController
 	include AdminHelper, CommentsHelper
 	before_filter :sign_in_user, only: :destroy
-	before_filter :find_blog, only: [:create, :destroy]
 
 	def create
-		# binding.pry
 		@comment = Comment.new
 		if signed_in?
 			author_comment @comment
@@ -12,8 +10,15 @@ class CommentsController < ApplicationController
 		else
 			@comment = Comment.new(params[:comment])
 		end
-		@blog.comments << @comment
-		redirect_to blog_path(@blog)
+
+		if is_blog?
+			@thing = find_blog
+		elsif is_picture?
+			@thing = find_picture
+		end
+
+		@thing.comments << @comment
+		redirect_to @thing
 	end
 
 	def destroy
@@ -23,8 +28,35 @@ class CommentsController < ApplicationController
 		end
 	end
 
-	def find_blog
-		@blog = Blog.find params[:blog_id]
-	end
+	private
+
+		def find_blog
+			find_thing(Blog, blog_id)
+		end
+
+		def find_picture
+			find_thing(Picture, picture_id)
+		end
+
+		def find_thing(model, value)
+			@target = model.find value
+		end
+
+
+		def is_blog?
+			!blog_id.blank?
+		end
+
+		def blog_id
+			params[:blog_id]
+		end
+
+		def picture_id
+			params[:picture_id]
+		end
+
+		def is_picture?
+			!picture_id.blank?
+		end
 
 end

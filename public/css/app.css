@@ -67,7 +67,7 @@ input:-moz-placeholder { font-weight: normal; font-style: italic; color: #999 }
 }
 
 .field {
-	margin: 0 5px 10px;
+	margin: 10px 5px 0;
 }
 
 .normal{
@@ -435,7 +435,7 @@ tags .tag{
 	color: inherit !important;
 }
 
-.page-content tags:before, .article-content tags:before {
+tags:before {
 	content: "\f02b";
 	color: #a3c3a2;
 	font: 12px FontAwesome;
@@ -971,19 +971,27 @@ aside {
 	background-color: #fff;
 }
 
-.article-content picture {
-  float: left;
-	background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 1px 20px rgba(200, 200, 230, 0.1) inset;
-  margin-top: 50px;
-  max-width: 920px;
-  padding: 80px 30px 50px;
+.full-pic {
+	margin: -5px 0 0;
+	background-color: #efefef;
+	padding: 80px 0 50px;
 }
 
-picture .pic-frame {
+figure {
+	max-width: 920px;
 	margin: 0 auto;
 }
+
+figure img {
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+.pic-comment {
+	width: 920px;
+	margin: 80px auto;
+}
+
 
 .new-pic {
 	background-color: #fff;

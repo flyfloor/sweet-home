@@ -20,7 +20,7 @@ class PicturesController < ApplicationController
 		make_tag @pic
 
 		if @pic.save
-			redirect_to pic_path(@pic)
+			redirect_to picture_path(@pic)
 		else
 			render 'new'
 		end

@@ -1,11 +1,19 @@
-.item-avator=gravatar_image_tag(comment.email, alt:"#{comment.email}")
--if comment.website.blank?
-	%span.item-commenter=comment.commenter
--else
-	%a.item-commenter{href: comment.website, target: "_blank"}=comment.commenter
-	%br
-	%time=updated_time comment
-.item-content
-	=sanitize html_view comment.content
--if signed_in?
-	=link_to 'x', [comment.blog, comment], class: "delete-comment"
+%h3 Comments...
+%br
+%ul.comments
+	-thing.comments.each do |comment|
+		%li.item
+			.item-avator=gravatar_image_tag(comment.email, alt:"#{comment.email}")
+			-if comment.website.blank?
+				%span.item-commenter=comment.commenter
+			-else
+				%a.item-commenter{href: comment.website, target: "_blank"}=comment.commenter
+				%br
+				%time=updated_time comment
+			.item-content
+				=sanitize html_view comment.content
+			-if signed_in?
+				=link_to 'x', [thing, comment], class: "delete-comment"
+%h3 Write Something
+.write-content
+	=render partial: "comments/form", locals: {thing: thing}
