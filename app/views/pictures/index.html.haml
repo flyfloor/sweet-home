@@ -1,7 +1,7 @@
 -if signed_in?
 	=link_to "Take a shoot", new_picture_path, class:"create-blog italic" 
 .index-content
-	%h3.italic.hd All pictures
+	%h3.italic.pad20 All pictures
 	.pic_list
 		-@pics.each do |pic|
 			%picture{id:"#{pic.id}"}
