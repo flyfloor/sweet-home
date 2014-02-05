@@ -188,7 +188,7 @@ $(document).ready(function(){
 			url: $(this).attr("href"),
 			type: "DELETE",
 			success: function(data){
-				afterDel(data, $comment);
+				delSucc(data, $comment);
 			}
 		});
 		return false;

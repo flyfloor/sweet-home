@@ -11,6 +11,6 @@
 			=f.url_field :website, class: "normal", name: "comment[website]"
 	.field
 		=f.label "Comment", for: "comment_content"
-		=f.text_area :content, class: "normal", name: "comment[content]", required: true, placeholder: "Markdown supported"
+		=f.text_area :content, name: "comment[content]", required: true, placeholder: "Markdown supported"
 	.field
 		=f.submit "Submit", class: "button"

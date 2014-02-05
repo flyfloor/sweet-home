@@ -8,8 +8,8 @@
 				%span.item-commenter=comment.commenter
 			-else
 				%a.item-commenter{href: comment.website, target: "_blank"}=comment.commenter
-				%br
-				%time=updated_time comment
+			%br
+			%time=updated_time comment
 			.item-content
 				=sanitize html_view comment.content
 			-if signed_in?

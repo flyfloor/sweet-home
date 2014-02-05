@@ -11,18 +11,12 @@ class CommentsController < ApplicationController
 			@comment = Comment.new(params[:comment])
 		end
 
-		if is_blog?
-			@thing = find_blog
-		elsif is_picture?
-			@thing = find_picture
-		end
-
-		@thing.comments << @comment
-		redirect_to @thing
+		thing.comments << @comment
+		redirect_to thing
 	end
 
 	def destroy
-		@comment = @blog.comments.find params[:id]
+		@comment = thing.comments.find params[:id]
 		if @comment.destroy
 			render json:{success: true}
 		end
@@ -31,15 +25,23 @@ class CommentsController < ApplicationController
 	private
 
 		def find_blog
-			find_thing(Blog, blog_id)
+			find_model(Blog, blog_id)
 		end
 
 		def find_picture
-			find_thing(Picture, picture_id)
+			find_model(Picture, picture_id)
 		end
 
-		def find_thing(model, value)
-			@target = model.find value
+		def find_model(model, value)
+			@thing = model.find value
+		end
+
+		def thing
+			if is_blog?
+				@thing = find_blog
+			elsif is_picture?
+				@thing = find_picture
+			end
 		end
 
 
@@ -47,6 +49,10 @@ class CommentsController < ApplicationController
 			!blog_id.blank?
 		end
 
+		def is_picture?
+			!picture_id.blank?
+		end
+		
 		def blog_id
 			params[:blog_id]
 		end
@@ -55,8 +61,5 @@ class CommentsController < ApplicationController
 			params[:picture_id]
 		end
 
-		def is_picture?
-			!picture_id.blank?
-		end
 
 end

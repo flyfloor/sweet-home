@@ -17,7 +17,7 @@ a:active{color:#000;text-decoration:none}
 a img{border-width:0;vertical-align:middle}
 body,td,th{font:15px;line-height:1.62; letter-spacing: 0.5px}
 table{border-collapse:collapse;border:0;padding:0;margin:0}
-textarea{resize:none}
+textarea{resize:none; width: 100%;}
 textarea, input[type="text"], input[type="password"], input[type="datetime"], 
 input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"],
  input[type="week"], input[type="number"], input[type="email"], input[type="url"], 
@@ -657,7 +657,7 @@ time {
 }
 
 
-#blog_title, .wmd-input,.wmd-preview, #comment_content {
+#blog_title, .wmd-input,.wmd-preview {
 	width: 720px;
 }
 
@@ -988,7 +988,7 @@ figure img {
 }
 
 .pic-comment {
-	width: 920px;
+	width: 900px;
 	margin: 80px auto;
 }
 
