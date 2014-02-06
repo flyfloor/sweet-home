@@ -15,8 +15,8 @@
 			=link_to 'edit', edit_blog_path(@blog)
 	%comment
 		=render partial: "comments/comment", locals: {thing: @blog}
-	%aside
-		=render "admin/author"
+	%aside.wide
+		=render partial: "admin/author", locals:{type:""}
 		%section.padding
 			%h3 Latest...
 			%ul.latest_articles

@@ -1,7 +1,10 @@
 .author
 	.author-avator
 		%a{href:"http://www.weibo.com/lacunafario", target:"_blank"}
-			%img{src:"/imgs/lacuna.jpg"}
+			-if type == "site"
+				%img{src:"/imgs/lacuna_site.jpg"}
+			-else
+				%img{src:"/imgs/lacuna.jpg"}
 	.author-info
 		%h5 落在深海
 	%p.motto The things you own, end up owning you.

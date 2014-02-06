@@ -22,8 +22,13 @@
 </head>
 <body>
 	<header>
+		<div class="middle narrow">
+			<%= render partial: "admin/author", locals:{type:"site"}%>
+		</div>
 		<nav class="main">
-			<a id="main-icon" href="/" style="display:inline-block;float:left;padding:8px 20px;"><h4>Lacuna</h4></a>
+			<a id="main-icon" class="wide" href="/">
+				<h4>Lacuna</h4>
+			</a>
 			<ul class="main-nav">
 				<li>
 					<a href="/blogs" title="Blog">Blog</a>

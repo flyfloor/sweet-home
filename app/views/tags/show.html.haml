@@ -1,4 +1,3 @@
-%page
-	=render partial:'blogs/index_section', locals:{blogs: @tag.blogs}
-	.tag-name
-		%span #{@tag.name},#{@tag.blogs.count} articles
+=render partial:'blogs/index_section', locals:{blogs: @tag.blogs}
+.tag-name
+	%span #{@tag.name},#{@tag.blogs.count} articles

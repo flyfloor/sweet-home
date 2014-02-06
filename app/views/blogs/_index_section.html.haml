@@ -5,6 +5,7 @@
 				.bref-title
 					%h1
 						=link_to blog.title, blog_path(blog)
+					.italic.middle.narrow=blog.created_at
 				.escaped-content=sanitize html_view blog.bref_content
 				%a{href:"#{blog_path(blog)}"} ...
 				%br
@@ -16,7 +17,7 @@
 					.opration
 						=link_to 'edit', edit_blog_path(blog)
 						=link_to 'destroy', blog_path(blog), method: :delete, class: 'delete-blog', href: 'javascript:void(0)', remote: true
-			.statistical-info
+			.statistics.wide
 				%h2.create-date #{blog.created_at.localtime.strftime("%b,%d")}
 				%span.create-year=blog.created_at.localtime.strftime("%Y")
 				%span.like-count=blog.like_count

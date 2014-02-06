@@ -4,7 +4,7 @@ class PicturesController < ApplicationController
 	before_filter :sign_in_user, except: [:index, :show, :like]
 	
 	def index
-		@pics = Picture.paginate(page: params[:page], per_page:5).order("created_at DESC")
+		@pics = Picture.paginate(page: params[:page], per_page:10).order("created_at DESC")
 	end
 
 	def new

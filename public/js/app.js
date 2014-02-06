@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	var viewHight = $(document).height(),
 			viewWidth = $(document).width(),
+			windowWidth = $(window).width();
 			centreZone = {
 				"left": viewWidth/2,
 				"top": viewHight/2
@@ -20,7 +21,7 @@ $(document).ready(function(){
   $(function(){
     $(window).scroll(function(){
       var scrollHight = $(window).scrollTop();
-      if (scrollHight > 50) {
+      if (scrollHight > 50 && windowWidth >= 1000) {
         $("aside .tag-editor").css("position", "fixed");
         $screentop = $(".screen-top");
 	      if (scrollHight > 800) {
