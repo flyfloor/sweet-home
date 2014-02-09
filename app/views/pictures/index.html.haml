@@ -5,10 +5,12 @@
 	.pic_list
 		-@pics.each do |pic|
 			%picture{id:"#{pic.id}"}
-				=image_tag(pic.avatar.thumb.url)
+				%a.middle.narrow{href:"#{picture_path(pic)}"}
+					=image_tag(pic.avatar.thumb.url)
+				.wide=image_tag(pic.avatar.thumb.url)
 				.pic-info
 					=link_to pic.description, picture_path(pic), class: "pic-desc"
-					.pic-acts
+					.pic-acts.wide.middle
 						%a.likeIt
 						%span.like-counts=pic.like_count
 						=link_to "", picture_path(pic), class:"icon-comments", title:"take a comment"

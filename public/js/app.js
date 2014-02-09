@@ -7,6 +7,9 @@ $(document).ready(function(){
 				"top": viewHight/2
 			};
 
+	var WIDE_SCREEN = 1000,
+			NARROW_SCREEN = 640;
+
 	//Loading display
 	$(document).ajaxSend(function(){
 		Loading.display();
@@ -21,7 +24,7 @@ $(document).ready(function(){
   $(function(){
     $(window).scroll(function(){
       var scrollHight = $(window).scrollTop();
-      if (scrollHight > 50 && windowWidth >= 1000) {
+      if (scrollHight > 50 && windowWidth >= WIDE_SCREEN) {
         $("aside .tag-editor").css("position", "fixed");
         $screentop = $(".screen-top");
 	      if (scrollHight > 800) {
@@ -34,12 +37,6 @@ $(document).ready(function(){
       }
     });
   });
-
-	//Singleton
-	var singleton = function(fn){
-		var result;
-		return result || (result = fn.apply(this, arguments));
-	}
 
 
 	//Navigate active
@@ -137,26 +134,27 @@ $(document).ready(function(){
 
 	
 	//Item display
-	$(".pic_list img").click(function(){
-		var tId = $(this).parents("picture").attr("id");
-		$.ajax({
-			url: "/pictures/" + tId,
-			type: "GET",
-			dataType: "json",
-			success: function(data){
-				Picture.add(tId, data.avatar.url);
-			}
+	if(windowWidth > WIDE_SCREEN){
+		$(".pic_list img").click(function(){
+			var tId = $(this).parents("picture").attr("id");
+			$.ajax({
+				url: "/pictures/" + tId,
+				type: "GET",
+				dataType: "json",
+				success: function(data){
+					Picture.add(tId, data.avatar.url);
+				}
+			});
 		});
 
-	});
-
-	//Item remove
-	$(document).on("click", "#pic-layer", function(event){
-		var target = $(event.target);
-		if(!target.is("img") && !target.is("a") && Picture.existed() === true){
-			Picture.remove();
-		}
-	});
+		//Item remove
+		$(document).on("click", "#pic-layer", function(event){
+			var target = $(event.target);
+			if(!target.is("img") && !target.is("a") && Picture.existed() === true){
+				Picture.remove();
+			}
+		});
+	};
 
 
 	//Delete a blog
@@ -172,7 +170,7 @@ $(document).ready(function(){
 		return false;
 	});
 
-	//Comment hover for delete
+	//Comment hover mark for delete
 	var $comItem = $(".comments").find(".item"),
 			$delCom = $(".delete-comment");
 	
@@ -358,11 +356,13 @@ $(document).ready(function(){
 	}
 
 	//Thumb picture's hover action
-	var $thumb_info = $(".pic-info");
-	$(".index-content picture").hover(function(){
-		$(this).find($thumb_info).stop().fadeIn();
-	},function(){
-		$(this).find($thumb_info).stop().fadeOut();
-	});
+	if(windowWidth > WIDE_SCREEN){
+		var $thumb_info = $(".pic-info");
+		$(".index-content picture").hover(function(){
+			$(this).find($thumb_info).stop().fadeIn();
+		},function(){
+			$(this).find($thumb_info).stop().fadeOut();
+		});
+	}
 
 })
