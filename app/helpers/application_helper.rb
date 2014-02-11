@@ -22,8 +22,8 @@ module ApplicationHelper
     end
   end
 
-  def make_tag object
-    split_tag(object, params[:tags].split('#tag#'))
+  def make_tag thing
+    split_tag(thing, params[:tags].split('#tag#'))
   end
 
   def base_title
@@ -38,6 +38,10 @@ module ApplicationHelper
 
   def new_tag tag
     Tag.new(name: tag)
+  end
+
+  def has_pre?
+    
   end
 
 end
