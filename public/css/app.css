@@ -202,7 +202,7 @@ picture .pic-info {
 	.tag-list li {
 		display: inline-block;
 		width: 200px;
-		padding: 5px 10px;
+		padding: 5px;
 		color: #93c;
 	}
 
@@ -221,7 +221,7 @@ picture .pic-info {
 	}
 
 	.wide {
-		display: block;
+		display: inherit;
 		visibility: visible;
 	}
 
@@ -421,7 +421,7 @@ picture .pic-info {
 /* Viewport from 640px to 1000px */
 @media screen and (min-width: 640px) and (max-width: 999px){
 	.middle {
-		display: block;
+		display: inherit;
 		visibility: visible;
 	}
 
@@ -477,8 +477,12 @@ picture .pic-info {
 }
 /* Viewport under 640px */
 @media screen and (max-width: 639px){
+	textarea {
+		min-height: 360px;
+	}
+
 	.narrow {
-		display: block;
+		display: inherit;
 		visibility: visible;
 	}
 
@@ -1132,6 +1136,7 @@ aside {
 figure {
 	max-width: 920px;
 	margin: 0 auto;
+	padding: 10px 20px;
 }
 
 figure img {
