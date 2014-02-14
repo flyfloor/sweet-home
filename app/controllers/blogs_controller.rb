@@ -14,7 +14,7 @@ class BlogsController < ApplicationController
 
 	def create
 		@blog = Blog.new params[:blog]
-		make_tag @blog
+		label_tag @blog
 
 		if @blog.save
 			redirect_to @blog
@@ -30,7 +30,7 @@ class BlogsController < ApplicationController
 
 	def update
 		expire_page action: :show
-		make_tag @blog
+		label_tag @blog
 
 		if @blog.update_attributes params[:blog]
 			redirect_to @blog

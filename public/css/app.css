@@ -152,8 +152,6 @@ article .escaped-content a {
 	}
 
 	.article-editor article {
-		overflow: hidden;
-		margin: 10px 150px 30px -4px;
 		background-color: #fff;
 	}
 
@@ -207,6 +205,10 @@ picture .pic-info {
 		padding: 5px 10px;
 		color: #93c;
 	}
+
+.pic-desc-field {
+	padding-right: 15px; 
+}
 
 /* Viewport larger than 1000px */
 @media screen and (min-width: 1000px){
@@ -300,11 +302,10 @@ picture .pic-info {
 		margin: 10px 150px 30px -4px;
 	}
 
-
 	.article-editor article {
+		margin: 10px 150px 30px -4px;
 		padding: 50px 57px;
 		width: 740px;
-		background-color: #fff;
 	}
 
 	.bref-title a:hover {
@@ -403,6 +404,7 @@ picture .pic-info {
 		background-color: transparent;
 	}
 
+ 
 	.tag-list a {
 		color: #985211;
 		transition: color 0.2s linear 0s;
@@ -450,6 +452,12 @@ picture .pic-info {
 		margin-top: 10px;
 		-moz-box-sizing: border-box;
 		box-shadow: 0 1px 2px rgba(59,175,54, 0.2);
+	}
+
+	.article-editor article {
+		max-width: 760px;
+		padding: 50px; 
+		margin: 0 auto;
 	}
 
 	.screen-top {
@@ -528,6 +536,16 @@ picture .pic-info {
 		display: block;
 		text-align: center;
 		padding: 10px;
+	}
+
+	.article-editor article {
+		width: 90%;
+		margin: 0 auto;
+		padding: 30px;
+	}
+
+	.new-pic textarea {
+		padding: 2px;
 	}
 
 }
@@ -818,7 +836,8 @@ time {
 
 
 #blog_title, .wmd-input,.wmd-preview {
-	width: 720px;
+	max-width: 720px;
+	width: 100%;
 }
 
 
@@ -1088,9 +1107,9 @@ tag.tag-disabled {
 aside {
 	padding: 0 15px 10px;
 	position: absolute;
-	right: -100px;
+	right: -80px;
   top: 0px;
-  width: 220px;
+  width: 200px;
 }
 
 
@@ -1128,7 +1147,7 @@ figure img {
 	min-height: 580px;
 	margin: 10px auto;
 	padding: 30px;
-	width: 600px;
+	max-width: 600px;
 }
 
 .new-pic h2 {
@@ -1136,7 +1155,7 @@ figure img {
 }
 
 .new-pic textarea {
-	width: 580px;
+	max-width: 580px;
 	height: 100px;
 	resize: none;
 }

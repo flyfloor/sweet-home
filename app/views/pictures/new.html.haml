@@ -12,7 +12,8 @@
 						$("#upload_file_name").text($(this).val())
 					});
 				})();
-			=f.text_area :description, class: "field", placeholder:"Describe the shoot"
+			.pic-desc-field
+				=f.text_area :description, class: "field", placeholder:"Describe the shoot"
 			=f.submit "submit", class: "button field"
 			.tag-editor.field
 				=render partial: 'tags/edit_tag', locals: {model: @pic}

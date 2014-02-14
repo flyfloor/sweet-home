@@ -9,9 +9,8 @@ class Blog < ActiveRecord::Base
   	Blog.first != self
   end
 
-
   def pre_blog
-  	Blog.where("id < ?", self).order("id DESC").first
+    Blog.where("id < ?", self).order("id DESC").first
   end
 
   def has_next?
@@ -31,9 +30,9 @@ class Blog < ActiveRecord::Base
   end
 
   def bref_content(range = 1000)
-    self.content.instance_eval do |text|
-      return text.to_s.strip[0, range] if text.length > range
-      text.to_s
+    self.content.instance_eval do |t|
+      return t.to_s.strip[0, range] if t.length > range
+      t.to_s
     end
   end
       

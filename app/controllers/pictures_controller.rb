@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
 	include ApplicationHelper, AdminHelper
-	before_filter :find_pic, only: [:show, :edit, :update, :destroy, :like]
+	before_filter :find_picture, only: [:show, :edit, :update, :destroy, :like]
 	before_filter :sign_in_user, except: [:index, :show, :like]
 	
 	def index
@@ -17,7 +17,7 @@ class PicturesController < ApplicationController
 
 	def create
 		@pic = Picture.new params[:picture]
-		make_tag @pic
+		label_tag @pic
 
 		if @pic.save
 			redirect_to picture_path(@pic)
@@ -34,7 +34,8 @@ class PicturesController < ApplicationController
 	end
 
 	def update
-		
+		label_tag @pic
+		###
 	end
 
 	def destroy
@@ -48,7 +49,7 @@ class PicturesController < ApplicationController
 		end
 	end
 
-	def find_pic
+	def find_picture
 		@pic = Picture.find params[:id]
 	end
 
