@@ -7,7 +7,7 @@ $(document).ready(function(){
 				"top": viewHight/2
 			};
 
-	var WIDE_SCREEN = 1000,
+	var WIDE_SCREEN = 1024,
 			NARROW_SCREEN = 640;
 
 	//Loading display
@@ -24,7 +24,7 @@ $(document).ready(function(){
   $(function(){
     $(window).scroll(function(){
       var scrollHight = $(window).scrollTop();
-      if (scrollHight > 50 && windowWidth >= WIDE_SCREEN) {
+      if (scrollHight > 50 && windowWidth > WIDE_SCREEN) {
         $("aside .tag-editor").css("position", "fixed");
         $screentop = $(".screen-top");
 	      if (scrollHight > 800) {
