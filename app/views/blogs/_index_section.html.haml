@@ -9,7 +9,7 @@
 				.escaped-content=sanitize html_view blog.bref_content
 				%a{href:"#{blog_path(blog)}"} ...
 				%br
-				-unless blog.tags.blank?
+				-if blog.tags.present?
 					%tags
 						-blog.tags.each do |tag|
 							%a.tag{href:"#{tag_path(tag)}"}=tag.name

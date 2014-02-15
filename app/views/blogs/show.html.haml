@@ -6,7 +6,7 @@
 		%br
 		%div
 			.escaped-content=sanitize html_view @blog.content
-		-unless @blog.tags.blank?
+		-if @blog.tags.present?
 			%tags 
 				=render @blog.tags
 			%a.likeIt

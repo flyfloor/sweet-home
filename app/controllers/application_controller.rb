@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
 	private
 		def rename name
-			if !filename.blank?
+			if filename.present?
 				# require 'uuidools'
 				# filename.sub()
 			end

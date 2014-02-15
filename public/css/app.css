@@ -522,6 +522,10 @@ picture .pic-info {
 		max-width: 300px;
 	}
 
+	article .bref, .article-content article, comment {
+		padding: 10px;
+	}
+
 	picture .pic-info {
 		position: relative;
 		text-align: center;

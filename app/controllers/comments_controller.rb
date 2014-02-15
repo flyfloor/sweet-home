@@ -46,11 +46,11 @@ class CommentsController < ApplicationController
 
 
 		def is_blog?
-			!blog_id.blank?
+			blog_id.present?
 		end
 
 		def is_picture?
-			!picture_id.blank?
+			!picture_id.present?
 		end
 		
 		def blog_id

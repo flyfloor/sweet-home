@@ -4,10 +4,10 @@
 	-thing.comments.each do |comment|
 		%li.item
 			.item-avator=gravatar_image_tag(comment.email, alt:"#{comment.email}")
-			-if comment.website.blank?
-				%span.item-commenter=comment.commenter
-			-else
+			-if comment.website.present?
 				%a.item-commenter{href: comment.website, target: "_blank"}=comment.commenter
+			-else
+				%span.item-commenter=comment.commenter
 			%br
 			%time=updated_time comment
 			.item-content

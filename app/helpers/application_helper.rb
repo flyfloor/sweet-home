@@ -3,7 +3,7 @@ module ApplicationHelper
   require 'kramdown'
 
   def title page_title
-    return base_title if page_title.blank?
+    return base_title unless page_title.present?
     page_title
   end
 
@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def html_view text
-    Kramdown::Document.new(text).to_html.gsub("\n", "\r") unless text.blank?
+    Kramdown::Document.new(text).to_html.gsub("\n", "\r") if text.present?
   end
 
   def updated_time target
@@ -29,7 +29,7 @@ module ApplicationHelper
 
   def process_tag tag
     @tag = Tag.where("name = ?", tag)
-    return Tag.new(name: tag) if @tag.blank?
+    return Tag.new(name: tag) unless @tag.present?
     @tag
   end
 

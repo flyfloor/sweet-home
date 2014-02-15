@@ -4,7 +4,7 @@
 		=image_tag @pic.avatar.url
 		.field
 			%p=@pic.description
-		-unless @pic.tags.blank?
+		-if @pic.tags.present?
 			%tags
 				-@pic.tags.each do |tag|
 					%span.tag=tag.name
