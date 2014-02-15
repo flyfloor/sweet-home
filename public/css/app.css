@@ -473,6 +473,10 @@ picture .pic-info {
 			background-color: #fff;
 			color: #f00;
 		}
+
+	picture .pic-info {
+		bottom: 10px;
+	}
 	
 }
 /* Viewport under 640px */
@@ -680,15 +684,6 @@ tags .tag{
 	color: #ff6c7c;
 	font: 12px FontAwesome;
 	padding-left: 5px;
-}
-.icon-comments {
-	margin-left: 5px;
-	color: #999 !important;
-}
-
-.icon-comments:hover {
-	background-color: inherit;
-	color: inherit !important;
 }
 
 tags:before {

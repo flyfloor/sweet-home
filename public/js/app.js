@@ -20,8 +20,6 @@ $(document).ready(function(){
 		Loading.hide();
 	});
 
-	$("figure").css("max-width", $(".full-pic").find("img").width());
-
 	//ScrollTop display, Aside position attr
   $(function(){
     $(window).scroll(function(){
