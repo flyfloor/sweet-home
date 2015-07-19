@@ -21,6 +21,7 @@ public/uploads/*
 doc/
 *.swp
 *~
+vendor
 .project
 .DS_Store
 .idea
