@@ -16,9 +16,10 @@
 
 #Ignore other unneeded files.
 public/blogs/*
-public/imgs/*
-public/uploads/*
 doc/
+public/imgs/uploads/*
+public/uploads/*
+tmp/
 *.swp
 *~
 vendor
